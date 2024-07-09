@@ -12,6 +12,9 @@ struct Home: View {
     @State var displayValue = "0"
     @State var computeValue = 0.0
     @State var currentOperator: Operation = .none
+    @State var isTaxIncluded = false
+    
+    let taxPercentage = 0.11
     
     //Buttons
     let buttons: [[CalculatorButtons]] = [
@@ -26,6 +29,9 @@ struct Home: View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             VStack {
+                //Tax toggle
+                TaxToggle(isTaxIncluded: $isTaxIncluded)
+                
                 //MARK: Display
                 Spacer()
                 HStack {
@@ -102,7 +108,7 @@ struct Home: View {
             } else if button == .equal {
                 let runningValue = self.computeValue
                 let currentValue = Double(self.displayValue) ?? 0
-                let result: Double
+                var result: Double
                 
                 switch self.currentOperator {
                 case .add:
@@ -115,6 +121,11 @@ struct Home: View {
                     result = runningValue * currentValue
                 case .none:
                     result = currentValue
+                }
+                
+                //Includes tax addition if toggle is on
+                if self.isTaxIncluded {
+                    result += result * taxPercentage
                 }
                 self.displayValue = self.formatDisplayValue(result)
             }
