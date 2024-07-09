@@ -15,6 +15,15 @@ struct ContentView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world!")
                 .font(.sf(size: 16, weight: .heavy))
+            
+            //camera button
+            Button {
+                
+            } label: {
+                Image(systemName: "camera.circle.fill")
+                    .resizable()
+                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100)
+            }
         }
         .padding()
     }
