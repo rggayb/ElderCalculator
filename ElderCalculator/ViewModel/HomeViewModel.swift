@@ -30,7 +30,6 @@ class HomeViewModel: ObservableObject {
         let newItem = Item(price: discountedPrice, discount: discountValue, quantity: quantityValue, category: categoryValue)
         
         items.append(newItem)
-        print("added item")
         calculateTotal()
     }
     
@@ -42,8 +41,7 @@ class HomeViewModel: ObservableObject {
             totalValue += totalValue * taxPercentage
         }
         
-        print("calculated total")
-        total += totalValue
+        total = totalValue
     }
     
     func updateItemQuantity(item: Item, quantity: Int) {
@@ -56,12 +54,10 @@ class HomeViewModel: ObservableObject {
     func removeItem(item: Item) {
         items.removeAll { $0.id == item.id }
         calculateTotal()
-        print("removed item")
     }
     
     func removeAllItems() {
         items.removeAll()
         calculateTotal()
-        print("removed all")
     }
 }
