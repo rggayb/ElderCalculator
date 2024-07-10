@@ -9,11 +9,11 @@ import SwiftUI
 
 struct TaxToggle: View {
     @Binding var isTaxIncluded: Bool
+    
     var body: some View {
         Toggle(isOn: $isTaxIncluded) {
             Text("Include Tax")
                 .font(.headline)
-                .foregroundColor(.black)
         }
         .padding()
     }

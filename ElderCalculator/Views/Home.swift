@@ -8,40 +8,32 @@
 import SwiftUI
 
 struct Home: View {
-    @State private var price = ""
-    @State private var discount = ""
-    @State private var quantity = ""
-    @State private var selectedCategory = ""
-    @State private var total = 0.0
-    @State var isTaxIncluded = false
-    
-    let taxPercentage = 0.11
-    let categories = ["Fruit", "Vegetable", "Dairy", "Meat"]
+    @StateObject private var viewModel = HomeViewModel()
     
     var body: some View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             VStack {
                 //Tax toggle
-                TaxToggle(isTaxIncluded: $isTaxIncluded)
+                TaxToggle(isTaxIncluded: $viewModel.isTaxIncluded)
                 
                 //Total spendings
-                TotalSpendings(total: total)
+                TotalSpendings(total: viewModel.total)
                 
                 //Category input
-                CategoryInput(selectedCategory: $selectedCategory, categories: categories)
+                CategoryInput(selectedCategory: $viewModel.selectedCategory, categories: viewModel.categories)
                 
                 //Price input
-                PriceInput(price: $price)
+                PriceInput(price: $viewModel.price)
                 
                 //Quantity input
-                QuantityInput(quantity: $quantity)
+                QuantityInput(quantity: $viewModel.quantity)
                 
                 //Discount input
-                DiscountInput(discount: $discount)
+                DiscountInput(discount: $viewModel.discount)
                 
                 //Calculate button
-                Button(action: calculateTotal) {
+                Button(action: viewModel.calculateTotal) {
                     Text("Add item")
                         .font(.headline)
                         .padding()
@@ -53,21 +45,6 @@ struct Home: View {
             }
             .padding()
         }
-    }
-    
-    //Calculate total spending
-    func calculateTotal() {
-        let priceValue = Double(price) ?? 0.0
-        let discountValue = (Double(discount) ?? 0.0) / 100.0
-        let quantityValue = Double(quantity) ?? 1.0
-        var totalValue = (priceValue - (priceValue * discountValue)) * quantityValue
-        
-        //Includes tax if toggle is on
-        if isTaxIncluded {
-            totalValue += totalValue * taxPercentage
-        }
-        
-        total += totalValue
     }
 }
 
