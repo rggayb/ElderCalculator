@@ -28,6 +28,7 @@ struct CartView: View {
                     Text("Rp \(product.price) x \(product.quantity) = \(product.totalPrice)")
                 }
             } 
+            .onDelete(perform: deleteProduct)
             .navigationTitle("Cart")
         }
         .toolbar {
@@ -38,11 +39,41 @@ struct CartView: View {
                     Image(systemName: "plus")
                 }
             }
+            
+            ToolbarItem {
+                Button {
+                } label: {
+                    Image(systemName: "gear")
+                }
+            }
+            
         }
         .sheet(isPresented: $isAddNewProductPresented, content: {
             AddNewProductView(trip: trip)
         })
    
+    }
+    
+    //delete product
+    private func deleteProduct(indexes: IndexSet) {
+//        for index in indexes {
+//            modelContext.delete(trip.products[index])
+//        }
+        
+        for index in indexes {
+                    let objectId = trip.products[index].persistentModelID
+                    if let productToDelete = modelContext.model(for: objectId) as? Product {
+                        modelContext.delete(productToDelete)
+                    }
+                }
+                trip.products.remove(atOffsets: indexes)
+                
+                do {
+                    try modelContext.save()
+                } catch {
+                    print("Error saving context \(error)")
+                }
+        
     }
 }
 
@@ -51,7 +82,8 @@ struct CartView: View {
                 Trip(date: Date(),
                      storeName: "Test Store",
                      storeType: "Grocery",
-                     budget: 100, tax: 10,
+                     budget: 100, 
+                     tax: 10,
                      storeDiscount: 5))
         .modelContainer(for: [Trip.self], inMemory: true)
 }
