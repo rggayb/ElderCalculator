@@ -10,14 +10,17 @@ import SwiftData
 
 struct ShoppingTripView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var trips: [Trip]
+    @Query(sort: \Trip.date) private var trips: [Trip]
     @State private var isAddNewTripPresented: Bool = false
+    
+    @StateObject var viewModel = ShoppingTripViewModel(inMemory: false)
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(trips) { trip in NavigationLink {
+                ForEach(viewModel.trips) { trip in NavigationLink {
                     CartView(trip: trip)
+                    
                 } label: {
                     VStack(alignment: .leading) {
                         Text(trip.date,
@@ -25,9 +28,11 @@ struct ShoppingTripView: View {
                         Text(trip.storeName)
                         Text(String(trip.storeDiscount))
                     }
+                    
                 }
                 }
-                .onDelete(perform: deleteTrip)
+                .onDelete(perform: viewModel.deleteTrip)
+                
                 
             }
             .toolbar {
@@ -45,26 +50,15 @@ struct ShoppingTripView: View {
                     
                 }
             }
+            
             //AddNewTripView modality
             .sheet(isPresented: $isAddNewTripPresented) {
-                AddNewTripView()
+                AddNewTripView(viewModel: viewModel)
             }
-            
             .navigationTitle("My Trips")
+
         }
     }
-    
-    
-    
-    
-    //delete trip
-    private func deleteTrip(indexes: IndexSet) {
-        for index in indexes {
-            modelContext.delete(trips[index])
-        }
-    }
-    
-    
 }
 
 
