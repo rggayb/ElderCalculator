@@ -11,7 +11,9 @@ import SwiftUI
 struct ElderCalculatorApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            ShoppingTripView()
+                .modelContainer(for: [Trip.self])
         }
     }
 }
