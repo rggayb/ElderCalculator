@@ -11,6 +11,7 @@ import SwiftData
 struct AddNewProductView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    @State var trip: Trip
     
     @State var name: String = ""
     @State var price: String = ""
@@ -56,10 +57,11 @@ struct AddNewProductView: View {
             discount: Int(discount) ?? 0
         )
         modelContext.insert(newProduct)
+        trip.addProduct(newProduct)
     }
 }
 
-#Preview {
-    AddNewProductView()
-        .modelContainer(for: Trip.self, inMemory: true)
-}
+//#Preview {
+//    AddNewProductView()
+//        .modelContainer(for: Trip.self, inMemory: true)
+//}

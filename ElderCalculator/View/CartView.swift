@@ -40,7 +40,7 @@ struct CartView: View {
             }
         }
         .sheet(isPresented: $isAddNewProductPresented, content: {
-            AddNewProductView()
+            AddNewProductView(trip: trip)
         })
    
     }
