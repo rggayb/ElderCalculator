@@ -32,6 +32,7 @@
 		BF4916F12C3CDA90000F8596 /* SFProDisplay-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF4916E82C3CDA90000F8596 /* SFProDisplay-Thin.otf */; };
 		BF4916F22C3CDA90000F8596 /* SFProDisplay-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF4916E92C3CDA90000F8596 /* SFProDisplay-Ultralight.otf */; };
 		BF4916F52C3CDAD1000F8596 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4916F42C3CDAD1000F8596 /* FontExtension.swift */; };
+		BFF3FC462C3FC12B00935B57 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF3FC452C3FC12B00935B57 /* ColorExtension.swift */; };
 		DA66FFAA2C3E2E87002CBF9F /* ShoppingTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66FFA92C3E2E87002CBF9F /* ShoppingTripViewModel.swift */; };
 		DA66FFAC2C3E3268002CBF9F /* TripDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66FFAB2C3E3268002CBF9F /* TripDetail.swift */; };
 		DA78ECBF2C3CF0210035232E /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA78ECBE2C3CF0210035232E /* Trip.swift */; };
@@ -71,6 +72,7 @@
 		BF4916E92C3CDA90000F8596 /* SFProDisplay-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Ultralight.otf"; sourceTree = "<group>"; };
 		BF4916F32C3CDAA3000F8596 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BF4916F42C3CDAD1000F8596 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		BFF3FC452C3FC12B00935B57 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		DA66FFA92C3E2E87002CBF9F /* ShoppingTripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTripViewModel.swift; sourceTree = "<group>"; };
 		DA66FFAB2C3E3268002CBF9F /* TripDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetail.swift; sourceTree = "<group>"; };
 		DA78ECBE2C3CF0210035232E /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				4622932F2C3BA7F60044370A /* ElderCalculatorApp.swift */,
 				462293312C3BA7F60044370A /* ContentView.swift */,
 				BF4916F42C3CDAD1000F8596 /* FontExtension.swift */,
+				BFF3FC452C3FC12B00935B57 /* ColorExtension.swift */,
 				1A40BF232C3F818E00B46E3F /* PersistenceController.swift */,
 				1A40BF252C3F864800B46E3F /* Localizer.xcstrings */,
 				BF4916EA2C3CDA90000F8596 /* Font */,
@@ -327,6 +330,7 @@
 				462293302C3BA7F60044370A /* ElderCalculatorApp.swift in Sources */,
 				1A8B04992C3E62A3000C9AAA /* CategoryInput.swift in Sources */,
 				1A8B049B2C3E62C2000C9AAA /* QuantityInput.swift in Sources */,
+				BFF3FC462C3FC12B00935B57 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
