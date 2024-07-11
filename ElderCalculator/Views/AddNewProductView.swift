@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct AddNewProductView: View {
-    //NOTE: BELUM IMPLEMENT VIEWMODEL BUAT ADD PRODUCTNYA, JADI MSH ERROR 
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @State var trip: Trip

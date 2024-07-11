@@ -10,28 +10,30 @@ import SwiftData
 
 struct AddNewTripView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var viewModel: ShoppingTripViewModel
     
+    @Environment(\.modelContext) var modelContext
     @State var storeName: String = ""
+    @State var storeType: String = ""
     @State var budget: String = ""
     @State var tax: String = ""
+    @State var storeDiscount: String = ""
+//    @State var products: [Product]
     
     var body: some View {
         Form {
             Section {
                 TextField("Store name", text: $storeName)
+                TextField("Store type", text: $storeType)
                 TextField("budget", text: $budget)
-                    .keyboardType(.numberPad)
+                    .keyboardType(.decimalPad)
                 TextField("tax", text: $tax)
                     .keyboardType(.numberPad)
+                TextField("store discount", text: $storeDiscount)
+                    .keyboardType(.decimalPad)
             }
             
             Button (action: {
-                viewModel.addTrip(
-                    storeName: storeName,
-                    budget: Double(budget) ?? 0,
-                    tax: Int(tax) ?? 0
-                )
+                addNewTrip()
                 dismiss()
             }) {
                 Text("Save")
@@ -45,8 +47,18 @@ struct AddNewTripView: View {
             
         }
     }
+    
+    private func addNewTrip() {
+        let newTrip = Trip(date: Date(),
+                           storeName: storeName,
+                           storeType: storeType,
+                           budget: Double(budget) ?? 0,
+                           tax: Int(tax) ?? 0,
+                           storeDiscount: Double(storeDiscount) ?? 0)
+        modelContext.insert(newTrip)
+    }
 }
 
 #Preview {
-    AddNewTripView(viewModel: ShoppingTripViewModel(inMemory: true))
+    AddNewTripView()
 }
