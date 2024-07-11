@@ -32,6 +32,15 @@
 		BF4916F12C3CDA90000F8596 /* SFProDisplay-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF4916E82C3CDA90000F8596 /* SFProDisplay-Thin.otf */; };
 		BF4916F22C3CDA90000F8596 /* SFProDisplay-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF4916E92C3CDA90000F8596 /* SFProDisplay-Ultralight.otf */; };
 		BF4916F52C3CDAD1000F8596 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4916F42C3CDAD1000F8596 /* FontExtension.swift */; };
+		DA66FFAA2C3E2E87002CBF9F /* ShoppingTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66FFA92C3E2E87002CBF9F /* ShoppingTripViewModel.swift */; };
+		DA66FFAC2C3E3268002CBF9F /* TripDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66FFAB2C3E3268002CBF9F /* TripDetail.swift */; };
+		DA78ECBF2C3CF0210035232E /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA78ECBE2C3CF0210035232E /* Trip.swift */; };
+		DA78ECC12C3CFFEC0035232E /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA78ECC02C3CFFEC0035232E /* Product.swift */; };
+		DA78ECE22C3D286C0035232E /* ShoppingTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA78ECE12C3D286C0035232E /* ShoppingTripView.swift */; };
+		DA78ECE42C3D53DC0035232E /* AddNewTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA78ECE32C3D53DC0035232E /* AddNewTripView.swift */; };
+		DA78ECE72C3D746D0035232E /* TripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA78ECE62C3D746D0035232E /* TripCardView.swift */; };
+		DA78ECE92C3D759E0035232E /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA78ECE82C3D759E0035232E /* CartView.swift */; };
+		DA78ECEB2C3D846E0035232E /* AddNewProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA78ECEA2C3D846E0035232E /* AddNewProductView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +71,15 @@
 		BF4916E92C3CDA90000F8596 /* SFProDisplay-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Ultralight.otf"; sourceTree = "<group>"; };
 		BF4916F32C3CDAA3000F8596 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BF4916F42C3CDAD1000F8596 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		DA66FFA92C3E2E87002CBF9F /* ShoppingTripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTripViewModel.swift; sourceTree = "<group>"; };
+		DA66FFAB2C3E3268002CBF9F /* TripDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetail.swift; sourceTree = "<group>"; };
+		DA78ECBE2C3CF0210035232E /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		DA78ECC02C3CFFEC0035232E /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		DA78ECE12C3D286C0035232E /* ShoppingTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTripView.swift; sourceTree = "<group>"; };
+		DA78ECE32C3D53DC0035232E /* AddNewTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTripView.swift; sourceTree = "<group>"; };
+		DA78ECE62C3D746D0035232E /* TripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardView.swift; sourceTree = "<group>"; };
+		DA78ECE82C3D759E0035232E /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		DA78ECEA2C3D846E0035232E /* AddNewProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewProductView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +143,9 @@
 		4622932E2C3BA7F60044370A /* ElderCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				DA78ECBD2C3CEF940035232E /* Model */,
+				DA66FFA82C3E2D6C002CBF9F /* ViewModel */,
+				DA78ECE02C3D281F0035232E /* View */,
 				BF4916F32C3CDAA3000F8596 /* Info.plist */,
 				4622932F2C3BA7F60044370A /* ElderCalculatorApp.swift */,
 				462293312C3BA7F60044370A /* ContentView.swift */,
@@ -162,6 +183,44 @@
 				BF4916E92C3CDA90000F8596 /* SFProDisplay-Ultralight.otf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		DA66FFA82C3E2D6C002CBF9F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DA66FFA92C3E2E87002CBF9F /* ShoppingTripViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DA78ECBD2C3CEF940035232E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DA78ECBE2C3CF0210035232E /* Trip.swift */,
+				DA66FFAB2C3E3268002CBF9F /* TripDetail.swift */,
+				DA78ECC02C3CFFEC0035232E /* Product.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DA78ECE02C3D281F0035232E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DA78ECE12C3D286C0035232E /* ShoppingTripView.swift */,
+				DA78ECE32C3D53DC0035232E /* AddNewTripView.swift */,
+				DA78ECE82C3D759E0035232E /* CartView.swift */,
+				DA78ECEA2C3D846E0035232E /* AddNewProductView.swift */,
+				DA78ECE52C3D74190035232E /* Components */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DA78ECE52C3D74190035232E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DA78ECE62C3D746D0035232E /* TripCardView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,13 +302,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA78ECE92C3D759E0035232E /* CartView.swift in Sources */,
+				DA78ECBF2C3CF0210035232E /* Trip.swift in Sources */,
+				BF4916F52C3CDAD1000F8596 /* FontExtension.swift in Sources */,
+				DA78ECE22C3D286C0035232E /* ShoppingTripView.swift in Sources */,
+				DA78ECE42C3D53DC0035232E /* AddNewTripView.swift in Sources */,
+				DA78ECC12C3CFFEC0035232E /* Product.swift in Sources */,
+				DA78ECEB2C3D846E0035232E /* AddNewProductView.swift in Sources */,
+				462293322C3BA7F60044370A /* ContentView.swift in Sources */,
+				DA66FFAC2C3E3268002CBF9F /* TripDetail.swift in Sources */,
+				DA66FFAA2C3E2E87002CBF9F /* ShoppingTripViewModel.swift in Sources */,
+				462293302C3BA7F60044370A /* ElderCalculatorApp.swift in Sources */,
+				DA78ECE72C3D746D0035232E /* TripCardView.swift in Sources */,
 				1A660D052C3CF77000C9C2D9 /* TaxToggle.swift in Sources */,
 				1A40BF242C3F818E00B46E3F /* PersistenceController.swift in Sources */,
 				1A8B049E2C3E6422000C9AAA /* HomeViewModel.swift in Sources */,
 				BF4916F52C3CDAD1000F8596 /* FontExtension.swift in Sources */,
 				1A660D092C3CFE5F00C9C2D9 /* DiscountInput.swift in Sources */,
 				1A8B04A42C3E6A84000C9AAA /* Item.swift in Sources */,
-				462293322C3BA7F60044370A /* ContentView.swift in Sources */,
 				1A660D002C3CDEED00C9C2D9 /* Home.swift in Sources */,
 				1A660D072C3CFD5C00C9C2D9 /* PriceInput.swift in Sources */,
 				1A660D0B2C3CFF3C00C9C2D9 /* TotalSpendings.swift in Sources */,
@@ -399,6 +469,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -429,6 +500,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
