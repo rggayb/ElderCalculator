@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct CartView: View {
+    //NOTE: BELUM IMPLEMENT VIEWMODEL BUAT FETCH RODUCTNYA, JADI MSH ERROR 
     
     @Environment(\.modelContext) private var modelContext
     @Bindable var trip: Trip
@@ -81,10 +82,10 @@ struct CartView: View {
     CartView(trip: 
                 Trip(date: Date(),
                      storeName: "Test Store",
-                     storeType: "Grocery",
                      budget: 100, 
-                     tax: 10,
-                     storeDiscount: 5))
+                     tax: 10
+                    )
+    )
         .modelContainer(for: [Trip.self], inMemory: true)
 }
 

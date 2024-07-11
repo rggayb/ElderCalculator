@@ -12,29 +12,24 @@ import SwiftData
 class Trip: Identifiable {
     var id: UUID = UUID()
     var date: Date
-    var storeName: String 
-    var storeType: String
+    var storeName: String
     var budget: Double
     var tax: Int
-    var storeDiscount: Double
     var products: [Product]
     
-    init(date: Date, storeName: String, storeType: String, budget: Double, tax: Int, storeDiscount: Double) {
+    init(date: Date, storeName: String, budget: Double, tax: Int) {
         self.date = date
         self.storeName = storeName
-        self.storeType = storeType
         self.budget = budget
         self.tax = tax
-        self.storeDiscount = storeDiscount
         self.products = []
     }
     
-    var grandTotal: Double {
-        let totalProductCost = products.reduce(0.0) { $0 + $1.totalPrice }
-        let discountedCost = totalProductCost - storeDiscount
-        let totalCostWithTax = discountedCost + (discountedCost * Double(tax) / 100)
-        return totalCostWithTax.isNaN ? 0 : totalCostWithTax
-    }
+//    var grandTotal: Double {
+//        let totalProductCost = products.reduce(0.0) { $0 + $1.totalPrice }
+//        let totalCostWithTax = totalProductCost + (totalProductCost * Double(tax) / 100)
+//        return totalCostWithTax.isNaN ? 0 : totalCostWithTax
+//    }
     
     func addProduct(_ product: Product?) {
         products.append(product!)

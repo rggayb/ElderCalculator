@@ -77,7 +77,7 @@ class ShoppingTripViewModel: ObservableObject {
         }
     }
     
-    func addTrip(storeName: String, storeType: String, budget: Double, tax: Int, storeDiscount: Double) {
+    func addTrip(storeName: String, budget: Double, tax: Int) {
         guard let modelContext = modelContext else {
             self.error = OtherErrors.nilContext
             return
@@ -86,10 +86,8 @@ class ShoppingTripViewModel: ObservableObject {
         let newTrip = Trip(
             date: date,
             storeName: storeName,
-            storeType: storeType,
             budget: Double(budget) ,
-            tax: Int(tax) ,
-            storeDiscount: Double(storeDiscount))
+            tax: Int(tax))
         modelContext.insert(newTrip)
         save()
         queryTrips()

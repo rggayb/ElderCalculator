@@ -9,10 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct ShoppingTripView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query(sort: \Trip.date) private var trips: [Trip]
     @State private var isAddNewTripPresented: Bool = false
-    
     @StateObject var viewModel = ShoppingTripViewModel(inMemory: false)
     
     var body: some View {
@@ -26,7 +23,6 @@ struct ShoppingTripView: View {
                         Text(trip.date,
                              format: Date.FormatStyle(date: .numeric, time: .standard))
                         Text(trip.storeName)
-                        Text(String(trip.storeDiscount))
                     }
                     
                 }
