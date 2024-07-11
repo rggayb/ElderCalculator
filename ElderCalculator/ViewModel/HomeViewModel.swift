@@ -19,6 +19,14 @@ class HomeViewModel: ObservableObject {
     
     let taxPercentage = 0.11
     let categories = ["Fruit", "Vegetable", "Dairy", "Meat"]
+    private var persistenceController: PersistenceController
+    
+    //Initialize persistence controller
+    init(persistenceController: PersistenceController = .shared) {
+        self.persistenceController = persistenceController
+        self.items = persistenceController.items
+        calculateTotal()
+    }
     
     func addItem() {
         let priceValue = Double(price) ?? 0.0
@@ -30,6 +38,9 @@ class HomeViewModel: ObservableObject {
         let newItem = Item(price: discountedPrice, discount: discountValue, quantity: quantityValue, category: categoryValue)
         
         items.append(newItem)
+        persistenceController.items = items
+        persistenceController.saveItems()
+        
         calculateTotal()
     }
     
@@ -47,17 +58,26 @@ class HomeViewModel: ObservableObject {
     func updateItemQuantity(item: Item, quantity: Int) {
         if let index = items.firstIndex(where: { $0.id == item.id }) {
             items[index].quantity = quantity
+            persistenceController.items = items
+            persistenceController.saveItems()
             calculateTotal()
         }
     }
     
     func removeItem(item: Item) {
-        items.removeAll { $0.id == item.id }
-        calculateTotal()
+        if let index = items.firstIndex(where: { $0.id == item.id }) {
+            let removedItem = items.remove(at: index)
+            total -= (removedItem.price * Double(removedItem.quantity))
+            persistenceController.items = items
+            persistenceController.saveItems()
+            calculateTotal()
+        }
     }
     
     func removeAllItems() {
         items.removeAll()
+        persistenceController.items = items
+        persistenceController.saveItems()
         calculateTotal()
     }
 }

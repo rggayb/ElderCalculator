@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A40BF242C3F818E00B46E3F /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A40BF232C3F818E00B46E3F /* PersistenceController.swift */; };
+		1A40BF262C3F864800B46E3F /* Localizer.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1A40BF252C3F864800B46E3F /* Localizer.xcstrings */; };
 		1A660D002C3CDEED00C9C2D9 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A660CFF2C3CDEED00C9C2D9 /* Home.swift */; };
 		1A660D052C3CF77000C9C2D9 /* TaxToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A660D042C3CF77000C9C2D9 /* TaxToggle.swift */; };
 		1A660D072C3CFD5C00C9C2D9 /* PriceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A660D062C3CFD5C00C9C2D9 /* PriceInput.swift */; };
@@ -33,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A40BF232C3F818E00B46E3F /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		1A40BF252C3F864800B46E3F /* Localizer.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizer.xcstrings; sourceTree = "<group>"; };
 		1A660CFF2C3CDEED00C9C2D9 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		1A660D042C3CF77000C9C2D9 /* TaxToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxToggle.swift; sourceTree = "<group>"; };
 		1A660D062C3CFD5C00C9C2D9 /* PriceInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceInput.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 				4622932F2C3BA7F60044370A /* ElderCalculatorApp.swift */,
 				462293312C3BA7F60044370A /* ContentView.swift */,
 				BF4916F42C3CDAD1000F8596 /* FontExtension.swift */,
+				1A40BF232C3F818E00B46E3F /* PersistenceController.swift */,
+				1A40BF252C3F864800B46E3F /* Localizer.xcstrings */,
 				BF4916EA2C3CDA90000F8596 /* Font */,
 				1A660D012C3CDFEC00C9C2D9 /* Model */,
 				1A660CFE2C3CDE5F00C9C2D9 /* Views */,
@@ -218,6 +224,7 @@
 			files = (
 				BF4916EB2C3CDA90000F8596 /* SFProDisplay-Bold.OTF in Resources */,
 				462293372C3BA7F80044370A /* Preview Assets.xcassets in Resources */,
+				1A40BF262C3F864800B46E3F /* Localizer.xcstrings in Resources */,
 				BF4916F12C3CDA90000F8596 /* SFProDisplay-Thin.otf in Resources */,
 				BF4916EF2C3CDA90000F8596 /* SFProDisplay-Regular.OTF in Resources */,
 				BF4916EE2C3CDA90000F8596 /* SFProDisplay-Medium.OTF in Resources */,
@@ -237,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A660D052C3CF77000C9C2D9 /* TaxToggle.swift in Sources */,
+				1A40BF242C3F818E00B46E3F /* PersistenceController.swift in Sources */,
 				1A8B049E2C3E6422000C9AAA /* HomeViewModel.swift in Sources */,
 				BF4916F52C3CDAD1000F8596 /* FontExtension.swift in Sources */,
 				1A660D092C3CFE5F00C9C2D9 /* DiscountInput.swift in Sources */,
@@ -382,7 +390,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ElderCalculator/Preview Content\"";
-				DEVELOPMENT_TEAM = F7WR45KMA2;
+				DEVELOPMENT_TEAM = 88D2VWU83D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ElderCalculator/Info.plist;
@@ -412,7 +420,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ElderCalculator/Preview Content\"";
-				DEVELOPMENT_TEAM = F7WR45KMA2;
+				DEVELOPMENT_TEAM = 88D2VWU83D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ElderCalculator/Info.plist;

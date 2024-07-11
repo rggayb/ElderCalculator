@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Home: View {
-    @StateObject private var viewModel = HomeViewModel()
+    @StateObject private var viewModel = HomeViewModel(persistenceController: .shared)
     
     var body: some View {
         ZStack {
