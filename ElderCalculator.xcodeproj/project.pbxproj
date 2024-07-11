@@ -19,7 +19,6 @@
 		1A8B049E2C3E6422000C9AAA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B049D2C3E6422000C9AAA /* HomeViewModel.swift */; };
 		1A8B04A42C3E6A84000C9AAA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B04A32C3E6A84000C9AAA /* Item.swift */; };
 		1A8B04A62C3E6ACF000C9AAA /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B04A52C3E6ACF000C9AAA /* ItemList.swift */; };
-		462293302C3BA7F60044370A /* ElderCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4622932F2C3BA7F60044370A /* ElderCalculatorApp.swift */; };
 		462293322C3BA7F60044370A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462293312C3BA7F60044370A /* ContentView.swift */; };
 		462293342C3BA7F80044370A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 462293332C3BA7F80044370A /* Assets.xcassets */; };
 		462293372C3BA7F80044370A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 462293362C3BA7F80044370A /* Preview Assets.xcassets */; };
@@ -31,8 +30,9 @@
 		BF4916F02C3CDA90000F8596 /* SFProDisplay-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF4916E72C3CDA90000F8596 /* SFProDisplay-Semibold.otf */; };
 		BF4916F12C3CDA90000F8596 /* SFProDisplay-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF4916E82C3CDA90000F8596 /* SFProDisplay-Thin.otf */; };
 		BF4916F22C3CDA90000F8596 /* SFProDisplay-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF4916E92C3CDA90000F8596 /* SFProDisplay-Ultralight.otf */; };
-		BF4916F52C3CDAD1000F8596 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4916F42C3CDAD1000F8596 /* FontExtension.swift */; };
 		BFF3FC462C3FC12B00935B57 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF3FC452C3FC12B00935B57 /* ColorExtension.swift */; };
+		BFF3FC472C400C6F00935B57 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4916F42C3CDAD1000F8596 /* FontExtension.swift */; };
+		BFF3FC482C400C9000935B57 /* ElderCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4622932F2C3BA7F60044370A /* ElderCalculatorApp.swift */; };
 		DA66FFAA2C3E2E87002CBF9F /* ShoppingTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66FFA92C3E2E87002CBF9F /* ShoppingTripViewModel.swift */; };
 		DA66FFAC2C3E3268002CBF9F /* TripDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66FFAB2C3E3268002CBF9F /* TripDetail.swift */; };
 		DA78ECBF2C3CF0210035232E /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA78ECBE2C3CF0210035232E /* Trip.swift */; };
@@ -305,9 +305,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFF3FC482C400C9000935B57 /* ElderCalculatorApp.swift in Sources */,
+				BFF3FC472C400C6F00935B57 /* FontExtension.swift in Sources */,
 				DA78ECE92C3D759E0035232E /* CartView.swift in Sources */,
 				DA78ECBF2C3CF0210035232E /* Trip.swift in Sources */,
-				BF4916F52C3CDAD1000F8596 /* FontExtension.swift in Sources */,
 				DA78ECE22C3D286C0035232E /* ShoppingTripView.swift in Sources */,
 				DA78ECE42C3D53DC0035232E /* AddNewTripView.swift in Sources */,
 				DA78ECC12C3CFFEC0035232E /* Product.swift in Sources */,
@@ -315,19 +316,16 @@
 				462293322C3BA7F60044370A /* ContentView.swift in Sources */,
 				DA66FFAC2C3E3268002CBF9F /* TripDetail.swift in Sources */,
 				DA66FFAA2C3E2E87002CBF9F /* ShoppingTripViewModel.swift in Sources */,
-				462293302C3BA7F60044370A /* ElderCalculatorApp.swift in Sources */,
 				DA78ECE72C3D746D0035232E /* TripCardView.swift in Sources */,
 				1A660D052C3CF77000C9C2D9 /* TaxToggle.swift in Sources */,
 				1A40BF242C3F818E00B46E3F /* PersistenceController.swift in Sources */,
 				1A8B049E2C3E6422000C9AAA /* HomeViewModel.swift in Sources */,
-				BF4916F52C3CDAD1000F8596 /* FontExtension.swift in Sources */,
 				1A660D092C3CFE5F00C9C2D9 /* DiscountInput.swift in Sources */,
 				1A8B04A42C3E6A84000C9AAA /* Item.swift in Sources */,
 				1A660D002C3CDEED00C9C2D9 /* Home.swift in Sources */,
 				1A660D072C3CFD5C00C9C2D9 /* PriceInput.swift in Sources */,
 				1A660D0B2C3CFF3C00C9C2D9 /* TotalSpendings.swift in Sources */,
 				1A8B04A62C3E6ACF000C9AAA /* ItemList.swift in Sources */,
-				462293302C3BA7F60044370A /* ElderCalculatorApp.swift in Sources */,
 				1A8B04992C3E62A3000C9AAA /* CategoryInput.swift in Sources */,
 				1A8B049B2C3E62C2000C9AAA /* QuantityInput.swift in Sources */,
 				BFF3FC462C3FC12B00935B57 /* ColorExtension.swift in Sources */,
@@ -464,7 +462,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ElderCalculator/Preview Content\"";
-				DEVELOPMENT_TEAM = 88D2VWU83D;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ElderCalculator/Info.plist;
@@ -495,7 +493,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ElderCalculator/Preview Content\"";
-				DEVELOPMENT_TEAM = 88D2VWU83D;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ElderCalculator/Info.plist;

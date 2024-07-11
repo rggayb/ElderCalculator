@@ -91,7 +91,7 @@ struct AddNewTripView: View {
                 dismiss()
             }) {
                 RoundedRectangle(cornerRadius: 10)
-                    .frame(width: .infinity, height: 50)
+                    .frame(height: 50)
                     .overlay{
                         Text("Save")
                             .foregroundColor(.white)
