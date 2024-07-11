@@ -35,6 +35,7 @@ class ShoppingTripViewModel: ObservableObject {
             
             // query data
             queryTrips()
+            queryProducts()
             
         } catch(let error) {
             print(error)
@@ -93,6 +94,22 @@ class ShoppingTripViewModel: ObservableObject {
         queryTrips()
     }
     
+    func addNewProduct(name: String, price: Double, quantity: Int, discount: Int, trip: Trip) {
+        guard let modelContext = modelContext else {
+            self.error = OtherErrors.nilContext
+            return
+        }
+        
+        let newProduct = Product(
+            name: name,
+            price: price,
+            quantity: quantity,
+            discount: discount
+        )
+        modelContext.insert(newProduct)
+        trip.addProduct(newProduct)
+    }
+    
     func deleteTrip(at offsets: IndexSet) {
         guard let modelContext = modelContext else {
             self.error = OtherErrors.nilContext
@@ -105,6 +122,10 @@ class ShoppingTripViewModel: ObservableObject {
         save()
         queryTrips()
     }
+    
+    
+    
+    
     
     // saving any pending changes
     private func save() {

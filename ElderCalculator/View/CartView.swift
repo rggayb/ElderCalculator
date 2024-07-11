@@ -9,11 +9,13 @@ import SwiftUI
 import SwiftData
 
 struct CartView: View {
-    //NOTE: BELUM IMPLEMENT VIEWMODEL BUAT FETCH RODUCTNYA, JADI MSH ERROR 
     
-    @Environment(\.modelContext) private var modelContext
-    @Bindable var trip: Trip
+//    @Environment(\.modelContext) private var modelContext
     @State private var isAddNewProductPresented: Bool = false
+    
+    @Bindable var trip: Trip
+    @ObservedObject var viewModel: ShoppingTripViewModel
+    
     
     @State private var productName: String = ""
     @State private var productPrice: String = ""
@@ -29,7 +31,7 @@ struct CartView: View {
                     Text("Rp \(product.price) x \(product.quantity) = \(product.totalPrice)")
                 }
             } 
-            .onDelete(perform: deleteProduct)
+//            .onDelete(perform: deleteProduct)
             .navigationTitle("Cart")
         }
         .toolbar {
@@ -50,42 +52,42 @@ struct CartView: View {
             
         }
         .sheet(isPresented: $isAddNewProductPresented, content: {
-            AddNewProductView(trip: trip)
+            AddNewProductView(trip: trip, viewModel: viewModel)
         })
    
     }
     
     //delete product
-    private func deleteProduct(indexes: IndexSet) {
+//    private func deleteProduct(indexes: IndexSet) {
+////        for index in indexes {
+////            modelContext.delete(trip.products[index])
+////        }
+//        
 //        for index in indexes {
-//            modelContext.delete(trip.products[index])
-//        }
-        
-        for index in indexes {
-                    let objectId = trip.products[index].persistentModelID
-                    if let productToDelete = modelContext.model(for: objectId) as? Product {
-                        modelContext.delete(productToDelete)
-                    }
-                }
-                trip.products.remove(atOffsets: indexes)
-                
-                do {
-                    try modelContext.save()
-                } catch {
-                    print("Error saving context \(error)")
-                }
-        
-    }
+//                    let objectId = trip.products[index].persistentModelID
+//                    if let productToDelete = modelContext.model(for: objectId) as? Product {
+//                        modelContext.delete(productToDelete)
+//                    }
+//                }
+//                trip.products.remove(atOffsets: indexes)
+//                
+//                do {
+//                    try modelContext.save()
+//                } catch {
+//                    print("Error saving context \(error)")
+//                }
+//        
+//    }
 }
 
-#Preview {
-    CartView(trip: 
-                Trip(date: Date(),
-                     storeName: "Test Store",
-                     budget: 100, 
-                     tax: 10
-                    )
-    )
-        .modelContainer(for: [Trip.self], inMemory: true)
-}
+//#Preview {
+//    CartView(trip: 
+//                Trip(date: Date(),
+//                     storeName: "Test Store",
+//                     budget: 100, 
+//                     tax: 10
+//                    )
+//    )
+//        .modelContainer(for: [Trip.self], inMemory: true)
+//}
 

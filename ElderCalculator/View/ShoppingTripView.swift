@@ -16,7 +16,7 @@ struct ShoppingTripView: View {
         NavigationView {
             List {
                 ForEach(viewModel.trips) { trip in NavigationLink {
-                    CartView(trip: trip)
+                    CartView(trip: trip, viewModel: viewModel)
                     
                 } label: {
                     VStack(alignment: .leading) {
