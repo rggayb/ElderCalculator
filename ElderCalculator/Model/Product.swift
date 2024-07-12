@@ -14,14 +14,16 @@ class Product: Identifiable {
     var price: Double
     var quantity: Int
     var discount: Int
-    
+//    @Relationship(inverse: \Trip.products) var trips: [Trip]
+
     init(name: String, price: Double, quantity: Int, discount: Int) {
         self.name = name
         self.price = price
         self.quantity = quantity
         self.discount = discount
+//        self.trips = trips
     }
-    
+
     var totalPrice: Double {
         return (price - (price * Double(discount)/100)) * Double(quantity)
     }
