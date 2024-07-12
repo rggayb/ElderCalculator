@@ -14,7 +14,7 @@ struct CartView: View {
     @State private var isAddNewProductPresented: Bool = false
     
     @Bindable var trip: Trip
-    @ObservedObject var viewModel: ShoppingTripViewModel
+    @ObservedObject var viewModel: HomeViewModel
     
     
     @State private var productName: String = ""
@@ -23,38 +23,46 @@ struct CartView: View {
     @State private var productDiscount: String = ""
     
     var body: some View {
-        List {
-            ForEach(trip.products) { product in
+        ZStack {
+            Color.white.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            ScrollView {
                 VStack {
-                    Text(product.name)
-                        .font(.sf(size: 16, weight: .heavy))
-                    Text("Rp \(product.price) x \(product.quantity) = \(product.totalPrice)")
-                }
-            } 
-//            .onDelete(perform: deleteProduct)
-            .navigationTitle("Cart")
-        }
-        .toolbar {
-            ToolbarItem {
-                Button {
-                    isAddNewProductPresented.toggle()
-                } label: {
-                    Image(systemName: "plus")
+                    //Tax toggle
+                    TaxToggle(isTaxIncluded: $viewModel.isTaxIncluded)
+                    
+                    //Total spendings
+                    TotalSpendings(total: viewModel.total)
+                    
+                    //Category input
+                    CategoryInput(selectedCategory: $viewModel.selectedCategory, categories: viewModel.categories)
+                    
+                    //Price input
+                    PriceInput(price: $viewModel.price)
+                    
+                    //Quantity input
+                    QuantityInput(quantity: $viewModel.quantity)
+                    
+                    //Discount input
+                    DiscountInput(discount: $viewModel.discount)
+                    
+                    //Calculate button
+                    Button(action: viewModel.addItem) {
+                        Text("Add item")
+                            .font(.headline)
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                    .padding()
+                    
+                    //Item list
+                    ItemList(viewModel: viewModel)
                 }
             }
-            
-            ToolbarItem {
-                Button {
-                } label: {
-                    Image(systemName: "gear")
-                }
-            }
-            
+            .padding()
         }
-        .sheet(isPresented: $isAddNewProductPresented, content: {
-            AddNewProductView(trip: trip, viewModel: viewModel)
-        })
-   
+
     }
     
     //delete product

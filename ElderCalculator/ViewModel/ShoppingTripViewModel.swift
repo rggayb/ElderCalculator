@@ -13,6 +13,13 @@ class ShoppingTripViewModel: ObservableObject {
     @Published var trips: [Trip] = []
     @Published var products: [Product] = []
     @Published var error: Error? = nil
+    @Published var isTaxIncluded = false
+    @Published var price = ""
+    @Published var discount = ""
+    @Published var quantity = ""
+    @Published var selectedCategory = ""
+    @Published var total = 0.0
+    @Published var items: [Item] = []
     
     enum OtherErrors: Error {
         case nilContext

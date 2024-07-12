@@ -11,12 +11,13 @@ import SwiftData
 struct ShoppingTripView: View {
     @State private var isAddNewTripPresented: Bool = false
     @StateObject var viewModel = ShoppingTripViewModel(inMemory: false)
+    @StateObject var homeViewModel = HomeViewModel()
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(viewModel.trips) { trip in NavigationLink {
-                    CartView(trip: trip, viewModel: viewModel)
+                    CartView(trip: trip, viewModel: homeViewModel)
                     
                 } label: {
                     VStack(alignment: .leading) {
