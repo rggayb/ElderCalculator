@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ShoppingCartPage: View {
-//    @State private var isAddNewTripPresented: Bool = false
     @StateObject var viewModel = ShoppingTripViewModel(inMemory: false)
     
     @State private var isAddNewProductPresented: Bool = false
@@ -44,9 +43,8 @@ struct ShoppingCartPage: View {
                                     .font(.system(size: 36))
                                     .foregroundColor(.buttonColor1)
                             }
-//                            .sheet(isPresented: $isAddNewTripPresented) {
-//                                AddNewTripView(viewModel: viewModel)
-//                            }
+                            // .sheet
+                            
                             // Add trips
                             Button(action: {
                                 isAddNewProductPresented.toggle()
@@ -55,9 +53,8 @@ struct ShoppingCartPage: View {
                                     .font(.system(size: 36))
                                     .foregroundColor(.buttonColor1)
                             }
-                            .sheet(isPresented: $isAddNewProductPresented) {
-//                                AddNewProductView(trip: <#Trip#>, viewModel: viewModel)
-                            }
+                            // .sheet
+                            
                         }
                         
                         // Inside Container
@@ -234,9 +231,16 @@ struct ShoppingCartPage: View {
                     }
                     
                 }
-                .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                .navigationTitle("Cart")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("")
+                    }
+                }
                 .frame(width: UIScreen.main.bounds.width-32)
             }
+            .accentColor(.buttonColor2)
         }
         .frame(width: UIScreen.main.bounds.width)
         .background(.colorbackground1)
