@@ -9,8 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct CartView: View {
-    
-//    @Environment(\.modelContext) private var modelContext
     @State private var isAddNewProductPresented: Bool = false
     
     @Bindable var trip: Trip
@@ -31,7 +29,9 @@ struct CartView: View {
                     Text("Rp \(product.price) x \(product.quantity) = \(product.totalPrice)")
                 }
             } 
-//            .onDelete(perform: deleteProduct)
+            .onDelete {
+                indexes in viewModel.deleteProduct(indexes: indexes, from: trip)
+            }
             .navigationTitle("Cart")
         }
         .toolbar {
@@ -56,28 +56,6 @@ struct CartView: View {
         })
    
     }
-    
-    //delete product
-//    private func deleteProduct(indexes: IndexSet) {
-////        for index in indexes {
-////            modelContext.delete(trip.products[index])
-////        }
-//        
-//        for index in indexes {
-//                    let objectId = trip.products[index].persistentModelID
-//                    if let productToDelete = modelContext.model(for: objectId) as? Product {
-//                        modelContext.delete(productToDelete)
-//                    }
-//                }
-//                trip.products.remove(atOffsets: indexes)
-//                
-//                do {
-//                    try modelContext.save()
-//                } catch {
-//                    print("Error saving context \(error)")
-//                }
-//        
-//    }
 }
 
 //#Preview {

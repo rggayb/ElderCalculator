@@ -94,6 +94,19 @@ class ShoppingTripViewModel: ObservableObject {
         queryTrips()
     }
     
+    func deleteTrip(at offsets: IndexSet) {
+        guard let modelContext = modelContext else {
+            self.error = OtherErrors.nilContext
+            return
+        }
+        for index in offsets {
+            let trip = trips[index]
+            modelContext.delete(trip)
+        }
+        save()
+        queryTrips()
+    }
+    
     func addNewProduct(name: String, price: Double, quantity: Int, discount: Int, trip: Trip) {
         guard let modelContext = modelContext else {
             self.error = OtherErrors.nilContext
@@ -110,21 +123,23 @@ class ShoppingTripViewModel: ObservableObject {
         trip.addProduct(newProduct)
     }
     
-    func deleteTrip(at offsets: IndexSet) {
-        guard let modelContext = modelContext else {
-            self.error = OtherErrors.nilContext
-            return
-        }
-        for index in offsets {
-            let trip = trips[index]
-            modelContext.delete(trip)
-        }
-        save()
-        queryTrips()
+    func deleteProduct(indexes: IndexSet, from trip: Trip) {
+        
+        for index in indexes {
+            let objectId = trip.products[index].persistentModelID
+            if let productToDelete = modelContext?.model(for: objectId) as? Product {
+                        modelContext?.delete(productToDelete)
+                    }
+                }
+                trip.products.remove(atOffsets: indexes)
+        
+                
+                do {
+                    try modelContext?.save()
+                } catch {
+                    print("Error saving context \(error)")
+                }
     }
-    
-    
-    
     
     
     // saving any pending changes
@@ -141,34 +156,8 @@ class ShoppingTripViewModel: ObservableObject {
         }
     }
     
+    
+    
 }
-////    @Query(sort: \Trip.date, order: .reverse) private var tripsQuery: [Trip]
-//
-//    var trips: [Trip] = []
-//
-//    private var modelContext: ModelContext?
-//
-//    func deleteTrip(at offsets: IndexSet) {
-//        guard let modelContext = modelContext else { return }
-//        for index in offsets {
-//            let trip = trips[index]
-//            modelContext.delete(trip)
-//        }
-//        saveContext()
-//    }
-//
-//    private func saveContext() {
-//        guard let modelContext = modelContext else { return }
-//        do {
-//            try modelContext.save()
-//        } catch {
-//            print("Error saving context: \(error)")
-//        }
-//    }
-//
-//    func setModelContext(_ context: ModelContext) {
-//        self.modelContext = context
-//    }
-
 
 

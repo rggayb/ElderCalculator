@@ -9,20 +9,15 @@ import SwiftUI
 import SwiftData
 
 struct AddNewProductView: View {
-    //NOTE: BELUM IMPLEMENT VIEWMODEL BUAT ADD PRODUCTNYA, JADI MSH ERROR 
-//    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
-    @State var trip: Trip
-    
+    @Bindable var trip: Trip
     @ObservedObject var viewModel: ShoppingTripViewModel
     
     @State var name: String = ""
     @State var price: String = ""
     @State var quantity: String = ""
     @State var discount: String = ""
-    
-    @Query private var products: [Product]
     
     var body: some View {
         Form {
@@ -42,10 +37,6 @@ struct AddNewProductView: View {
                     discount: Int(discount) ?? 0,
                     trip: trip)
                 dismiss()
-                //DEBUG
-                for product in products {
-                    print("DEBUG: Product inserted: \(product.name), \(product.price), \(product.quantity), \(product.discount), \(product.totalPrice)")
-                        }
             } label: {
                  Text("Save")
                     .frame(maxWidth: .infinity)
@@ -58,16 +49,6 @@ struct AddNewProductView: View {
         }
     }
     
-//    private func addNewProduct() {
-//        let newProduct = Product(
-//            name: name,
-//            price: Double(price) ?? 0,
-//            quantity: Int(quantity) ?? 0,
-//            discount: Int(discount) ?? 0
-//        )
-//        modelContext.insert(newProduct)
-//        trip.addProduct(newProduct)
-//    }
 }
 
 //#Preview {
