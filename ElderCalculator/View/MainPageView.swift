@@ -40,7 +40,6 @@ struct MainPageView: View {
                         // Inside Container
                         // buat bisa di click, tinggal button buat pop ganti tanggal atau kalo mau diganti by chevron kiri kanan atau slider jg bisa
                         RoundedRectangle(cornerRadius: 10)
-                            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                             .frame(height: UIScreen.main.bounds.height/4)
                             .overlay{
                                 ZStack {
@@ -91,7 +90,6 @@ struct MainPageView: View {
                                     VStack {
                                         HStack {
                                             Spacer()
-                                            
                                             RoundedRectangle(cornerRadius: 6)
                                                 .foregroundColor(.containerColor1)
                                                 .frame(width: UIScreen.main.bounds.width/4, height: 34)
@@ -177,7 +175,7 @@ struct MainPageView: View {
 //                                Text("No Trips Yet?")
 //                                    .font(.system(size: 20, weight: .bold))
 //                                .foregroundColor(.textColor3)
-//                                Text("Tap the 􀁍 button to add\na new trip to your list.")
+//                                Text("Tap the \(Image(systemName: "plus.circle.fill")) button to add\na new trip to your list.")
 //                                    .font(.system(size: 16, weight: .regular))
 //                                    .foregroundColor(.textColor4)
 //                            }

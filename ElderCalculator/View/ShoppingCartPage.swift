@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct ShoppingCartPage: View {
-    @State private var isAddNewTripPresented: Bool = false
+//    @State private var isAddNewTripPresented: Bool = false
     @StateObject var viewModel = ShoppingTripViewModel(inMemory: false)
+    
+    @State private var isAddNewProductPresented: Bool = false
+//    
+//    @Bindable var trip: Trip
+//    @ObservedObject var viewModel: ShoppingTripViewModel
+//    
+//    
+//    @State private var productName: String = ""
+//    @State private var productPrice: String = ""
+//    @State private var productQuantity: String = ""
+//    @State private var productDiscount: String = ""
     
     var body: some View {
         // full background
@@ -17,90 +28,74 @@ struct ShoppingCartPage: View {
             NavigationView{
                 VStack(spacing:32){
                     // Shopping trip + container
-                    VStack(spacing:24){
+                    VStack(spacing:16){
                         // Label & button action
                         HStack{
-                            Text("Shopping Trip")
+                            // ganti variable nama toko pake binding maybe?
+                            Text("Store name")
                                 .font(.system(size: 32, weight: .bold))
                                 .foregroundColor(.textColor1)
                             Spacer()
+                            // Edit Trips
+                            Button(action: {
+                                
+                            }) {
+                                Image(systemName: "pencil.circle.fill")
+                                    .font(.system(size: 36))
+                                    .foregroundColor(.buttonColor1)
+                            }
+//                            .sheet(isPresented: $isAddNewTripPresented) {
+//                                AddNewTripView(viewModel: viewModel)
+//                            }
                             // Add trips
                             Button(action: {
-                                isAddNewTripPresented.toggle()
+                                isAddNewProductPresented.toggle()
                             }) {
                                 Image(systemName: "plus.circle.fill")
                                     .font(.system(size: 36))
                                     .foregroundColor(.buttonColor1)
                             }
-                            .sheet(isPresented: $isAddNewTripPresented) {
-                                AddNewTripView(viewModel: viewModel)
+                            .sheet(isPresented: $isAddNewProductPresented) {
+//                                AddNewProductView(trip: <#Trip#>, viewModel: viewModel)
                             }
                         }
                         
                         // Inside Container
-                        // buat bisa di click, tinggal button buat pop ganti tanggal atau kalo mau diganti by chevron kiri kanan atau slider jg bisa
                         RoundedRectangle(cornerRadius: 10)
-                            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                            .frame(height: UIScreen.main.bounds.height/4)
+                            .frame(height: UIScreen.main.bounds.height/8)
                             .overlay{
                                 ZStack {
                                     // detail container
                                     VStack{
                                         HStack {
-                                            VStack(alignment: .leading, spacing: 8){
+                                            VStack(alignment: .leading){
                                                 Text("Total Expense")
-                                                    .font(.system(size: 20, weight: .semibold))
+                                                    .font(.system(size: 16, weight: .semibold))
+                                                    .foregroundColor(.textColor6)
                                                 // value total expense bulan itu
                                                 Text("Rp 999.900")
-                                                    .font(.system(size: 40, weight: .bold))
+                                                    .font(.system(size: 32, weight: .bold))
+                                                // value "bugget left" = "budget yang diset" - "total expense trip itu"
+                                                Text("Rp 2.000.100 Budget Left")
+                                                    .font(.system(size: 16, weight: .regular))
                                             }
                                             Spacer()
-                                        }
-                                        
-                                        Spacer()
-                                        
-                                        HStack{
-                                            VStack(alignment: .leading){
-                                                HStack(spacing:4){
-                                                    Image(systemName: "doc.plaintext.fill")
-                                                        .font(.system(size: 16, weight: .semibold))
-                                                    Text("Tax")
-                                                        .font(.system(size: 16, weight: .semibold))
-                                                }
-                                                // value total tax bulan itu
-                                                Text("Rp 108.900")
-                                                    .font(.system(size: 20, weight: .semibold))
-                                            }
-                                            Spacer()
-                                            VStack(alignment: .leading){
-                                                HStack(spacing:4){
-                                                    Image(systemName: "banknote.fill")
-                                                        .font(.system(size: 16, weight: .semibold))
-                                                    Text("Saved")
-                                                        .font(.system(size: 16, weight: .semibold))
-                                                }
-                                                // value total discount bulan itu
-                                                Text("Rp 99.000")
-                                                    .font(.system(size: 20, weight: .semibold))
-                                            }
                                         }
                                     }
-                                    
                                     .padding()
                                     
                                     // date
                                     VStack {
                                         HStack {
                                             Spacer()
-                                            
                                             RoundedRectangle(cornerRadius: 6)
-                                                .foregroundColor(.containerColor1)
+                                                .foregroundColor(.clear)
                                                 .frame(width: UIScreen.main.bounds.width/4, height: 34)
                                                 .overlay{
                                                     // Date picker atau data date dari SwiftData as an interface biar bisa dipake buat filtering si card perbulannya
                                                     // dummy month
                                                     HStack(spacing:5){
-                                                        Text("July")
+                                                        Text("July 9,")
                                                         Text("2024")
                                                     }
                                                     .font(.system(size: 16, weight: .semibold))
@@ -112,79 +107,128 @@ struct ShoppingCartPage: View {
                                     .padding([.top, .trailing])
                                 }
                                 .foregroundColor(.textColor2)
-                                .background(Image(.cardBackground1))
+                                .background(Image(.cardBackground2))
                             }
+                        
+                        HStack(spacing:12){
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(.containerColor4)
+                                .frame(height: UIScreen.main.bounds.height/10)
+                                .overlay{
+                                    VStack(alignment: .leading){
+                                        HStack(spacing:4){
+                                            Image(systemName: "doc.plaintext.fill")
+                                                .font(.system(size: 16, weight: .semibold))
+                                            Text("Tax")
+                                                .font(.system(size: 16, weight: .semibold))
+                                                .foregroundColor(.textColor6)
+                                            Spacer()
+                                        }
+                                        // value total tax bulan itu
+                                        Text("Rp 108.900")
+                                            .font(.system(size: 20, weight: .semibold))
+                                        // persen taxny "\(trip.tax)% VAT"
+                                        Text("11% VAT")
+                                            .font(.system(size: 12, weight: .semibold))
+                                            .foregroundColor(.textColor6)
+                                    }
+                                    .padding()
+                                    .foregroundColor(.textColor2)
+                                }
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(.containerColor4)
+                                .frame(height: UIScreen.main.bounds.height/10)
+                                .overlay{
+                                    VStack(alignment: .leading){
+                                        HStack(spacing:4){
+                                            Image(systemName: "banknote.fill")
+                                                .font(.system(size: 16, weight: .semibold))
+                                            Text("Saved")
+                                                .font(.system(size: 16, weight: .semibold))
+                                                .foregroundColor(.textColor6)
+                                            Spacer()
+                                        }
+                                        // value total discount bulan itu
+                                        Text("Rp 99.000")
+                                            .font(.system(size: 20, weight: .semibold))
+                                        
+                                    }
+                                    .padding()
+                                    .foregroundColor(.textColor2)
+                                }
+                        }
                         
                     }
                     
-                    // Recent trip
+                    // My cart
                     VStack(spacing:12){
                         HStack {
-                            Text("Recent Trip")
+                            Text("My Cart")
                                 .font(.system(size: 20, weight: .semibold))
                                 .foregroundColor(.textColor3)
                             Spacer()
                         }
                         
-                        List {
-                            ForEach(viewModel.trips) { trip in
-                                NavigationLink(destination: CartView(trip: trip, viewModel: viewModel)){
-                                    HStack(spacing:12){
-                                        RoundedRectangle(cornerRadius: 6)
-                                            .frame(width: 48, height: 48)
-                                            .foregroundColor(.white)
-                                            .overlay{
-                                                Image(systemName: "cart.fill")
-                                                    .foregroundColor(.iconColor1)
-                                            }
-                                        
-                                        VStack(alignment:.leading){
-                                            Text(trip.storeName)
-                                                .font(.system(size: 16, weight: .semibold))
-                                                .foregroundColor(.textColor3)
-                                            Text(trip.date,
-                                                 format: Date.FormatStyle(date: .long, time: .none))
-                                                .font(.system(size: 12, weight: .regular))
-                                                .foregroundColor(.textColor4)
-                                        }
-                                        
-                                        Spacer()
-                                        
-                                        // ini total spend harusnya cuman blom ada di trip.
-                                        Text("Rp999.900")
-                                            .font(.system(size: 20, weight: .semibold))
-                                            .foregroundColor(.textColor3)
-                                    }
-                                }
-                            }
-                            .onDelete(perform: viewModel.deleteTrip)
-                            .listRowSeparator(.hidden)
-                            .padding()
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .foregroundColor(.containerColor2)
-                            )
-                            .frame(height: 64)
-                        }
-                        .frame(width: UIScreen.main.bounds.width)
-                        .listStyle(.plain)
-                        
-                        // kalo ga ada pake if conditional dari trip (nanti aja lah wkwk)
-//                        Spacer()
-//                        VStack(spacing:24){
-//                            Image(.noTrip)
-//                                .frame(width: 131, height: 128)
-//                            VStack(spacing:8){
-//                                Text("No Trips Yet?")
-//                                    .font(.system(size: 20, weight: .bold))
-//                                .foregroundColor(.textColor3)
-//                                Text("Tap the 􀁍 button to add\na new trip to your list.")
-//                                    .font(.system(size: 16, weight: .regular))
-//                                    .foregroundColor(.textColor4)
+                        // ganti dari list data cart
+//                        List {
+//                            ForEach(viewModel.trips) { trip in
+//                                NavigationLink(destination: CartView(trip: trip, viewModel: viewModel)){
+//                                    HStack(spacing:12){
+//                                        RoundedRectangle(cornerRadius: 6)
+//                                            .frame(width: 48, height: 48)
+//                                            .foregroundColor(.white)
+//                                            .overlay{
+//                                                Image(systemName: "cart.fill")
+//                                                    .foregroundColor(.iconColor1)
+//                                            }
+//                                        
+//                                        VStack(alignment:.leading){
+//                                            Text(trip.storeName)
+//                                                .font(.system(size: 16, weight: .semibold))
+//                                                .foregroundColor(.textColor3)
+//                                            Text(trip.date,
+//                                                 format: Date.FormatStyle(date: .long, time: .none))
+//                                                .font(.system(size: 12, weight: .regular))
+//                                                .foregroundColor(.textColor4)
+//                                        }
+//                                        
+//                                        Spacer()
+//                                        
+//                                        // ini total spend harusnya cuman blom ada di trip.
+//                                        Text("Rp999.900")
+//                                            .font(.system(size: 20, weight: .semibold))
+//                                            .foregroundColor(.textColor3)
+//                                    }
+//                                }
 //                            }
+//                            .onDelete(perform: viewModel.deleteTrip)
+//                            .listRowSeparator(.hidden)
+//                            .padding()
+//                            .background(
+//                                RoundedRectangle(cornerRadius: 10)
+//                                    .foregroundColor(.containerColor2)
+//                            )
+//                            .frame(height: 64)
 //                        }
-//                        .multilineTextAlignment(.center)
-//                        Spacer()
+//                        .frame(width: UIScreen.main.bounds.width)
+//                        .listStyle(.plain)
+                        
+                        // kalo ga ada pake if conditional dari cart (nanti aja lah wkwk)
+                        Spacer()
+                        VStack(spacing:24){
+                            Image(.noCart)
+                                .frame(width: 131, height: 128)
+                            VStack(spacing:8){
+                                Text("Your cart is empty")
+                                    .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(.textColor3)
+                                Text("Tap the \(Image(systemName: "plus.circle.fill")) button to add\na new item to your cart.")
+                                    .font(.system(size: 16, weight: .regular))
+                                    .foregroundColor(.textColor4)
+                            }
+                        }
+                        .multilineTextAlignment(.center)
+                        Spacer()
                         
                         Spacer()
                     }
