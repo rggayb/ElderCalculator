@@ -27,7 +27,7 @@ class ShoppingTripViewModel: ObservableObject {
     
     var modelContext: ModelContext? = nil
     var modelContainer: ModelContainer? = nil
-
+    
     @MainActor
     init(inMemory: Bool) {
         do {
@@ -51,7 +51,7 @@ class ShoppingTripViewModel: ObservableObject {
         }
     }
     
-     func queryTrips() {
+    func queryTrips() {
         guard let modelContext = modelContext else {
             self.error = OtherErrors.nilContext
             return
@@ -70,7 +70,6 @@ class ShoppingTripViewModel: ObservableObject {
             self.error = error
         }
     }
-    
     
     private func queryProducts() {
         guard let modelContext = modelContext else {
@@ -94,7 +93,7 @@ class ShoppingTripViewModel: ObservableObject {
         let newTrip = Trip(
             date: date,
             storeName: storeName,
-            budget: Double(budget) ,
+            budget: Double(budget),
             tax: Int(tax))
         modelContext.insert(newTrip)
         save()
@@ -130,9 +129,12 @@ class ShoppingTripViewModel: ObservableObject {
         queryTrips()
     }
     
-    
-    
-    
+    // Reset HomeViewModel when preparing a new trip
+    func prepareNewTrip(trip: Trip) -> HomeViewModel {
+        let homeViewModel = HomeViewModel(trip: trip)
+        homeViewModel.removeAllItems()
+        return homeViewModel
+    }
     
     // saving any pending changes
     private func save() {
@@ -147,35 +149,5 @@ class ShoppingTripViewModel: ObservableObject {
             self.error = error
         }
     }
-    
 }
-////    @Query(sort: \Trip.date, order: .reverse) private var tripsQuery: [Trip]
-//
-//    var trips: [Trip] = []
-//
-//    private var modelContext: ModelContext?
-//
-//    func deleteTrip(at offsets: IndexSet) {
-//        guard let modelContext = modelContext else { return }
-//        for index in offsets {
-//            let trip = trips[index]
-//            modelContext.delete(trip)
-//        }
-//        saveContext()
-//    }
-//
-//    private func saveContext() {
-//        guard let modelContext = modelContext else { return }
-//        do {
-//            try modelContext.save()
-//        } catch {
-//            print("Error saving context: \(error)")
-//        }
-//    }
-//
-//    func setModelContext(_ context: ModelContext) {
-//        self.modelContext = context
-//    }
-
-
 

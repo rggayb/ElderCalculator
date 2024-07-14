@@ -20,18 +20,19 @@
 		1A8B04A42C3E6A84000C9AAA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B04A32C3E6A84000C9AAA /* Item.swift */; };
 		1A8B04A62C3E6ACF000C9AAA /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B04A52C3E6ACF000C9AAA /* ItemList.swift */; };
 		1AEB09492C40BEAB0006EF4D /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB09482C40BEAB0006EF4D /* Product.swift */; };
-		1AEB094C2C40BEB10006EF4D /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB094A2C40BEB10006EF4D /* Trip.swift */; };
 		1AEB094D2C40BEB10006EF4D /* TripDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB094B2C40BEB10006EF4D /* TripDetail.swift */; };
 		1AEB094F2C40BED90006EF4D /* ShoppingTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB094E2C40BED90006EF4D /* ShoppingTripViewModel.swift */; };
 		1AEB09562C40BFA20006EF4D /* AddNewTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB09502C40BFA20006EF4D /* AddNewTripView.swift */; };
 		1AEB09572C40BFA20006EF4D /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB09512C40BFA20006EF4D /* CartView.swift */; };
-		1AEB09582C40BFA20006EF4D /* TripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB09522C40BFA20006EF4D /* TripCardView.swift */; };
 		1AEB09592C40BFA20006EF4D /* AddNewProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB09542C40BFA20006EF4D /* AddNewProductView.swift */; };
 		1AEB095A2C40BFA20006EF4D /* ShoppingTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB09552C40BFA20006EF4D /* ShoppingTripView.swift */; };
 		462293302C3BA7F60044370A /* ElderCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4622932F2C3BA7F60044370A /* ElderCalculatorApp.swift */; };
 		462293322C3BA7F60044370A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462293312C3BA7F60044370A /* ContentView.swift */; };
 		462293342C3BA7F80044370A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 462293332C3BA7F80044370A /* Assets.xcassets */; };
 		462293372C3BA7F80044370A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 462293362C3BA7F80044370A /* Preview Assets.xcassets */; };
+		462293602C40E03D0044370A /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4622935F2C40E03D0044370A /* Trip.swift */; };
+		462293622C40E0570044370A /* TripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462293612C40E0570044370A /* TripCardView.swift */; };
+		462293642C43C2330044370A /* ItemList_Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462293632C43C2330044370A /* ItemList_Preview.swift */; };
 		BF4916EB2C3CDA90000F8596 /* SFProDisplay-Bold.OTF in Resources */ = {isa = PBXBuildFile; fileRef = BF4916E22C3CDA90000F8596 /* SFProDisplay-Bold.OTF */; };
 		BF4916EC2C3CDA90000F8596 /* SFProDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF4916E32C3CDA90000F8596 /* SFProDisplay-Heavy.otf */; };
 		BF4916ED2C3CDA90000F8596 /* SFProDisplay-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF4916E42C3CDA90000F8596 /* SFProDisplay-Light.otf */; };
@@ -57,12 +58,10 @@
 		1A8B04A32C3E6A84000C9AAA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1A8B04A52C3E6ACF000C9AAA /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		1AEB09482C40BEAB0006EF4D /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
-		1AEB094A2C40BEB10006EF4D /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Trip.swift; path = "../../../../../../Downloads/ElderCalculator-swiftData2-2/ElderCalculator/Model/Trip.swift"; sourceTree = "<group>"; };
 		1AEB094B2C40BEB10006EF4D /* TripDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetail.swift; sourceTree = "<group>"; };
 		1AEB094E2C40BED90006EF4D /* ShoppingTripViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingTripViewModel.swift; sourceTree = "<group>"; };
 		1AEB09502C40BFA20006EF4D /* AddNewTripView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewTripView.swift; sourceTree = "<group>"; };
 		1AEB09512C40BFA20006EF4D /* CartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
-		1AEB09522C40BFA20006EF4D /* TripCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCardView.swift; sourceTree = "<group>"; };
 		1AEB09542C40BFA20006EF4D /* AddNewProductView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewProductView.swift; sourceTree = "<group>"; };
 		1AEB09552C40BFA20006EF4D /* ShoppingTripView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingTripView.swift; sourceTree = "<group>"; };
 		4622932C2C3BA7F60044370A /* ElderCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElderCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +69,9 @@
 		462293312C3BA7F60044370A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		462293332C3BA7F80044370A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		462293362C3BA7F80044370A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4622935F2C40E03D0044370A /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		462293612C40E0570044370A /* TripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TripCardView.swift; path = ElderCalculator/Model/TripCardView.swift; sourceTree = SOURCE_ROOT; };
+		462293632C43C2330044370A /* ItemList_Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList_Preview.swift; sourceTree = "<group>"; };
 		BF4916E22C3CDA90000F8596 /* SFProDisplay-Bold.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.OTF"; sourceTree = "<group>"; };
 		BF4916E32C3CDA90000F8596 /* SFProDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Heavy.otf"; sourceTree = "<group>"; };
 		BF4916E42C3CDA90000F8596 /* SFProDisplay-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Light.otf"; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				1AEB09552C40BFA20006EF4D /* ShoppingTripView.swift */,
 				1A660CFF2C3CDEED00C9C2D9 /* Home.swift */,
 				1A8B04A52C3E6ACF000C9AAA /* ItemList.swift */,
+				462293632C43C2330044370A /* ItemList_Preview.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -110,7 +113,6 @@
 		1A660D012C3CDFEC00C9C2D9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1AEB094A2C40BEB10006EF4D /* Trip.swift */,
 				1AEB094B2C40BEB10006EF4D /* TripDetail.swift */,
 				1AEB09482C40BEAB0006EF4D /* Product.swift */,
 				1A660D042C3CF77000C9C2D9 /* TaxToggle.swift */,
@@ -120,6 +122,7 @@
 				1A8B04982C3E62A3000C9AAA /* CategoryInput.swift */,
 				1A8B049A2C3E62C2000C9AAA /* QuantityInput.swift */,
 				1A8B04A32C3E6A84000C9AAA /* Item.swift */,
+				4622935F2C40E03D0044370A /* Trip.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -136,7 +139,7 @@
 		1AEB09532C40BFA20006EF4D /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				1AEB09522C40BFA20006EF4D /* TripCardView.swift */,
+				462293612C40E0570044370A /* TripCardView.swift */,
 			);
 			name = Components;
 			path = "../../../../../../Downloads/ElderCalculator-swiftData2-2/ElderCalculator/View/Components";
@@ -279,7 +282,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AEB094C2C40BEB10006EF4D /* Trip.swift in Sources */,
 				1A660D052C3CF77000C9C2D9 /* TaxToggle.swift in Sources */,
 				1A40BF242C3F818E00B46E3F /* PersistenceController.swift in Sources */,
 				1A8B049E2C3E6422000C9AAA /* HomeViewModel.swift in Sources */,
@@ -291,17 +293,19 @@
 				1AEB09562C40BFA20006EF4D /* AddNewTripView.swift in Sources */,
 				1AEB09572C40BFA20006EF4D /* CartView.swift in Sources */,
 				462293322C3BA7F60044370A /* ContentView.swift in Sources */,
+				462293602C40E03D0044370A /* Trip.swift in Sources */,
 				1A660D002C3CDEED00C9C2D9 /* Home.swift in Sources */,
 				1A660D072C3CFD5C00C9C2D9 /* PriceInput.swift in Sources */,
 				1AEB095A2C40BFA20006EF4D /* ShoppingTripView.swift in Sources */,
 				1A660D0B2C3CFF3C00C9C2D9 /* TotalSpendings.swift in Sources */,
 				1A8B04A62C3E6ACF000C9AAA /* ItemList.swift in Sources */,
+				462293622C40E0570044370A /* TripCardView.swift in Sources */,
 				462293302C3BA7F60044370A /* ElderCalculatorApp.swift in Sources */,
 				1A8B04992C3E62A3000C9AAA /* CategoryInput.swift in Sources */,
 				1A8B049B2C3E62C2000C9AAA /* QuantityInput.swift in Sources */,
+				462293642C43C2330044370A /* ItemList_Preview.swift in Sources */,
 				1AEB09592C40BFA20006EF4D /* AddNewProductView.swift in Sources */,
 				1AEB09492C40BEAB0006EF4D /* Product.swift in Sources */,
-				1AEB09582C40BFA20006EF4D /* TripCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
