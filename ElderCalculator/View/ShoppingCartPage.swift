@@ -1,13 +1,13 @@
 //
-//  MainPageView.swift
+//  ShoppingCartPage.swift
 //  ElderCalculator
 //
-//  Created by Vincent Saranang on 12/07/24.
+//  Created by Vincent Saranang on 13/07/24.
 //
 
 import SwiftUI
 
-struct MainPageView: View {
+struct ShoppingCartPage: View {
     @State private var isAddNewTripPresented: Bool = false
     @StateObject var viewModel = ShoppingTripViewModel(inMemory: false)
     
@@ -50,7 +50,7 @@ struct MainPageView: View {
                                             VStack(alignment: .leading, spacing: 8){
                                                 Text("Total Expense")
                                                     .font(.system(size: 20, weight: .semibold))
-                                                // value total expense bulan itu (mesti diganti variable)
+                                                // value total expense bulan itu
                                                 Text("Rp 999.900")
                                                     .font(.system(size: 40, weight: .bold))
                                             }
@@ -67,7 +67,7 @@ struct MainPageView: View {
                                                     Text("Tax")
                                                         .font(.system(size: 16, weight: .semibold))
                                                 }
-                                                // value total tax bulan itu (mesti diganti variable)
+                                                // value total tax bulan itu
                                                 Text("Rp 108.900")
                                                     .font(.system(size: 20, weight: .semibold))
                                             }
@@ -79,12 +79,13 @@ struct MainPageView: View {
                                                     Text("Saved")
                                                         .font(.system(size: 16, weight: .semibold))
                                                 }
-                                                // value total discount bulan itu (mesti diganti variable)
+                                                // value total discount bulan itu
                                                 Text("Rp 99.000")
                                                     .font(.system(size: 20, weight: .semibold))
                                             }
                                         }
                                     }
+                                    
                                     .padding()
                                     
                                     // date
@@ -199,5 +200,5 @@ struct MainPageView: View {
 }
 
 #Preview {
-    MainPageView()
+    ShoppingCartPage()
 }
