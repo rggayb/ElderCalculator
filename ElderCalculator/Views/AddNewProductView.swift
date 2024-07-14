@@ -17,6 +17,7 @@ struct AddNewProductView: View {
     
     @ObservedObject var viewModel: ShoppingTripViewModel
     
+    
     @State var name: String = ""
     @State var price: String = ""
     @State var quantity: String = ""
