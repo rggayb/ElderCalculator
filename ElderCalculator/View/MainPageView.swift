@@ -104,7 +104,7 @@ struct MainPageView: View {
                                 .padding([.top, .trailing])
                             }
                             .foregroundColor(.textColor2)
-                            .background(Image(.cardBackground1))
+                            .background(Image(.cardBackground1).resizable())
                         }
                     
                     // Recent trip

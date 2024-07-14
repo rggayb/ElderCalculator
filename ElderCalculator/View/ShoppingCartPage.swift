@@ -104,7 +104,7 @@ struct ShoppingCartPage: View {
                                     .padding([.top, .trailing])
                                 }
                                 .foregroundColor(.textColor2)
-                                .background(Image(.cardBackground2))
+                                .background(Image(.cardBackground2).resizable())
                             }
                         
                         HStack(spacing:12){

@@ -10,7 +10,6 @@ import SwiftData
 
 struct AddNewTripView: View {
     @Environment(\.dismiss) var dismiss
-    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var viewModel: ShoppingTripViewModel
     
     @State var storeName: String = ""
@@ -44,8 +43,6 @@ struct AddNewTripView: View {
                                             .font(.system(size: 16, weight: .semibold))
                                         TextField("Name", text: $storeName)
                                             .disableAutocorrection(true)
-                                        // kalo ga pake ini ga ke show pas dark mode textfieldnya (error dari sananya, ini salah satu cara akalinnya)
-                                            .foregroundColor(colorScheme == .dark ? .textColor5 : .textColor5)
                                     }
                                     Divider()
                                     HStack{
@@ -56,7 +53,6 @@ struct AddNewTripView: View {
                                                 .foregroundColor(.textColor5)
                                             TextField("", text: $budget)
                                                 .keyboardType(.numberPad)
-                                                .foregroundColor(colorScheme == .dark ? .textColor5 : .textColor5)
                                         }
                                     }
                                 }
@@ -83,7 +79,6 @@ struct AddNewTripView: View {
                                                 TextField("0", text: $tax)
                                                     .keyboardType(.numberPad)
                                                     .multilineTextAlignment(.trailing)
-                                                    .foregroundColor(colorScheme == .dark ? .textColor5 : .textColor5)
                                                 Text("% VAT")
                                             }
                                         }
