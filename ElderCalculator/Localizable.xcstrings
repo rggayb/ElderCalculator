@@ -11,14 +11,49 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@: %2$.2f x %3$lld"
+            "state" : "needs_review",
+            "value" : "%1$@: %#@arg2@ x %3$lld"
+          },
+          "substitutions" : {
+            "arg2" : {
+              "argNum" : 2,
+              "formatSpecifier" : ".2f",
+              "variations" : {
+                "plural" : {
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "needs_review",
+                      "value" : "%arg"
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "needs_review",
+                      "value" : "%arg"
+                    }
+                  },
+                  "zero" : {
+                    "stringUnit" : {
+                      "state" : "needs_review",
+                      "value" : "%arg"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
     },
     "11" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "11"
+          }
+        }
+      }
     },
     "Add item" : {
       "localizations" : {
@@ -31,7 +66,14 @@
       }
     },
     "Budget\t\t" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Budget"
+          }
+        }
+      }
     },
     "Category:" : {
       "localizations" : {
@@ -133,6 +175,17 @@
         }
       }
     },
+    "Key" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Key"
+          }
+        }
+      }
+    },
     "My Trips" : {
       "localizations" : {
         "id" : {
@@ -204,7 +257,14 @@
       }
     },
     "Rp" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rp"
+          }
+        }
+      }
     },
     "Save" : {
       "localizations" : {
@@ -255,6 +315,9 @@
           }
         }
       }
+    },
+    "Total Monthly Spendings: %@" : {
+
     },
     "Total Spendings:" : {
       "localizations" : {

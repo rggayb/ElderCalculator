@@ -14,33 +14,38 @@ struct ShoppingTripView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(viewModel.trips) { trip in
-                    NavigationLink(destination: CartView(trip: trip, viewModel: HomeViewModel(trip: trip))) {
-                        VStack(alignment: .leading) {
-                            Text(trip.date, format: Date.FormatStyle(date: .numeric, time: .standard))
-                            Text(trip.storeName)
+            VStack {
+                Text("Total Monthly Spendings: \(viewModel.monthlyTotalSpendings, format: .currency(code: "USD"))")
+                    .font(.headline)
+                    .padding()
+                List {
+                    ForEach(viewModel.trips) { trip in
+                        NavigationLink(destination: CartView(trip: trip, viewModel: HomeViewModel(trip: trip))) {
+                            VStack(alignment: .leading) {
+                                Text(trip.date, format: Date.FormatStyle(date: .numeric, time: .standard))
+                                Text(trip.storeName)
+                            }
+                        }
+                    }
+                    .onDelete(perform: viewModel.deleteTrip)
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        EditButton()
+                    }
+                    ToolbarItem {
+                        Button {
+                            isAddNewTripPresented.toggle()
+                        } label: {
+                            Image(systemName: "plus")
                         }
                     }
                 }
-                .onDelete(perform: viewModel.deleteTrip)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+                .sheet(isPresented: $isAddNewTripPresented) {
+                    AddNewTripView(viewModel: viewModel)
                 }
-                ToolbarItem {
-                    Button {
-                        isAddNewTripPresented.toggle()
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                }
+                .navigationTitle("My Trips")
             }
-            .sheet(isPresented: $isAddNewTripPresented) {
-                AddNewTripView(viewModel: viewModel)
-            }
-            .navigationTitle("My Trips")
         }
     }
 }

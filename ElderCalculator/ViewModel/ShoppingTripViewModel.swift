@@ -60,7 +60,7 @@ class ShoppingTripViewModel: ObservableObject {
         var tripDescriptor = FetchDescriptor<Trip>(
             predicate: nil,
             sortBy: [
-                .init(\.date)
+                .init(\.date, order: .reverse)
             ]
         )
         tripDescriptor.fetchLimit = 10
@@ -147,6 +147,22 @@ class ShoppingTripViewModel: ObservableObject {
         } catch (let error) {
             print(error)
             self.error = error
+        }
+    }
+    
+    //Calculate total spendings for current month
+    var monthlyTotalSpendings: Double {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        let currentMonth = calendar.component(.month, from: currentDate)
+        let currentYear = calendar.component(.year, from: currentDate)
+        
+        return trips.filter { trip in
+            let tripMonth = calendar.component(.month, from: trip.date)
+            let tripYear = calendar.component(.year, from: trip.date)
+            return tripMonth == currentMonth && tripYear == currentYear
+        }.reduce(0.0) { total, trip in
+            total + trip.products.reduce(0.0) { $0 + $1.price * Double($1.quantity)}
         }
     }
 }
