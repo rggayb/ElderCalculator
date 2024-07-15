@@ -37,6 +37,3 @@ struct ItemList: View {
     }
 }
 
-#Preview {
-    ItemList(viewModel: HomeViewModel())
-}
