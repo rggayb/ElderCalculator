@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1A40BF242C3F818E00B46E3F /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A40BF232C3F818E00B46E3F /* PersistenceController.swift */; };
-		1A40BF262C3F864800B46E3F /* Localizer.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1A40BF252C3F864800B46E3F /* Localizer.xcstrings */; };
 		1A660D002C3CDEED00C9C2D9 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A660CFF2C3CDEED00C9C2D9 /* Home.swift */; };
 		1A660D052C3CF77000C9C2D9 /* TaxToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A660D042C3CF77000C9C2D9 /* TaxToggle.swift */; };
 		1A660D072C3CFD5C00C9C2D9 /* PriceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A660D062C3CFD5C00C9C2D9 /* PriceInput.swift */; };
 		1A660D092C3CFE5F00C9C2D9 /* DiscountInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A660D082C3CFE5F00C9C2D9 /* DiscountInput.swift */; };
 		1A660D0B2C3CFF3C00C9C2D9 /* TotalSpendings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A660D0A2C3CFF3C00C9C2D9 /* TotalSpendings.swift */; };
+		1A818AA52C44D4B700D2ADF7 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1A818AA42C44D4B700D2ADF7 /* Localizable.xcstrings */; };
 		1A8B04992C3E62A3000C9AAA /* CategoryInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B04982C3E62A3000C9AAA /* CategoryInput.swift */; };
 		1A8B049B2C3E62C2000C9AAA /* QuantityInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B049A2C3E62C2000C9AAA /* QuantityInput.swift */; };
 		1A8B049E2C3E6422000C9AAA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B049D2C3E6422000C9AAA /* HomeViewModel.swift */; };
@@ -46,12 +46,12 @@
 
 /* Begin PBXFileReference section */
 		1A40BF232C3F818E00B46E3F /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
-		1A40BF252C3F864800B46E3F /* Localizer.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizer.xcstrings; sourceTree = "<group>"; };
 		1A660CFF2C3CDEED00C9C2D9 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		1A660D042C3CF77000C9C2D9 /* TaxToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxToggle.swift; sourceTree = "<group>"; };
 		1A660D062C3CFD5C00C9C2D9 /* PriceInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceInput.swift; sourceTree = "<group>"; };
 		1A660D082C3CFE5F00C9C2D9 /* DiscountInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountInput.swift; sourceTree = "<group>"; };
 		1A660D0A2C3CFF3C00C9C2D9 /* TotalSpendings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalSpendings.swift; sourceTree = "<group>"; };
+		1A818AA42C44D4B700D2ADF7 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		1A8B04982C3E62A3000C9AAA /* CategoryInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInput.swift; sourceTree = "<group>"; };
 		1A8B049A2C3E62C2000C9AAA /* QuantityInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityInput.swift; sourceTree = "<group>"; };
 		1A8B049D2C3E6422000C9AAA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -169,13 +169,13 @@
 				462293312C3BA7F60044370A /* ContentView.swift */,
 				BF4916F42C3CDAD1000F8596 /* FontExtension.swift */,
 				1A40BF232C3F818E00B46E3F /* PersistenceController.swift */,
-				1A40BF252C3F864800B46E3F /* Localizer.xcstrings */,
 				BF4916EA2C3CDA90000F8596 /* Font */,
 				1A660D012C3CDFEC00C9C2D9 /* Model */,
 				1A660CFE2C3CDE5F00C9C2D9 /* Views */,
 				1A8B049C2C3E6407000C9AAA /* ViewModel */,
 				462293332C3BA7F80044370A /* Assets.xcassets */,
 				462293352C3BA7F80044370A /* Preview Content */,
+				1A818AA42C44D4B700D2ADF7 /* Localizable.xcstrings */,
 			);
 			path = ElderCalculator;
 			sourceTree = "<group>";
@@ -245,6 +245,7 @@
 			knownRegions = (
 				en,
 				Base,
+				id,
 			);
 			mainGroup = 462293232C3BA7F60044370A;
 			productRefGroup = 4622932D2C3BA7F60044370A /* Products */;
@@ -263,7 +264,7 @@
 			files = (
 				BF4916EB2C3CDA90000F8596 /* SFProDisplay-Bold.OTF in Resources */,
 				462293372C3BA7F80044370A /* Preview Assets.xcassets in Resources */,
-				1A40BF262C3F864800B46E3F /* Localizer.xcstrings in Resources */,
+				1A818AA52C44D4B700D2ADF7 /* Localizable.xcstrings in Resources */,
 				BF4916F12C3CDA90000F8596 /* SFProDisplay-Thin.otf in Resources */,
 				BF4916EF2C3CDA90000F8596 /* SFProDisplay-Regular.OTF in Resources */,
 				BF4916EE2C3CDA90000F8596 /* SFProDisplay-Medium.OTF in Resources */,
