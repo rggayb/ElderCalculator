@@ -19,12 +19,14 @@ class HomeViewModel: ObservableObject {
     
     let taxPercentage = 0.11
     let categories = ["Fruit", "Vegetable", "Dairy", "Meat"]
-    private var persistenceController: PersistenceController
     
-    //Initialize persistence controller
-    init(persistenceController: PersistenceController = .shared) {
-        self.persistenceController = persistenceController
-        self.items = persistenceController.items
+    var trip: Trip
+    
+    init(trip: Trip) {
+        self.trip = trip
+        self.items = trip.products.map { product in
+            Item(price: product.price, discount: Double(product.discount) / 100.0, quantity: product.quantity, category: product.name)
+        }
         calculateTotal()
     }
     
@@ -38,8 +40,7 @@ class HomeViewModel: ObservableObject {
         let newItem = Item(price: discountedPrice, discount: discountValue, quantity: quantityValue, category: categoryValue)
         
         items.append(newItem)
-        persistenceController.items = items
-        persistenceController.saveItems()
+        saveItems()
         
         calculateTotal()
     }
@@ -47,7 +48,6 @@ class HomeViewModel: ObservableObject {
     func calculateTotal() {
         var totalValue = items.reduce(0.0) { $0 + ($1.price * Double($1.quantity)) }
         
-        //Includes tax if toggle is on
         if isTaxIncluded {
             totalValue += totalValue * taxPercentage
         }
@@ -58,8 +58,7 @@ class HomeViewModel: ObservableObject {
     func updateItemQuantity(item: Item, quantity: Int) {
         if let index = items.firstIndex(where: { $0.id == item.id }) {
             items[index].quantity = quantity
-            persistenceController.items = items
-            persistenceController.saveItems()
+            saveItems()
             calculateTotal()
         }
     }
@@ -68,16 +67,22 @@ class HomeViewModel: ObservableObject {
         if let index = items.firstIndex(where: { $0.id == item.id }) {
             let removedItem = items.remove(at: index)
             total -= (removedItem.price * Double(removedItem.quantity))
-            persistenceController.items = items
-            persistenceController.saveItems()
+            saveItems()
             calculateTotal()
         }
     }
     
     func removeAllItems() {
         items.removeAll()
-        persistenceController.items = items
-        persistenceController.saveItems()
+        saveItems()
         calculateTotal()
     }
+    
+    private func saveItems() {
+        trip.products = items.map { item in
+            Product(name: item.category, price: item.price, quantity: item.quantity, discount: Int(item.discount * 100))
+        }
+    }
 }
+
+
