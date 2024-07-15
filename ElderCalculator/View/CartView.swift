@@ -9,75 +9,69 @@ import SwiftUI
 import SwiftData
 
 struct CartView: View {
-    
-//    @Environment(\.modelContext) private var modelContext
     @State private var isAddNewProductPresented: Bool = false
     
     @Bindable var trip: Trip
     @ObservedObject var viewModel: ShoppingTripViewModel
+    @ObservedObject var cartViewModel: CartViewModel 
     
     
-    @State private var productName: String = ""
-    @State private var productPrice: String = ""
-    @State private var productQuantity: String = ""
-    @State private var productDiscount: String = ""
+//    @State private var productName: String = ""
+//    @State private var productPrice: String = ""
+//    @State private var productQuantity: String = ""
+//    @State private var productDiscount: String = ""
     
     var body: some View {
-        List {
-            ForEach(trip.products) { product in
-                VStack {
-                    Text(product.name)
-                        .font(.sf(size: 16, weight: .heavy))
-                    Text("Rp \(product.price) x \(product.quantity) = \(product.totalPrice)")
-                }
-            } 
-//            .onDelete(perform: deleteProduct)
-            .navigationTitle("Cart")
-        }
-        .toolbar {
-            ToolbarItem {
-                Button {
-                    isAddNewProductPresented.toggle()
-                } label: {
-                    Image(systemName: "plus")
-                }
-            }
+        
+        VStack {
+            //header
+            Text("date: \(cartViewModel.trip.date, format: Date.FormatStyle(date: .long, time: .none))")
+            Text("total expense: \(cartViewModel.totalExpense, specifier: "%.2f") ")
+            Text("budget left: \(cartViewModel.budgetLeft, specifier: "%.2f")")
+            Text("total tax: \(cartViewModel.totalTripTax, specifier: "%.2f")")
+            Text("total save: \(cartViewModel.totalTripDiscount, specifier: "%.2f")")
             
-            ToolbarItem {
-                Button {
-                } label: {
-                    Image(systemName: "gear")
+            
+            List {
+                ForEach(trip.products) { product in
+                    VStack {
+                        Text(product.name)
+                            .font(.sf(size: 16, weight: .heavy))
+                        Text("\(product.quantity) Qty")
+                        Text("per item: \(product.price)")
+                        Text("\(product.totalPrice)")
+//                        Text("Rp \(product.price) x \(product.quantity) = \(product.totalPrice)")
+                    }
                 }
+                .onDelete(perform: {
+                    indexes in viewModel.deleteProduct(indexes: indexes, from: trip)
+                })
+                .navigationTitle("Cart")
             }
+            .toolbar {
+                ToolbarItem {
+                    Button {
+                        isAddNewProductPresented.toggle()
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+                
+                ToolbarItem {
+                    Button {
+                    } label: {
+                        Image(systemName: "gear")
+                    }
+                }
+                
+            }
+            .sheet(isPresented: $isAddNewProductPresented, content: {
+                AddNewProductView(trip: trip, viewModel: viewModel)
+            })
             
         }
-        .sheet(isPresented: $isAddNewProductPresented, content: {
-            AddNewProductView(trip: trip, viewModel: viewModel)
-        })
-   
+        
     }
-    
-    //delete product
-//    private func deleteProduct(indexes: IndexSet) {
-////        for index in indexes {
-////            modelContext.delete(trip.products[index])
-////        }
-//        
-//        for index in indexes {
-//                    let objectId = trip.products[index].persistentModelID
-//                    if let productToDelete = modelContext.model(for: objectId) as? Product {
-//                        modelContext.delete(productToDelete)
-//                    }
-//                }
-//                trip.products.remove(atOffsets: indexes)
-//                
-//                do {
-//                    try modelContext.save()
-//                } catch {
-//                    print("Error saving context \(error)")
-//                }
-//        
-//    }
 }
 
 //#Preview {

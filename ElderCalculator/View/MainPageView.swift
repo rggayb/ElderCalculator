@@ -127,7 +127,11 @@ struct MainPageView: View {
                         
                         List {
                             ForEach(viewModel.trips) { trip in
-                                NavigationLink(destination: CartView(trip: trip, viewModel: viewModel)){
+                                
+                                let cartViewModel = CartViewModel(trip: trip)
+                                               
+                                NavigationLink(destination:
+                                               CartView(trip: trip, viewModel: viewModel, cartViewModel: cartViewModel)){
                                     HStack(spacing:12){
                                         RoundedRectangle(cornerRadius: 6)
                                             .frame(width: 48, height: 48)

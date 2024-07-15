@@ -20,7 +20,8 @@ struct ElderCalculatorApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            ShoppingTripView()
+//            ShoppingTripView()
+            MainPageView()
 //                .modelContainer(for: [Trip.self, Product.self])
 //                .modelContainer(container)
         }
