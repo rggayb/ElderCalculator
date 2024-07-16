@@ -14,6 +14,7 @@ struct AddNewProductView: View {
     @State var trip: Trip
     
     @ObservedObject var viewModel: ShoppingTripViewModel
+    @ObservedObject var cartViewModel: CartViewModel
     
 //    @State var name: String = ""
 //    @State var price: String = ""
@@ -30,8 +31,10 @@ struct AddNewProductView: View {
         VStack {
             
             Text("total price:  \(Int(productViewModel.totalPrice))")
-            Text("tax: \(Int(productViewModel.totalTax))")
+            Text("tax: \(Int(productViewModel.totalTax)) (\(trip.tax)%)")
             Text("saved: \(Int(productViewModel.totalDiscount))")
+            Text("Budget left: Rp \(NumberFormatter.currencyFormatter.string(from: NSNumber(value: cartViewModel.budgetLeft)) ?? "0")")
+            Text("Products in cart: \(cartViewModel.productCount)")
             
             Form {
                 Section{

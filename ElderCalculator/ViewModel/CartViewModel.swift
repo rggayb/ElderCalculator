@@ -24,6 +24,16 @@ class CartViewModel: ObservableObject {
     var totalTripTax: Double = 0
     var totalTripDiscount: Double = 0
     
+    //Computed property to check if the cart is empty
+    var isCartEmpty: Bool {
+        return trip.products.isEmpty
+    }
+    
+    //Computed property to count the number of products in cart
+    var productCount: Int {
+        return trip.products.count
+    }
+    
     func calculateTotalExpense() {
         totalExpense =  trip.products.reduce(0) { $0 + $1.totalPrice }
     }
