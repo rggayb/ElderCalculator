@@ -10,9 +10,23 @@ import SwiftData
 
 class ShoppingTripViewModel: ObservableObject {
     
-    @Published var trips: [Trip] = []
-    @Published var products: [Product] = []
+    @Published var trips: [Trip] = [] {
+        didSet {
+            calculateTotals()
+        }
+    }
+    
+    @Published var products: [Product] = [] {
+        didSet {
+            calculateTotals()
+        }
+    }
+    
     @Published var error: Error? = nil
+    
+    @Published var totalExpense: Double = 0.0
+    @Published var totalTax: Double = 0.0
+    @Published var totalDiscount: Double = 0.0
     
     enum OtherErrors: Error {
         case nilContext
@@ -20,7 +34,7 @@ class ShoppingTripViewModel: ObservableObject {
     
     var modelContext: ModelContext? = nil
     var modelContainer: ModelContainer? = nil
-
+    
     @MainActor
     init(inMemory: Bool) {
         do {
@@ -44,7 +58,7 @@ class ShoppingTripViewModel: ObservableObject {
         }
     }
     
-     func queryTrips() {
+    func queryTrips() {
         guard let modelContext = modelContext else {
             self.error = OtherErrors.nilContext
             return
@@ -130,19 +144,19 @@ class ShoppingTripViewModel: ObservableObject {
         for index in indexes {
             let objectId = trip.products[index].persistentModelID
             if let productToDelete = modelContext?.model(for: objectId) as? Product {
-                        modelContext?.delete(productToDelete)
-                    }
-                }
-                trip.products.remove(atOffsets: indexes)
-                
-                do {
-                    try modelContext?.save()
-                } catch {
-                    print("Error saving context \(error)")
-                }
+                modelContext?.delete(productToDelete)
+            }
+        }
+        trip.products.remove(atOffsets: indexes)
+        
+        do {
+            try modelContext?.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
     }
     
-
+    
     
     // saving any pending changes
     private func save() {
@@ -158,4 +172,19 @@ class ShoppingTripViewModel: ObservableObject {
         }
     }
     
+    //mainpageviewmodel:
+    func calculateTotals() {
+        //reset value
+        totalExpense = 0
+        totalTax = 0
+        totalDiscount = 0
+        
+        for trip in trips {
+            for product in trip.products {
+                totalExpense += product.totalPrice
+                totalTax += product.price * Double(trip.tax) / 100
+                totalDiscount += (product.price * Double(product.discount) / 100) * Double(product.quantity)
+            }
+        }
+    }
 }

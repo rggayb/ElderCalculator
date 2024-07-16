@@ -16,6 +16,7 @@ class CartViewModel: ObservableObject {
         calculateTotalExpense()
         calculateBudgetLeft()
         calculateTotalTripTax()
+        calculateTotalTripDiscount()
     }
     
     var totalExpense: Double = 0
@@ -33,7 +34,7 @@ class CartViewModel: ObservableObject {
     
     func calculateTotalTripTax() {
         let taxMultiplier: Double = Double(trip.tax) / 100
-        totalTripTax = trip.products.reduce(0) { $0 + $1.price} * Double(taxMultiplier)
+        totalTripTax = trip.products.reduce(0) { $0 + ($1.price * Double($1.quantity)) } * taxMultiplier
     }
     
     func calculateTotalTripDiscount() {

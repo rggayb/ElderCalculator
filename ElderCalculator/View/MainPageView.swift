@@ -11,6 +11,7 @@ struct MainPageView: View {
     @State private var isAddNewTripPresented: Bool = false
     @StateObject var viewModel = ShoppingTripViewModel(inMemory: false)
     
+    
     var body: some View {
         // full background
         ZStack {
@@ -51,7 +52,7 @@ struct MainPageView: View {
                                                 Text("Total Expense")
                                                     .font(.system(size: 20, weight: .semibold))
                                                 // value total expense bulan itu (mesti diganti variable)
-                                                Text("Rp 999.900")
+                                                Text("Rp \(viewModel.totalExpense, specifier: "%.2f")")
                                                     .font(.system(size: 40, weight: .bold))
                                             }
                                             Spacer()
@@ -68,7 +69,7 @@ struct MainPageView: View {
                                                         .font(.system(size: 16, weight: .semibold))
                                                 }
                                                 // value total tax bulan itu (mesti diganti variable)
-                                                Text("Rp 108.900")
+                                                Text("Rp \(Int(viewModel.totalTax))")
                                                     .font(.system(size: 20, weight: .semibold))
                                             }
                                             Spacer()
@@ -80,7 +81,7 @@ struct MainPageView: View {
                                                         .font(.system(size: 16, weight: .semibold))
                                                 }
                                                 // value total discount bulan itu (mesti diganti variable)
-                                                Text("Rp 99.000")
+                                                Text("Rp \(Int(viewModel.totalDiscount))")
                                                     .font(.system(size: 20, weight: .semibold))
                                             }
                                         }
@@ -154,13 +155,16 @@ struct MainPageView: View {
                                         Spacer()
                                         
                                         // ini total spend harusnya cuman blom ada di trip.
-                                        Text("Rp999.900")
+                                        Text("Rp \(Int(viewModel.totalExpense))")
                                             .font(.system(size: 20, weight: .semibold))
                                             .foregroundColor(.textColor3)
                                     }
                                 }
                             }
-                            .onDelete(perform: viewModel.deleteTrip)
+                            .onDelete(perform: {
+                                indexes in viewModel.deleteTrip(at: indexes)
+                                viewModel.calculateTotals()
+                            })
                             .listRowSeparator(.hidden)
                             .padding()
                             .background(

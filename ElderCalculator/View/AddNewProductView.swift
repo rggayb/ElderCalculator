@@ -65,6 +65,8 @@ struct AddNewProductView: View {
                         quantity: Int(productViewModel.quantity) ?? 0,
                         discount: Int(productViewModel.discount) ?? 0, totalPrice: productViewModel.totalPrice,
                         trip: trip)
+                    
+                    viewModel.calculateTotals()
                     dismiss()
                     
                 } label: {

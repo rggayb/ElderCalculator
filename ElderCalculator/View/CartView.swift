@@ -10,16 +10,14 @@ import SwiftData
 
 struct CartView: View {
     @State private var isAddNewProductPresented: Bool = false
+    //    @State private var isDetailProductPresented: Bool = false
     
     @Bindable var trip: Trip
     @ObservedObject var viewModel: ShoppingTripViewModel
-    @ObservedObject var cartViewModel: CartViewModel 
+    @ObservedObject var cartViewModel: CartViewModel
     
+    @State private var selectedProduct: Product?
     
-//    @State private var productName: String = ""
-//    @State private var productPrice: String = ""
-//    @State private var productQuantity: String = ""
-//    @State private var productDiscount: String = ""
     
     var body: some View {
         
@@ -40,11 +38,19 @@ struct CartView: View {
                         Text("\(product.quantity) Qty")
                         Text("per item: \(product.price)")
                         Text("\(product.totalPrice)")
-//                        Text("Rp \(product.price) x \(product.quantity) = \(product.totalPrice)")
+                    }
+                    .onTapGesture {
+                        selectedProduct = product
+                    }
+                    .sheet(item: $selectedProduct) { selectedProduct in
+                        let productDetailViewModel = ProductDetailViewModel(product: selectedProduct, trip: trip)
+                        DetailProduct(trip: trip, product: selectedProduct, productDetailViewModel: productDetailViewModel)
+                        
                     }
                 }
                 .onDelete(perform: {
                     indexes in viewModel.deleteProduct(indexes: indexes, from: trip)
+                    viewModel.calculateTotals()
                 })
                 .navigationTitle("Cart")
             }
@@ -75,10 +81,10 @@ struct CartView: View {
 }
 
 //#Preview {
-//    CartView(trip: 
+//    CartView(trip:
 //                Trip(date: Date(),
 //                     storeName: "Test Store",
-//                     budget: 100, 
+//                     budget: 100,
 //                     tax: 10
 //                    )
 //    )

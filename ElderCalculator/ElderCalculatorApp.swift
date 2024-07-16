@@ -21,6 +21,7 @@ struct ElderCalculatorApp: App {
         WindowGroup {
 //            ContentView()
 //            ShoppingTripView()
+            
             MainPageView()
 //                .modelContainer(for: [Trip.self, Product.self])
 //                .modelContainer(container)
