@@ -38,6 +38,7 @@
 		BFF3FC482C400C9000935B57 /* ElderCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4622932F2C3BA7F60044370A /* ElderCalculatorApp.swift */; };
 		BFF3FC542C40CEB100935B57 /* MainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF3FC532C40CEB100935B57 /* MainPageView.swift */; };
 		BFF3FC922C42E4D800935B57 /* ShoppingCartPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF3FC912C42E4D800935B57 /* ShoppingCartPageView.swift */; };
+		DA5B0B3A2C46CE4300C6853E /* UpdateTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5B0B392C46CE4300C6853E /* UpdateTripView.swift */; };
 		DA66FFAA2C3E2E87002CBF9F /* ShoppingTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66FFA92C3E2E87002CBF9F /* ShoppingTripViewModel.swift */; };
 		DA66FFAC2C3E3268002CBF9F /* TripDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66FFAB2C3E3268002CBF9F /* TripDetail.swift */; };
 		DA78ECBF2C3CF0210035232E /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA78ECBE2C3CF0210035232E /* Trip.swift */; };
@@ -86,6 +87,7 @@
 		BFF3FC452C3FC12B00935B57 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		BFF3FC532C40CEB100935B57 /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
 		BFF3FC912C42E4D800935B57 /* ShoppingCartPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartPageView.swift; sourceTree = "<group>"; };
+		DA5B0B392C46CE4300C6853E /* UpdateTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTripView.swift; sourceTree = "<group>"; };
 		DA66FFA92C3E2E87002CBF9F /* ShoppingTripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTripViewModel.swift; sourceTree = "<group>"; };
 		DA66FFAB2C3E3268002CBF9F /* TripDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetail.swift; sourceTree = "<group>"; };
 		DA78ECBE2C3CF0210035232E /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				DA78ECE32C3D53DC0035232E /* AddNewTripView.swift */,
 				DA78ECEA2C3D846E0035232E /* AddNewProductView.swift */,
 				DAA8D1DC2C458DEE00CC5D17 /* DetailProductView.swift */,
+				DA5B0B392C46CE4300C6853E /* UpdateTripView.swift */,
 				DA78ECE52C3D74190035232E /* Components */,
 			);
 			path = View;
@@ -357,6 +360,7 @@
 				1A8B049E2C3E6422000C9AAA /* HomeViewModel.swift in Sources */,
 				DAA8D1BD2C43E92E00CC5D17 /* CartViewModel.swift in Sources */,
 				1A660D092C3CFE5F00C9C2D9 /* DiscountInput.swift in Sources */,
+				DA5B0B3A2C46CE4300C6853E /* UpdateTripView.swift in Sources */,
 				DAA8D1BF2C43EC3600CC5D17 /* AddProductViewModel.swift in Sources */,
 				1A8B04A42C3E6A84000C9AAA /* Item.swift in Sources */,
 				1A660D002C3CDEED00C9C2D9 /* Home.swift in Sources */,
