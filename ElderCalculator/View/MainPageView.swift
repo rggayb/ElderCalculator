@@ -10,6 +10,7 @@ import SwiftUI
 struct MainPageView: View {
     @State private var isAddNewTripPresented: Bool = false
     @StateObject var viewModel = ShoppingTripViewModel(inMemory: false)
+    @State private var selectedDate: Date = Date()
     
     
     var body: some View {
@@ -37,6 +38,10 @@ struct MainPageView: View {
                                 AddNewTripView(viewModel: viewModel)
                             }
                         }
+                        
+                        //Date picker
+                        MonthYearPicker(selectedDate: $selectedDate)
+                            .padding(.horizontal)
                         
                         // Inside Container
                         // buat bisa di click, tinggal button buat pop ganti tanggal atau kalo mau diganti by chevron kiri kanan atau slider jg bisa
@@ -100,8 +105,8 @@ struct MainPageView: View {
                                                     // Date picker atau data date dari SwiftData as an interface biar bisa dipake buat filtering si card perbulannya
                                                     // dummy month
                                                     HStack(spacing:5){
-                                                        Text("July")
-                                                        Text("2024")
+                                                        Text(DateFormatter().monthSymbols[Calendar.current.component(.month, from: selectedDate) - 1])
+                                                        Text("\(Calendar.current.component(.year, from: selectedDate))")
                                                     }
                                                     .font(.system(size: 16, weight: .semibold))
                                                 }
