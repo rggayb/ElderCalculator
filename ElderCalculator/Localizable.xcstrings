@@ -75,6 +75,9 @@
         }
       }
     },
+    "Budget: %.2f Rp" : {
+
+    },
     "Category:" : {
       "localizations" : {
         "id" : {

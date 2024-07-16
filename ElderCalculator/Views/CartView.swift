@@ -22,6 +22,10 @@ struct CartView: View {
             Color.white.edgesIgnoringSafeArea(.all)
             ScrollView {
                 VStack {
+                    Text("Budget: \(trip.budget, specifier: "%.2f") Rp")
+                        .font(.headline)
+                        .padding()
+                    
                     TaxToggle(isTaxIncluded: $viewModel.isTaxIncluded)
                     TotalSpendings(total: viewModel.total)
                     CategoryInput(selectedCategory: $viewModel.selectedCategory, categories: viewModel.categories)
