@@ -15,7 +15,7 @@ struct ShoppingTripView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Total Monthly Spendings: \(viewModel.monthlyTotalSpendings, format: .currency(code: "USD"))")
+                Text("Total Monthly Spendings: \(viewModel.monthlyTotalSpendings, format: .currency(code: "IDR"))")
                     .font(.headline)
                     .padding()
                 List {

@@ -317,7 +317,14 @@
       }
     },
     "Total Monthly Spendings: %@" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Pengeluaran Bulanan: %@"
+          }
+        }
+      }
     },
     "Total Spendings:" : {
       "localizations" : {
