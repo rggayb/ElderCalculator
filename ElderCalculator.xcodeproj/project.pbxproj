@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1A40BF242C3F818E00B46E3F /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A40BF232C3F818E00B46E3F /* PersistenceController.swift */; };
+		1A61A48E2C4615A000DFB57D /* AddItemSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A61A48D2C4615A000DFB57D /* AddItemSound.swift */; };
+		1A61A4902C46190400DFB57D /* ScanSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A61A48F2C46190400DFB57D /* ScanSound.mp3 */; };
 		1A660D002C3CDEED00C9C2D9 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A660CFF2C3CDEED00C9C2D9 /* Home.swift */; };
 		1A660D052C3CF77000C9C2D9 /* TaxToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A660D042C3CF77000C9C2D9 /* TaxToggle.swift */; };
 		1A660D072C3CFD5C00C9C2D9 /* PriceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A660D062C3CFD5C00C9C2D9 /* PriceInput.swift */; };
@@ -46,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		1A40BF232C3F818E00B46E3F /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		1A61A48D2C4615A000DFB57D /* AddItemSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemSound.swift; sourceTree = "<group>"; };
+		1A61A48F2C46190400DFB57D /* ScanSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ScanSound.mp3; sourceTree = "<group>"; };
 		1A660CFF2C3CDEED00C9C2D9 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		1A660D042C3CF77000C9C2D9 /* TaxToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxToggle.swift; sourceTree = "<group>"; };
 		1A660D062C3CFD5C00C9C2D9 /* PriceInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceInput.swift; sourceTree = "<group>"; };
@@ -95,6 +99,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A61A4912C46193300DFB57D /* Audio Files */ = {
+			isa = PBXGroup;
+			children = (
+				1A61A48F2C46190400DFB57D /* ScanSound.mp3 */,
+			);
+			path = "Audio Files";
+			sourceTree = "<group>";
+		};
 		1A660CFE2C3CDE5F00C9C2D9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +135,7 @@
 				1A8B049A2C3E62C2000C9AAA /* QuantityInput.swift */,
 				1A8B04A32C3E6A84000C9AAA /* Item.swift */,
 				4622935F2C40E03D0044370A /* Trip.swift */,
+				1A61A48D2C4615A000DFB57D /* AddItemSound.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -164,6 +177,7 @@
 		4622932E2C3BA7F60044370A /* ElderCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				1A61A4912C46193300DFB57D /* Audio Files */,
 				BF4916F32C3CDAA3000F8596 /* Info.plist */,
 				4622932F2C3BA7F60044370A /* ElderCalculatorApp.swift */,
 				462293312C3BA7F60044370A /* ContentView.swift */,
@@ -271,6 +285,7 @@
 				BF4916F02C3CDA90000F8596 /* SFProDisplay-Semibold.otf in Resources */,
 				BF4916ED2C3CDA90000F8596 /* SFProDisplay-Light.otf in Resources */,
 				BF4916F22C3CDA90000F8596 /* SFProDisplay-Ultralight.otf in Resources */,
+				1A61A4902C46190400DFB57D /* ScanSound.mp3 in Resources */,
 				462293342C3BA7F80044370A /* Assets.xcassets in Resources */,
 				BF4916EC2C3CDA90000F8596 /* SFProDisplay-Heavy.otf in Resources */,
 			);
@@ -303,6 +318,7 @@
 				462293622C40E0570044370A /* TripCardView.swift in Sources */,
 				462293302C3BA7F60044370A /* ElderCalculatorApp.swift in Sources */,
 				1A8B04992C3E62A3000C9AAA /* CategoryInput.swift in Sources */,
+				1A61A48E2C4615A000DFB57D /* AddItemSound.swift in Sources */,
 				1A8B049B2C3E62C2000C9AAA /* QuantityInput.swift in Sources */,
 				462293642C43C2330044370A /* ItemList_Preview.swift in Sources */,
 				1AEB09592C40BFA20006EF4D /* AddNewProductView.swift in Sources */,

@@ -28,7 +28,11 @@ struct CartView: View {
                     PriceInput(price: $viewModel.price)
                     QuantityInput(quantity: $viewModel.quantity)
                     DiscountInput(discount: $viewModel.discount)
-                    Button(action: viewModel.addItem) {
+                    Button(action: {
+                        viewModel.addItem()
+                        AddItemSound.shared.playSound(named: "ScanSound")
+                        AddItemSound.shared.triggerHapticFeedback()
+                    }) {
                         Text("Add item")
                             .font(.headline)
                             .padding()
