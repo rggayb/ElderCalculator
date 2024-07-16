@@ -1,0 +1,459 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "... Item in Cart" : {
+
+    },
+    "...% VAT" : {
+
+    },
+    "% Off" : {
+
+    },
+    "% VAT" : {
+
+    },
+    "%.0f" : {
+
+    },
+    "%@" : {
+
+    },
+    "%@: %.2f x %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%1$@: %#@arg2@ x %3$lld"
+          },
+          "substitutions" : {
+            "arg2" : {
+              "argNum" : 2,
+              "formatSpecifier" : ".2f",
+              "variations" : {
+                "plural" : {
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "needs_review",
+                      "value" : "%arg"
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "needs_review",
+                      "value" : "%arg"
+                    }
+                  },
+                  "zero" : {
+                    "stringUnit" : {
+                      "state" : "needs_review",
+                      "value" : "%arg"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "%lld Qty" : {
+
+    },
+    "%lld%% VAT" : {
+
+    },
+    "0" : {
+
+    },
+    "11" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "11"
+          }
+        }
+      }
+    },
+    "2024" : {
+
+    },
+    "Add item" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tambah barang"
+          }
+        }
+      }
+    },
+    "Add New Item" : {
+
+    },
+    "Budget\t\t" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Budget"
+          }
+        }
+      }
+    },
+    "Budget Exceeded" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Cart" : {
+
+    },
+    "Category:" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kategori"
+          }
+        }
+      }
+    },
+    "Continue" : {
+
+    },
+    "Discount" : {
+
+    },
+    "discount (%)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "diskon (%)"
+          }
+        }
+      }
+    },
+    "Discount (%):" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diskon (%):"
+          }
+        }
+      }
+    },
+    "Enter discount" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tambah diskon"
+          }
+        }
+      }
+    },
+    "Enter price" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harga barang"
+          }
+        }
+      }
+    },
+    "Enter quantity" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jumlah barang"
+          }
+        }
+      }
+    },
+    "Get ready to shop" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siap-siap belanja"
+          }
+        }
+      }
+    },
+    "Hello, World!" : {
+
+    },
+    "Include Tax" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tambah pajak"
+          }
+        }
+      }
+    },
+    "Input the store name and\nstate your budget." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masukkan nama toko dan tentukan budget"
+          }
+        }
+      }
+    },
+    "Items:" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barang:"
+          }
+        }
+      }
+    },
+    "July" : {
+
+    },
+    "Key" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Key"
+          }
+        }
+      }
+    },
+    "My Cart" : {
+
+    },
+    "My Trips" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sesi belanja saya"
+          }
+        }
+      }
+    },
+    "Name" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nama"
+          }
+        }
+      }
+    },
+    "price" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "harga"
+          }
+        }
+      }
+    },
+    "Price" : {
+
+    },
+    "Price (Rp)" : {
+
+    },
+    "Price:" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harga:"
+          }
+        }
+      }
+    },
+    "product name" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nama produk"
+          }
+        }
+      }
+    },
+    "Product Name" : {
+
+    },
+    "qty" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "jml"
+          }
+        }
+      }
+    },
+    "Quantity" : {
+
+    },
+    "Quantity:" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kuantitas:"
+          }
+        }
+      }
+    },
+    "Recent Trip" : {
+
+    },
+    "Rp" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rp"
+          }
+        }
+      }
+    },
+    "Rp ... Budget Left" : {
+
+    },
+    "Rp %.0f" : {
+
+    },
+    "Rp %.0f Budget Left" : {
+
+    },
+    "Rp %lld" : {
+
+    },
+    "Save" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simpan"
+          }
+        }
+      }
+    },
+    "Saved" : {
+
+    },
+    "Saved (%lld%% VAT)" : {
+
+    },
+    "Select category" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pilih kategori"
+          }
+        }
+      }
+    },
+    "Select Product" : {
+
+    },
+    "Shopping Trip" : {
+
+    },
+    "Specify Tax Percentage for this Store" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pilih persentase pajak untuk toko ini"
+          }
+        }
+      }
+    },
+    "Start Shopping" : {
+
+    },
+    "Store\t\t" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toko"
+          }
+        }
+      }
+    },
+    "Tax" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pajak"
+          }
+        }
+      }
+    },
+    "Tax (%lld%% VAT)" : {
+
+    },
+    "Total Expense" : {
+
+    },
+    "Total Monthly Spendings: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Pengeluaran Bulanan: %@"
+          }
+        }
+      }
+    },
+    "Total price" : {
+
+    },
+    "Total Price" : {
+
+    },
+    "Total Spendings:" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total pengeluaran:"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

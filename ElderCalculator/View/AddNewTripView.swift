@@ -10,12 +10,7 @@ import SwiftData
 
 struct AddNewTripView: View {
     @Environment(\.dismiss) var dismiss
-    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var viewModel: ShoppingTripViewModel
-    
-    @State var storeName: String = ""
-    @State var budget: String = ""
-    @State var tax: String = ""
     
     var body: some View {
         // full background
@@ -42,10 +37,8 @@ struct AddNewTripView: View {
                                     HStack{
                                         Text("Store\t\t")
                                             .font(.system(size: 16, weight: .semibold))
-                                        TextField("Name", text: $storeName)
+                                        TextField("Name", text: $viewModel.storeName)
                                             .disableAutocorrection(true)
-                                        // kalo ga pake ini ga ke show pas dark mode textfieldnya (error dari sananya, ini salah satu cara akalinnya)
-                                            .foregroundColor(colorScheme == .dark ? .textColor5 : .textColor5)
                                     }
                                     Divider()
                                     HStack{
@@ -54,9 +47,8 @@ struct AddNewTripView: View {
                                         HStack(spacing:4){
                                             Text("Rp")
                                                 .foregroundColor(.textColor5)
-                                            TextField("", text: $budget)
+                                            TextField("", text: $viewModel.budget)
                                                 .keyboardType(.numberPad)
-                                                .foregroundColor(colorScheme == .dark ? .textColor5 : .textColor5)
                                         }
                                     }
                                 }
@@ -66,11 +58,11 @@ struct AddNewTripView: View {
                         // specify tax
                         VStack {
                             Section(header:
-                                        HStack {
+                                HStack {
                                 Text("Specify Tax Percentage for this Store")
                                     .font(.system(size: 16, weight: .semibold))
                                 Spacer()
-                            }
+                                }
                             ){
                                 RoundedRectangle(cornerRadius: 10)
                                     .frame(height: 44)
@@ -80,10 +72,9 @@ struct AddNewTripView: View {
                                             Text("Tax")
                                                 .font(.system(size: 16, weight: .semibold))
                                             HStack {
-                                                TextField("0", text: $tax)
+                                                TextField("0", text: $viewModel.tax)
                                                     .keyboardType(.numberPad)
                                                     .multilineTextAlignment(.trailing)
-                                                    .foregroundColor(colorScheme == .dark ? .textColor5 : .textColor5)
                                                 Text("% VAT")
                                             }
                                         }
@@ -98,16 +89,16 @@ struct AddNewTripView: View {
                 Spacer()
                 Button (action: {
                     viewModel.addTrip(
-                        storeName: storeName,
-                        budget: Double(budget) ?? 0,
-                        tax: Int(tax) ?? 0
+                        storeName: viewModel.storeName,
+                        budget: Double(viewModel.budget) ?? 0,
+                        tax: Int(viewModel.tax) ?? 0
                     )
                     dismiss()
                 }) {
                     RoundedRectangle(cornerRadius: 10)
                         .frame(height: 50)
                         // kalo valid
-                        .foregroundColor(.iconColor1)
+                        .foregroundColor(viewModel.isTripValid() ? .iconColor1 : .containerColor1.opacity(4/3))
                         // blm valid
 //                        .foregroundColor(.containerColor1.opacity(4/3))
                         .overlay{
@@ -121,6 +112,7 @@ struct AddNewTripView: View {
                                 .padding()
                         }
                 }
+                .disabled(!viewModel.isTripValid())
             }
             .frame(width: UIScreen.main.bounds.width-48)
             .padding(.vertical, 48)

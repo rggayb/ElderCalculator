@@ -40,6 +40,7 @@ class ProductViewModel: ObservableObject {
     
     var taxRate: Int = 0
     
+    
     private func calculateTotalPrice() {
         let priceValue = Double(price) ?? 0
         let quantityValue = Double(quantity) ?? 0
@@ -62,5 +63,16 @@ class ProductViewModel: ObservableObject {
         let discountValue = (Double(discount) ?? 0) / 100
         totalDiscount = priceValue * quantityValue * discountValue
     }
+    
+    func isNotExceedBudget(trip: Trip) -> Bool {
+            let priceValue = Double(price) ?? 0
+            let quantityValue = Double(quantity) ?? 0
+            let discountValue = Double(discount) ?? 0
+            let discountMultiplier = 1 - (discountValue / 100)
+            
+            let newProductTotalPrice = (priceValue * quantityValue * discountMultiplier)
+            let newTotalExpense = trip.products.reduce(0) { $0 + $1.totalPrice } + newProductTotalPrice
+            
+            return newTotalExpense <= trip.budget
+        }
 }
-

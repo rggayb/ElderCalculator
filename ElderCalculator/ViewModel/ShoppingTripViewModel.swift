@@ -28,6 +28,13 @@ class ShoppingTripViewModel: ObservableObject {
     @Published var totalTax: Double = 0.0
     @Published var totalDiscount: Double = 0.0
     
+    
+    @Published var isButtonActive: Bool = false
+    @Published var storeName: String = ""
+    @Published var budget: String = ""
+    @Published var tax: String = ""
+    
+    
     enum OtherErrors: Error {
         case nilContext
     }
@@ -67,10 +74,10 @@ class ShoppingTripViewModel: ObservableObject {
         var tripDescriptor = FetchDescriptor<Trip>(
             predicate: nil,
             sortBy: [
-                .init(\.date)
+                .init(\.date, order: .reverse)
             ]
         )
-        tripDescriptor.fetchLimit = 10
+        tripDescriptor.fetchLimit = 4
         do {
             trips = try modelContext.fetch(tripDescriptor)
         } catch(let error) {
@@ -97,15 +104,19 @@ class ShoppingTripViewModel: ObservableObject {
             self.error = OtherErrors.nilContext
             return
         }
-        let date = Date()
-        let newTrip = Trip(
-            date: date,
-            storeName: storeName,
-            budget: Double(budget) ,
-            tax: Int(tax))
-        modelContext.insert(newTrip)
-        save()
-        queryTrips()
+
+            let date = Date()
+            let newTrip = Trip(
+                date: date,
+                storeName: storeName,
+                budget: Double(budget) ,
+                tax: Int(tax))
+            modelContext.insert(newTrip)
+            save()
+            queryTrips()
+        
+//            isButtonActive = false
+           
     }
     
     func deleteTrip(at offsets: IndexSet) {
@@ -170,6 +181,29 @@ class ShoppingTripViewModel: ObservableObject {
             print(error)
             self.error = error
         }
+    }
+    
+    //form validation:
+    // trip
+//    func isTripValid() -> Bool {
+//        if !storeName.isEmpty && (Double(budget) ?? 0) > 0 {
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
+    
+    func isTripValid() -> Bool {
+        if !storeName.isEmpty && (Double(budget) ?? 0) > 0 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    // product
+    func productFormValidation() {
+        
     }
     
     //mainpageviewmodel:

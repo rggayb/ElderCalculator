@@ -35,13 +35,13 @@ struct MainPageView: View {
                             }
                             .sheet(isPresented: $isAddNewTripPresented) {
                                 AddNewTripView(viewModel: viewModel)
+                                    .presentationDragIndicator(.visible)
                             }
                         }
                         
                         // Inside Container
                         // buat bisa di click, tinggal button buat pop ganti tanggal atau kalo mau diganti by chevron kiri kanan atau slider jg bisa
                         RoundedRectangle(cornerRadius: 10)
-                            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                             .frame(height: UIScreen.main.bounds.height/4)
                             .overlay{
                                 ZStack {
@@ -52,7 +52,7 @@ struct MainPageView: View {
                                                 Text("Total Expense")
                                                     .font(.system(size: 20, weight: .semibold))
                                                 // value total expense bulan itu (mesti diganti variable)
-                                                Text("Rp \(viewModel.totalExpense, specifier: "%.2f")")
+                                                Text("Rp \(viewModel.totalExpense, specifier: "%.0f")")
                                                     .font(.system(size: 40, weight: .bold))
                                             }
                                             Spacer()
@@ -68,7 +68,6 @@ struct MainPageView: View {
                                                     Text("Tax")
                                                         .font(.system(size: 16, weight: .semibold))
                                                 }
-                                                // value total tax bulan itu (mesti diganti variable)
                                                 Text("Rp \(Int(viewModel.totalTax))")
                                                     .font(.system(size: 20, weight: .semibold))
                                             }
@@ -80,7 +79,6 @@ struct MainPageView: View {
                                                     Text("Saved")
                                                         .font(.system(size: 16, weight: .semibold))
                                                 }
-                                                // value total discount bulan itu (mesti diganti variable)
                                                 Text("Rp \(Int(viewModel.totalDiscount))")
                                                     .font(.system(size: 20, weight: .semibold))
                                             }
@@ -112,7 +110,8 @@ struct MainPageView: View {
                                     .padding([.top, .trailing])
                                 }
                                 .foregroundColor(.textColor2)
-                                .background(Image(.cardBackground1))
+                                .background(Image(.cardBackground1)
+                                    .resizable())
                             }
                         
                     }
@@ -128,11 +127,9 @@ struct MainPageView: View {
                         
                         List {
                             ForEach(viewModel.trips) { trip in
-                                
                                 let cartViewModel = CartViewModel(trip: trip)
-                                               
                                 NavigationLink(destination:
-                                               CartView(trip: trip, viewModel: viewModel, cartViewModel: cartViewModel)){
+                                               ShoppingCartPageView(trip: trip, viewModel: viewModel, cartViewModel: cartViewModel)){
                                     HStack(spacing:12){
                                         RoundedRectangle(cornerRadius: 6)
                                             .frame(width: 48, height: 48)
@@ -154,8 +151,7 @@ struct MainPageView: View {
                                         
                                         Spacer()
                                         
-                                        // ini total spend harusnya cuman blom ada di trip.
-                                        Text("Rp \(Int(viewModel.totalExpense))")
+                                        Text("Rp \(Int(cartViewModel.totalExpense))")
                                             .font(.system(size: 20, weight: .semibold))
                                             .foregroundColor(.textColor3)
                                     }
@@ -170,6 +166,7 @@ struct MainPageView: View {
                             .background(
                                 RoundedRectangle(cornerRadius: 10)
                                     .foregroundColor(.containerColor2)
+                                // klo over budget .containerColor3
                             )
                             .frame(height: 64)
                         }
@@ -197,9 +194,16 @@ struct MainPageView: View {
                     }
                     
                 }
-                .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                .frame(width: UIScreen.main.bounds.width-32)
+                .navigationTitle("Shopping Trip")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("")
+                    }
+                }
+                .frame(width: UIScreen.main.bounds.width - 32)
             }
+            .accentColor(.buttonColor2)
         }
         .frame(width: UIScreen.main.bounds.width)
         .background(.colorbackground1)
