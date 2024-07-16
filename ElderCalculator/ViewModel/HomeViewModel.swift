@@ -16,7 +16,7 @@ class HomeViewModel: ObservableObject {
     @Published var total = 0.0
     @Published var isTaxIncluded = false
     @Published var items: [Item] = []
-    
+
     let taxPercentage = 0.11
     let categories = ["Fruit", "Vegetable", "Dairy", "Meat"]
     
@@ -84,5 +84,3 @@ class HomeViewModel: ObservableObject {
         }
     }
 }
-
-

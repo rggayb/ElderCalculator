@@ -75,6 +75,9 @@
         }
       }
     },
+    "Budget Exceeded" : {
+
+    },
     "Budget: %.2f Rp" : {
 
     },
@@ -209,6 +212,9 @@
         }
       }
     },
+    "OK" : {
+
+    },
     "price" : {
       "localizations" : {
         "id" : {
@@ -338,6 +344,9 @@
           }
         }
       }
+    },
+    "Your total spendings have exceeded the budget!" : {
+
     }
   },
   "version" : "1.0"

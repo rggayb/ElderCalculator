@@ -16,6 +16,7 @@ struct CartView: View {
     @State private var productPrice: String = ""
     @State private var productQuantity: String = ""
     @State private var productDiscount: String = ""
+    @State private var showAlert = false // Local state for alert
     
     var body: some View {
         ZStack {
@@ -34,8 +35,13 @@ struct CartView: View {
                     DiscountInput(discount: $viewModel.discount)
                     Button(action: {
                         viewModel.addItem()
-                        AddItemSound.shared.playSound(named: "ScanSound")
-                        AddItemSound.shared.triggerHapticFeedback()
+                        if viewModel.total < trip.budget {
+                            AddItemSound.shared.playSound(named: "ScanSound")
+                            AddItemSound.shared.triggerHapticFeedback()
+                        } else if viewModel.total > trip.budget {
+                            showAlert = true
+                            AddItemSound.shared.playSound(named: "ErrorSound")
+                        }
                     }) {
                         Text("Add item")
                             .font(.headline)
@@ -45,6 +51,15 @@ struct CartView: View {
                             .cornerRadius(10)
                     }
                     .padding()
+                    .alert(isPresented: $showAlert) {
+                        Alert(
+                            title: Text("Budget Exceeded"),
+                            message: Text("Your total spendings have exceeded the budget!"),
+                            dismissButton: .default(Text("OK")) {
+                                showAlert = false // Reset the alert state when dismissed
+                            }
+                        )
+                    }
                     ItemList(viewModel: viewModel)
                 }
             }
@@ -52,5 +67,3 @@ struct CartView: View {
         }
     }
 }
-
-
