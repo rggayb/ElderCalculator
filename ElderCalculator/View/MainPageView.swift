@@ -49,10 +49,10 @@ struct MainPageView: View {
                                     VStack{
                                         HStack {
                                             VStack(alignment: .leading, spacing: 8){
-                                                Text("Total Expense")
+                                                Text("Monthly Total Expense")
                                                     .font(.system(size: 20, weight: .semibold))
                                                 // value total expense bulan itu (mesti diganti variable)
-                                                Text("Rp \(viewModel.totalExpense, specifier: "%.2f")")
+                                                Text("Rp \(viewModel.monthlyTotalSpendings, specifier: "%.2f")")
                                                     .font(.system(size: 40, weight: .bold))
                                             }
                                             Spacer()

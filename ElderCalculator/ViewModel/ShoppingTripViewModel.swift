@@ -67,7 +67,7 @@ class ShoppingTripViewModel: ObservableObject {
         var tripDescriptor = FetchDescriptor<Trip>(
             predicate: nil,
             sortBy: [
-                .init(\.date)
+                .init(\.date, order: .reverse)
             ]
         )
         tripDescriptor.fetchLimit = 10
