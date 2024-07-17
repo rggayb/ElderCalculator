@@ -18,7 +18,7 @@ class HomeViewModel: ObservableObject {
     @Published var items: [Item] = []
     
     let taxPercentage = 0.11
-    let categories = ["Fruit", "Vegetable", "Dairy", "Meat"]
+    let categories = ["", "Fruit", "Vegetable", "Dairy", "Meat", "Noodles", "Seafood", "Soap", "Shampoo", "Soft Drink"]
     private var persistenceController: PersistenceController
     
     //Initialize persistence controller

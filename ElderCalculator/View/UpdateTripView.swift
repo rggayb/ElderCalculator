@@ -48,8 +48,7 @@ struct UpdateTripView: View {
                                         HStack(spacing:4){
                                             Text("Rp")
                                                 .foregroundColor(.textColor5)
-                                            TextField("\(trip.budget, specifier: "%.0f")", text: $viewModel.budget)
-                                                .keyboardType(.numberPad)
+                                            TextFieldWithDoneButton(text: $viewModel.budget, placeholder: "\(trip.budget)", alignment: .left)
                                         }
                                     }
                                 }
@@ -103,7 +102,7 @@ struct UpdateTripView: View {
                         .overlay{
                             Text("Save")
                                 .font(.system(size: 20, weight: .bold))
-                                .foregroundColor(viewModel.isTripValid() ? .textColor2 : .textColor5)
+                                .foregroundColor(viewModel.isTripValid() ? .textColor7 : .textColor5)
                                 .padding()
                         }
                 }

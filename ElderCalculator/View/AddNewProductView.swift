@@ -17,7 +17,7 @@ struct AddNewProductView: View {
     @StateObject var productViewModel = ProductViewModel()
     @ObservedObject var cartViewModel: CartViewModel
     
-    let categories: [String] = ["Fruit", "Vegetable", "Dairy", "Meat"]
+    let categories: [String] = ["Choose item", "Fruit", "Vegetable", "Dairy", "Meat", "Noodles", "Seafood", "Soap", "Shampoo", "Soft Drink"]
     
     @State var showAlert: Bool = false
     var alertMessage: String = "Adding this product will exceed your budget. Do you want to proceed?"
@@ -152,6 +152,7 @@ struct AddNewProductView: View {
                                 }
                             }
                             .pickerStyle(MenuPickerStyle())
+                            
                         }
                         .padding()
                     }
@@ -245,7 +246,7 @@ struct AddNewProductView: View {
                         .overlay {
                             Text("Add to Cart")
                                 .font(.system(size: 20, weight: .bold))
-                                .foregroundColor(productViewModel.isProductValid() ? .textColor2 : .textColor5)
+                                .foregroundColor(productViewModel.isProductValid() ? .textColor7 : .textColor5)
                         }
                 }
                 .disabled(!productViewModel.isProductValid() || showComplete)

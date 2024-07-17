@@ -30,7 +30,14 @@ class ShoppingTripViewModel: ObservableObject {
     
     
     @Published var storeName: String = ""
-    @Published var budget: String = ""
+    @Published var budget: String = "" {
+        didSet {
+            cleanBudget = budget.replacingOccurrences(of: ".", with: "")
+        }
+    }
+
+    private var cleanBudget: String = ""
+
     @Published var tax: String = ""
     
     @Published var selectedDate: Date = Date()
@@ -107,24 +114,28 @@ class ShoppingTripViewModel: ObservableObject {
         }
         
         let date = Date()
+        let cleanedBudget = cleanBudget.isEmpty ? budget : Double(cleanBudget) ?? budget
         let newTrip = Trip(
             date: date,
             storeName: storeName,
-            budget: Double(budget),
-            tax: Int(tax))
+            budget: cleanedBudget,
+            tax: Int(tax)
+        )
         modelContext.insert(newTrip)
         save()
         queryTrips()
     }
-    
+
     func updateTrip(trip: Trip, storeName: String, budget: Double, tax: Int) {
+        let cleanedBudget = cleanBudget.isEmpty ? budget : Double(cleanBudget) ?? budget
         trip.storeName = storeName
-        trip.budget = budget
+        trip.budget = cleanedBudget
         trip.tax = tax
         
         save()
         queryTrips()
     }
+
     
     func deleteTrip(at offsets: IndexSet) {
         guard let modelContext = modelContext else {
@@ -142,8 +153,7 @@ class ShoppingTripViewModel: ObservableObject {
     
     // Validation for add new trip form
     func isTripValid() -> Bool {
-        let cleanedBudget = budget.replacingOccurrences(of: ".", with: "")
-        if !storeName.isEmpty && (Double(cleanedBudget) ?? 0) > 0 {
+        if !storeName.isEmpty && (Double(cleanBudget) ?? 0) > 0 {
             return true
         } else {
             return false

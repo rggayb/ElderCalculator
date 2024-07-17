@@ -104,7 +104,7 @@ struct AddNewTripView: View {
                         .overlay{
                             Text("Start Shopping")
                                 .font(.system(size: 20, weight: .bold))
-                                .foregroundColor(viewModel.isTripValid() ? .textColor2 : .textColor5)
+                                .foregroundColor(viewModel.isTripValid() ? .textColor7 : .textColor5)
                                 .padding()
                         }
                 }
