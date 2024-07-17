@@ -17,7 +17,18 @@ struct AddNewProductView: View {
     @StateObject var productViewModel = ProductViewModel()
     @ObservedObject var cartViewModel: CartViewModel
     
-    let categories: [String] = ["Choose item", "Fruit", "Vegetable", "Dairy", "Meat", "Noodles", "Seafood", "Soap", "Shampoo", "Soft Drink"]
+    let categories: [String] = [
+        NSLocalizedString("Choose item", comment: "picker"),
+        NSLocalizedString("Fruit", comment: "picker"),
+        NSLocalizedString("Vegetable", comment: "picker"),
+        NSLocalizedString("Dairy", comment: "picker"),
+        NSLocalizedString("Meat", comment: "picker"),
+        NSLocalizedString("Noodles", comment: "picker"),
+        NSLocalizedString("Seafood", comment: "picker"),
+        NSLocalizedString("Soap", comment: "picker"),
+        NSLocalizedString("Shampoo", comment: "picker"),
+        NSLocalizedString("Soft Drink", comment: "picker")
+    ]
     
     @State var showAlert: Bool = false
     var alertMessage: String = "Adding this product will exceed your budget. Do you want to proceed?"
@@ -29,13 +40,13 @@ struct AddNewProductView: View {
         ZStack {
             VStack(spacing:32){
                 // Headline
-//                HStack{
-                    // ganti variable nama toko pake binding maybe?
+                //                HStack{
+                // ganti variable nama toko pake binding maybe?
                 Text("\(trip.storeName)")
-                        .font(.system(size: 32, weight: .bold))
-                        .foregroundColor(.textColor1)
-//                    Spacer()
-//                }
+                    .font(.system(size: 32, weight: .bold))
+                    .foregroundColor(.textColor1)
+                //                    Spacer()
+                //                }
                 // Shopping trip + container
                 VStack(spacing:16){
                     // Inside Container
@@ -205,6 +216,11 @@ struct AddNewProductView: View {
                 Button(action: {
                     // Check if the product price exceeds the budget or not
                     if productViewModel.isNotExceedBudget(trip: trip) {
+                        
+                        //check if category selecte is "choose item", change it to "Product"
+                        productViewModel.checkSelectedCategory()
+                        
+                        //add product
                         viewModel.addNewProduct(
                             name: productViewModel.name,
                             price: Double(productViewModel.price) ?? 0,
@@ -257,6 +273,11 @@ struct AddNewProductView: View {
             .alert("Budget Exceeded", isPresented: $showAlert) {
                 Button("Cancel", role: .cancel) { }
                 Button("Continue", role: .destructive) {
+                    
+                    //check if category selecte is "choose item", change it to "Product"
+                    productViewModel.checkSelectedCategory()
+                    
+                    //add product
                     viewModel.addNewProduct(
                         name: productViewModel.name,
                         price: Double(productViewModel.price) ?? 0,
@@ -268,6 +289,7 @@ struct AddNewProductView: View {
                     
                     // change date to now
                     viewModel.selectedDate = Date()
+                    
                     // recalculate card for selected month
                     viewModel.calculateTotalsForSelectedMonth()
                     

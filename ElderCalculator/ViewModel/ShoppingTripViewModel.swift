@@ -99,7 +99,12 @@ class ShoppingTripViewModel: ObservableObject {
             self.error = OtherErrors.nilContext
             return
         }
-        let productDescriptor = FetchDescriptor<Product>()
+        let productDescriptor = FetchDescriptor<Product>(
+            predicate: nil,
+            sortBy: [
+                .init(\.id, order: .reverse)
+            ]
+        )
         do {
             products = try modelContext.fetch(productDescriptor)
         } catch(let error) {

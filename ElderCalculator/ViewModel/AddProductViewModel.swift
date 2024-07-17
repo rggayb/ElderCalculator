@@ -8,7 +8,8 @@
 import Foundation
 
 class ProductViewModel: ObservableObject {
-    @Published var name: String = "Product"
+    @Published var name: String = NSLocalizedString("Choose item", comment: "picker")
+
     
     @Published var price: String = "" {
         didSet {
@@ -88,5 +89,11 @@ class ProductViewModel: ObservableObject {
         price = ""
         quantity = ""
         discount = ""
+    }
+    
+    func checkSelectedCategory() {
+        if name == NSLocalizedString("Choose item", comment: "picker") {
+            name = NSLocalizedString("Product", comment: "picker")
+        }
     }
 }
