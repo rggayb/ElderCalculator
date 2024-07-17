@@ -29,7 +29,7 @@ struct AddNewProductView: View {
                 // Headline
 //                HStack{
                     // ganti variable nama toko pake binding maybe?
-                    Text("Add New Item")
+                Text("\(trip.storeName)")
                         .font(.system(size: 32, weight: .bold))
                         .foregroundColor(.textColor1)
 //                    Spacer()
@@ -187,7 +187,7 @@ struct AddNewProductView: View {
                                 Text("Quantity")
                                     .font(.system(size: 16, weight: .semibold))
                                 Spacer()
-                                TextField("0", text: $productViewModel.quantity)
+                                TextField("1", text: $productViewModel.quantity)
                                     .keyboardType(.numberPad)
                                     .multilineTextAlignment(.trailing)
                                     .font(.system(size: 16, weight: .regular))
@@ -199,18 +199,22 @@ struct AddNewProductView: View {
                 
                 Spacer()
                 
-                Button (action: {                    
+                Button (action: {
                     //check if product price exceed budget or not
                     if productViewModel.isNotExceedBudget(trip: trip) {
                         viewModel.addNewProduct(
                             name: productViewModel.name,
                             price: Double(productViewModel.price) ?? 0,
-                            quantity: Int(productViewModel.quantity) ?? 0,
+                            quantity: Int(productViewModel.quantity) ?? 1,
                             discount: Int(productViewModel.discount) ?? 0,
                             totalPrice: productViewModel.totalPrice,
                             trip: trip)
                         
                         //add pop up for product saved
+                        
+                        
+                        //reset texfield value
+                        productViewModel.resetProductForm()
                         
 //                        dismiss()
                         AddItemSound.shared.playSound(named: "ScanSound")
@@ -224,7 +228,7 @@ struct AddNewProductView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .frame(height: 50)
                     // kalo valid
-                        .foregroundColor(.iconColor1)
+                        .foregroundColor(productViewModel.isProductValid() ? .iconColor1 : .containerColor1.opacity(4/3))
                     // blm valid
 //                        .foregroundColor(.containerColor1.opacity(4/3))
                         .overlay{
@@ -238,6 +242,7 @@ struct AddNewProductView: View {
                                 .padding()
                         }
                 }
+                .disabled(!productViewModel.isProductValid())
             }
             .onAppear {
                 productViewModel.taxRate = trip.tax
@@ -248,7 +253,7 @@ struct AddNewProductView: View {
                     viewModel.addNewProduct(
                         name: productViewModel.name,
                         price: Double(productViewModel.price) ?? 0,
-                        quantity: Int(productViewModel.quantity) ?? 0,
+                        quantity: Int(productViewModel.quantity) ?? 1,
                         discount: Int(productViewModel.discount) ?? 0,
                         totalPrice: productViewModel.totalPrice,
                         trip: trip
@@ -270,5 +275,3 @@ struct AddNewProductView: View {
         .frame(width: UIScreen.main.bounds.width)
     }
 }
-
-

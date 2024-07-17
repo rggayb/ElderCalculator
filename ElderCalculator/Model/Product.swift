@@ -10,6 +10,7 @@ import SwiftData
 
 @Model
 class Product: Identifiable {
+    var id: UUID = UUID()
     var name: String
     var price: Double
     var quantity: Int

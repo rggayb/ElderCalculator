@@ -27,6 +27,7 @@ struct MainPageView: View {
                             Spacer()
                             // Add trips
                             Button(action: {
+                                viewModel.resetTripForm()
                                 isAddNewTripPresented.toggle()
                             }) {
                                 Image(systemName: "plus.circle.fill")
@@ -124,6 +125,13 @@ struct MainPageView: View {
                                 .foregroundColor(.textColor3)
                             Spacer()
                         }
+                        
+                        if viewModel.trips.isEmpty {
+                            //image empty cart
+                        } else {
+                            //tampilin list trip
+                        }
+                        
                         
                         List {
                             ForEach(viewModel.trips) { trip in

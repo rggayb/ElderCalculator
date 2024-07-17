@@ -10,7 +10,7 @@ import SwiftUI
 
 class CartViewModel: ObservableObject {
     @Published var trip: Trip
-
+    
     init(trip: Trip) {
         self.trip = trip
         calculateTotalExpense()
@@ -41,5 +41,10 @@ class CartViewModel: ObservableObject {
         totalTripDiscount = trip.products.reduce(0) { $0 +
             ((($1.price * Double($1.discount) / 100) * Double($1.quantity))) }
     }
-
+    
+    func isExceedBudget() -> Bool {
+        if budgetLeft < 0 { return true}
+        return false
+    }
+    
 }

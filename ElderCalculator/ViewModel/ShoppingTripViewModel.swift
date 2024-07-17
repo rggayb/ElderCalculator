@@ -29,7 +29,6 @@ class ShoppingTripViewModel: ObservableObject {
     @Published var totalDiscount: Double = 0.0
     
     
-    @Published var isButtonActive: Bool = false
     @Published var storeName: String = ""
     @Published var budget: String = ""
     @Published var tax: String = ""
@@ -119,6 +118,15 @@ class ShoppingTripViewModel: ObservableObject {
            
     }
     
+    func updateTrip(trip: Trip, storeName: String, budget: Double, tax: Int) {
+        trip.storeName = storeName
+        trip.budget = budget
+        trip.tax = tax
+        
+        save()
+        queryTrips()
+    }
+    
     func deleteTrip(at offsets: IndexSet) {
         guard let modelContext = modelContext else {
             self.error = OtherErrors.nilContext
@@ -131,6 +139,23 @@ class ShoppingTripViewModel: ObservableObject {
         save()
         queryTrips()
     }
+    
+    
+    //validation for add new trip form
+    func isTripValid() -> Bool {
+        if !storeName.isEmpty && (Double(budget) ?? 0) > 0 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func resetTripForm() {
+        storeName = ""
+        budget = ""
+        tax = ""
+    }
+    
     
     func addNewProduct(name: String, price: Double, quantity: Int, discount: Int, totalPrice: Double, trip: Trip) {
         guard let modelContext = modelContext else {
@@ -183,29 +208,7 @@ class ShoppingTripViewModel: ObservableObject {
         }
     }
     
-    //form validation:
-    // trip
-//    func isTripValid() -> Bool {
-//        if !storeName.isEmpty && (Double(budget) ?? 0) > 0 {
-//            return true
-//        } else {
-//            return false
-//        }
-//    }
-    
-    func isTripValid() -> Bool {
-        if !storeName.isEmpty && (Double(budget) ?? 0) > 0 {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    // product
-    func productFormValidation() {
-        
-    }
-    
+   
     //mainpageviewmodel:
     func calculateTotals() {
         //reset value

@@ -8,7 +8,7 @@
 import Foundation
 
 class ProductViewModel: ObservableObject {
-    @Published var name: String = ""
+    @Published var name: String = "Product"
     
     @Published var price: String = "" {
         didSet {
@@ -40,10 +40,9 @@ class ProductViewModel: ObservableObject {
     
     var taxRate: Int = 0
     
-    
     private func calculateTotalPrice() {
         let priceValue = Double(price) ?? 0
-        let quantityValue = Double(quantity) ?? 0
+        let quantityValue = Double(quantity) ?? 1
         let discountValue = Double(discount) ?? 0
         let discountMultiplier = 1 - (discountValue / 100)
         
@@ -52,21 +51,21 @@ class ProductViewModel: ObservableObject {
     
     private func calculateTotalTax() {
         let priceValue = Double(price) ?? 0
-        let quantityValue = Double(quantity) ?? 0
+        let quantityValue = Double(quantity) ?? 1
         let taxMultiplier = Double(taxRate) / 100
         totalTax = priceValue * quantityValue * taxMultiplier
     }
     
     private func calculateTotalDiscount() {
         let priceValue = Double(price) ?? 0
-        let quantityValue = Double(quantity) ?? 0
+        let quantityValue = Double(quantity) ?? 1
         let discountValue = (Double(discount) ?? 0) / 100
         totalDiscount = priceValue * quantityValue * discountValue
     }
     
     func isNotExceedBudget(trip: Trip) -> Bool {
             let priceValue = Double(price) ?? 0
-            let quantityValue = Double(quantity) ?? 0
+            let quantityValue = Double(quantity) ?? 1
             let discountValue = Double(discount) ?? 0
             let discountMultiplier = 1 - (discountValue / 100)
             
@@ -75,4 +74,19 @@ class ProductViewModel: ObservableObject {
             
             return newTotalExpense <= trip.budget
         }
+    
+    //validation for add new trip form
+    func isProductValid() -> Bool {
+        if !price.isEmpty {
+            return true
+        }
+        return false
+    }
+    
+    func resetProductForm() {
+        name = ""
+        price = ""
+        quantity = ""
+        discount = ""
+    }
 }
