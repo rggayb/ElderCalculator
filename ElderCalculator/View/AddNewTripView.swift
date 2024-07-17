@@ -47,8 +47,7 @@ struct AddNewTripView: View {
                                         HStack(spacing:4){
                                             Text("Rp")
                                                 .foregroundColor(.textColor5)
-                                            TextField("", text: $viewModel.budget)
-                                                .keyboardType(.numberPad)
+                                            TextFieldWithDoneButton(text: $viewModel.budget, placeholder: "")
                                         }
                                     }
                                 }
@@ -71,10 +70,9 @@ struct AddNewTripView: View {
                                         HStack{
                                             Text("Tax")
                                                 .font(.system(size: 16, weight: .semibold))
-                                            HStack {
-                                                TextField("0", text: $viewModel.tax)
-                                                    .keyboardType(.numberPad)
-                                                    .multilineTextAlignment(.trailing)
+                                            Spacer()
+                                            HStack(spacing:8){
+                                                TextFieldWithDoneButton(text: $viewModel.tax, placeholder: "0", alignment: .right)
                                                 Text("% VAT")
                                             }
                                         }
@@ -93,6 +91,11 @@ struct AddNewTripView: View {
                         budget: Double(viewModel.budget) ?? 0,
                         tax: Int(viewModel.tax) ?? 0
                     )
+                    // change date to now
+                    viewModel.selectedDate = Date()
+                    // recalculate card for selected month
+                    viewModel.calculateTotalsForSelectedMonth()
+                    
                     dismiss()
                 }) {
                     RoundedRectangle(cornerRadius: 10)

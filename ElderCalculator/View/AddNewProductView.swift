@@ -15,12 +15,14 @@ struct AddNewProductView: View {
     
     @ObservedObject var viewModel: ShoppingTripViewModel
     @StateObject var productViewModel = ProductViewModel()
+    @ObservedObject var cartViewModel: CartViewModel
     
     let categories: [String] = ["Fruit", "Vegetable", "Dairy", "Meat"]
     
     @State var showAlert: Bool = false
     var alertMessage: String = "Adding this product will exceed your budget. Do you want to proceed?"
-
+    
+    @State var showComplete: Bool = false
     
     var body: some View {
         // full background
@@ -49,13 +51,13 @@ struct AddNewProductView: View {
                                                 .font(.system(size: 16, weight: .semibold))
                                                 .foregroundColor(.textColor6)
                                             // value total expense bulan itu
-                                            Text("Rp \((productViewModel.totalPrice), specifier: "%.0f")")
+                                            Text("Rp \(productViewModel.totalPrice, specifier: "%.0f")")
                                                 .font(.system(size: 32, weight: .bold))
                                                 .foregroundStyle(.textColor2)
                                             // value "bugget left" = "budget left gede" - "total price itu"
-                                            Text("Rp ... Budget Left")
+                                            Text("Rp \(cartViewModel.budgetLeft, specifier: "%.0f") Budget Left")
                                                 .font(.system(size: 16, weight: .regular))
-                                                .foregroundStyle(.textColor2)
+                                                .foregroundStyle(.textColor3)
                                         }
                                         Spacer()
                                     }
@@ -71,7 +73,7 @@ struct AddNewProductView: View {
                                             .frame(width: UIScreen.main.bounds.width/2.6, height: 34)
                                             .overlay{
                                                 HStack(spacing:8){
-                                                    Text("... Item in Cart")
+                                                    Text("\(cartViewModel.totalItem) Item in Cart")
                                                     Image(systemName: "cart.fill.badge.plus")
                                                 }
                                                 .font(.system(size: 16, weight: .semibold))
@@ -97,18 +99,18 @@ struct AddNewProductView: View {
                                             .font(.system(size: 16, weight: .semibold))
                                         Text("Tax")
                                             .font(.system(size: 16, weight: .semibold))
-                                            .foregroundColor(.textColor6)
                                         Spacer()
                                     }
+                                    .foregroundColor(.textColor6)
                                     Text("\(productViewModel.totalTax, specifier: "%.0f")")
                                         .font(.system(size: 20, weight: .semibold))
+                                        .foregroundStyle(.textColor3)
                                     // butuh operan persen taxnya
-                                    Text("...% VAT")
+                                    Text("\(trip.tax)% VAT")
                                         .font(.system(size: 12, weight: .semibold))
                                         .foregroundColor(.textColor6)
                                 }
                                 .padding()
-                                .foregroundColor(.textColor2)
                                 .background(Image(.cardBackground3).resizable())
                             }
                         RoundedRectangle(cornerRadius: 10)
@@ -121,15 +123,15 @@ struct AddNewProductView: View {
                                             .font(.system(size: 16, weight: .semibold))
                                         Text("Saved")
                                             .font(.system(size: 16, weight: .semibold))
-                                            .foregroundColor(.textColor6)
                                         Spacer()
                                     }
+                                    .foregroundColor(.textColor6)
                                     Text("Rp \(productViewModel.totalDiscount, specifier: "%.0f")")
                                         .font(.system(size: 20, weight: .semibold))
+                                        .foregroundStyle(.textColor3)
                                     Spacer()
                                 }
                                 .padding()
-                                .foregroundColor(.textColor2)
                                 .background(Image(.cardBackground3).resizable())
                             }
                     }
@@ -173,8 +175,7 @@ struct AddNewProductView: View {
                                     .font(.system(size: 16, weight: .semibold))
                                 Spacer()
                                 HStack(spacing:8){
-                                    TextField("0", text: $productViewModel.discount)
-                                        .keyboardType(.numberPad)
+                                    TextFieldWithDoneButton(text: $productViewModel.discount, placeholder: "0", alignment: .right)
                                         .font(.system(size: 16, weight: .regular))
                                     Text("% Off")
                                         .font(.system(size: 16, weight: .regular))
@@ -182,6 +183,7 @@ struct AddNewProductView: View {
                                 .multilineTextAlignment(.trailing)
                                 
                             }
+                            .padding(.vertical, 2)
                             Divider()
                             HStack{
                                 Text("Quantity")
@@ -199,8 +201,8 @@ struct AddNewProductView: View {
                 
                 Spacer()
                 
-                Button (action: {
-                    //check if product price exceed budget or not
+                Button(action: {
+                    // Check if the product price exceeds the budget or not
                     if productViewModel.isNotExceedBudget(trip: trip) {
                         viewModel.addNewProduct(
                             name: productViewModel.name,
@@ -208,33 +210,45 @@ struct AddNewProductView: View {
                             quantity: Int(productViewModel.quantity) ?? 1,
                             discount: Int(productViewModel.discount) ?? 0,
                             totalPrice: productViewModel.totalPrice,
-                            trip: trip)
+                            trip: trip
+                        )
                         
-                        //add pop up for product saved
+                        // change date to now
+                        viewModel.selectedDate = Date()
+                        // recalculate card for selected month
+                        viewModel.calculateTotalsForSelectedMonth()
                         
-                        
-                        //reset texfield value
-                        productViewModel.resetProductForm()
-                        
+                        // Play sound and haptic feedback
                         AddItemSound.shared.playSound(named: "ScanSound")
                         AddItemSound.shared.triggerHapticFeedback()
+                        
+                        // Show the complete popup
+                        showComplete = true
+                        
+                        // Delay the reset and dismiss of the popup
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { // Adjust time as needed
+                            showComplete = false
+                            productViewModel.resetProductForm()
+                        }
+                        
+                        viewModel.calculateTotalsForSelectedMonth()
                     } else {
+                        // Play sound and haptic feedback
+                        AddItemSound.shared.playSound(named: "WarningSound")
+                        AddItemSound.shared.triggerHapticFeedback()
                         showAlert = true
                     }
-                    viewModel.calculateTotals()
                 }) {
                     RoundedRectangle(cornerRadius: 10)
                         .frame(height: 50)
                         .foregroundColor(productViewModel.isProductValid() ? .iconColor1 : .containerColor1.opacity(4/3))
-                        .overlay{
-                            // validasi
-                            Text("Save")
+                        .overlay {
+                            Text("Add to Cart")
                                 .font(.system(size: 20, weight: .bold))
                                 .foregroundColor(productViewModel.isProductValid() ? .textColor2 : .textColor5)
-                                .padding()
                         }
                 }
-                .disabled(!productViewModel.isProductValid())
+                .disabled(!productViewModel.isProductValid() || showComplete)
             }
             .onAppear {
                 productViewModel.taxRate = trip.tax
@@ -250,7 +264,12 @@ struct AddNewProductView: View {
                         totalPrice: productViewModel.totalPrice,
                         trip: trip
                     )
-                    viewModel.calculateTotals()
+                    
+                    // change date to now
+                    viewModel.selectedDate = Date()
+                    // recalculate card for selected month
+                    viewModel.calculateTotalsForSelectedMonth()
+                    
                     AddItemSound.shared.playSound(named: "ScanSound")
                     AddItemSound.shared.triggerHapticFeedback()
                     dismiss()
@@ -260,6 +279,19 @@ struct AddNewProductView: View {
             }
             .frame(width: UIScreen.main.bounds.width-32)
             .padding(.vertical, 48)
+            if showComplete{
+                ZStack{
+                    Color.black.opacity(0.2).edgesIgnoringSafeArea(.all)
+                    VStack{
+                        Image(systemName: "checkmark.circle")
+                            .font(.system(size: 72))
+                            .animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/, value: 1)
+                        Text("Added")
+                            .font(.system(size: 28, weight: .regular))
+                    }
+                }
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            }
         }
         .frame(width: UIScreen.main.bounds.width)
         .background(.colorBackground2)

@@ -4,14 +4,15 @@
     "" : {
 
     },
-    "... Item in Cart" : {
-
-    },
-    "...% VAT" : {
-
-    },
     "% Off" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "% Diskon"
+          }
+        }
+      }
     },
     "% VAT" : {
 
@@ -60,10 +61,10 @@
         }
       }
     },
-    "%lf" : {
+    "%lld" : {
 
     },
-    "%lld" : {
+    "%lld Item in Cart" : {
 
     },
     "%lld Qty" : {
@@ -89,9 +90,6 @@
         }
       }
     },
-    "2024" : {
-
-    },
     "Add item" : {
       "localizations" : {
         "id" : {
@@ -101,6 +99,12 @@
           }
         }
       }
+    },
+    "Add to Cart" : {
+
+    },
+    "Added" : {
+
     },
     "Budget\t\t" : {
       "localizations" : {
@@ -131,6 +135,9 @@
         }
       }
     },
+    "Change the store name, revise your budget, and update the tax rate." : {
+
+    },
     "Continue" : {
 
     },
@@ -157,9 +164,6 @@
           }
         }
       }
-    },
-    "Edit your trip" : {
-
     },
     "Enter discount" : {
       "localizations" : {
@@ -234,9 +238,6 @@
         }
       }
     },
-    "July" : {
-
-    },
     "Key" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -247,6 +248,9 @@
           }
         }
       }
+    },
+    "Month" : {
+
     },
     "My Cart" : {
 
@@ -340,9 +344,6 @@
         }
       }
     },
-    "Re-input the store name \n state your budget and tax." : {
-
-    },
     "Recent Trip" : {
 
     },
@@ -356,10 +357,10 @@
         }
       }
     },
-    "Rp ... Budget Left" : {
+    "Rp %.0f" : {
 
     },
-    "Rp %.0f" : {
+    "Rp %.0f Budget Exceeded" : {
 
     },
     "Rp %.0f Budget Left" : {
@@ -394,6 +395,9 @@
         }
       }
     },
+    "Select Month and Year" : {
+
+    },
     "Select Product" : {
 
     },
@@ -426,7 +430,7 @@
     "Tap the %@ button to add\na new item to your cart." : {
 
     },
-    "Tap the 􀁍 button to add\na new trip to your list." : {
+    "Tap the %@ button to add\na new trip to your list." : {
 
     },
     "Tax" : {
@@ -471,6 +475,12 @@
           }
         }
       }
+    },
+    "Update Store Details" : {
+
+    },
+    "Year" : {
+
     },
     "Your cart is empty" : {
 

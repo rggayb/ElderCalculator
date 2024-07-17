@@ -48,7 +48,7 @@ struct UpdateTripView: View {
                                         HStack(spacing:4){
                                             Text("Rp")
                                                 .foregroundColor(.textColor5)
-                                            TextField("\(trip.budget)", text: $viewModel.budget)
+                                            TextField("\(trip.budget, specifier: "%.0f")", text: $viewModel.budget)
                                                 .keyboardType(.numberPad)
                                         }
                                     }
@@ -60,9 +60,9 @@ struct UpdateTripView: View {
                         VStack {
                             Section(header:
                                 HStack {
-                                Text("Specify Tax Percentage for this Store")
+                                    Text("Specify Tax Percentage for this Store")
                                     .font(.system(size: 16, weight: .semibold))
-                                Spacer()
+                                    Spacer()
                                 }
                             ){
                                 RoundedRectangle(cornerRadius: 10)

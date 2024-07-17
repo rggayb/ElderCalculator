@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainPageView: View {
     @State private var isAddNewTripPresented: Bool = false
+    @State private var isDatePickerPresented: Bool = false
     @StateObject var viewModel = ShoppingTripViewModel(inMemory: false)
     
     
@@ -41,7 +42,6 @@ struct MainPageView: View {
                         }
                         
                         // Inside Container
-                        // buat bisa di click, tinggal button buat pop ganti tanggal atau kalo mau diganti by chevron kiri kanan atau slider jg bisa
                         RoundedRectangle(cornerRadius: 10)
                             .frame(height: UIScreen.main.bounds.height/4)
                             .overlay{
@@ -56,6 +56,7 @@ struct MainPageView: View {
                                                 Text("Rp \(viewModel.totalExpense, specifier: "%.0f")")
                                                     .font(.system(size: 40, weight: .bold))
                                             }
+                                            .foregroundStyle(.textColor1)
                                             Spacer()
                                         }
                                         
@@ -84,6 +85,7 @@ struct MainPageView: View {
                                                     .font(.system(size: 20, weight: .semibold))
                                             }
                                         }
+                                        .foregroundStyle(.textColor1)
                                     }
                                     .padding()
                                     
@@ -96,13 +98,9 @@ struct MainPageView: View {
                                                 .foregroundColor(.containerColor1)
                                                 .frame(width: UIScreen.main.bounds.width/4, height: 34)
                                                 .overlay{
-                                                    // Date picker atau data date dari SwiftData as an interface biar bisa dipake buat filtering si card perbulannya
-                                                    // dummy month
-                                                    HStack(spacing:5){
-                                                        Text("July")
-                                                        Text("2024")
-                                                    }
-                                                    .font(.system(size: 16, weight: .semibold))
+                                                    Text(DateFormatter.monthYear.string(from:viewModel.selectedDate))
+                                                        .foregroundStyle(.textColor1)
+                                                        .font(.system(size: 16, weight: .semibold))
                                                 }
                                         }
                                         Spacer()
@@ -115,6 +113,14 @@ struct MainPageView: View {
                                     .resizable())
                             }
                         
+                    }
+                    .onTapGesture {
+                        isDatePickerPresented.toggle()
+                    }
+                    .sheet(isPresented: $isDatePickerPresented){
+                        DatePickerView(viewModel: viewModel)
+                            .presentationDetents([.height(UIScreen.main.bounds.width+32)])
+                            .presentationDragIndicator(.visible)
                     }
                     
                     // Recent trip
@@ -135,7 +141,7 @@ struct MainPageView: View {
                                     Text("No Trips Yet?")
                                         .font(.system(size: 20, weight: .bold))
                                     .foregroundColor(.textColor3)
-                                    Text("Tap the 􀁍 button to add\na new trip to your list.")
+                                    Text("Tap the \(Image(systemName: "plus.circle.fill")) button to add\na new trip to your list.")
                                         .font(.system(size: 16, weight: .regular))
                                         .foregroundColor(.textColor4)
                                 }
@@ -148,7 +154,7 @@ struct MainPageView: View {
                                 ForEach(viewModel.trips) { trip in
                                     let cartViewModel = CartViewModel(trip: trip)
                                     NavigationLink(destination:
-                                                   ShoppingCartPageView(trip: trip, viewModel: viewModel, cartViewModel: cartViewModel)){
+                                        ShoppingCartPageView(trip: trip, viewModel: viewModel, cartViewModel: cartViewModel)){
                                         HStack(spacing:12){
                                             RoundedRectangle(cornerRadius: 6)
                                                 .frame(width: 48, height: 48)
@@ -178,7 +184,10 @@ struct MainPageView: View {
                                 }
                                 .onDelete(perform: {
                                     indexes in viewModel.deleteTrip(at: indexes)
-                                    viewModel.calculateTotals()
+                                    // change date to now
+                                    viewModel.selectedDate = Date()
+                                    // recalculate card for selected month
+                                    viewModel.calculateTotalsForSelectedMonth()
                                 })
                                 .listRowSeparator(.hidden)
                                 .padding()

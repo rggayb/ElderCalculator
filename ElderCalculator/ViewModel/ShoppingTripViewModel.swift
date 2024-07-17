@@ -12,13 +12,13 @@ class ShoppingTripViewModel: ObservableObject {
     
     @Published var trips: [Trip] = [] {
         didSet {
-            calculateTotals()
+            calculateTotalsForSelectedMonth()
         }
     }
     
     @Published var products: [Product] = [] {
         didSet {
-            calculateTotals()
+            calculateTotalsForSelectedMonth()
         }
     }
     
@@ -33,6 +33,8 @@ class ShoppingTripViewModel: ObservableObject {
     @Published var budget: String = ""
     @Published var tax: String = ""
     
+    @Published var selectedDate: Date = Date()
+    @Published var selectedMonthTrips: [Trip] = []
     
     enum OtherErrors: Error {
         case nilContext
@@ -103,19 +105,16 @@ class ShoppingTripViewModel: ObservableObject {
             self.error = OtherErrors.nilContext
             return
         }
-
-            let date = Date()
-            let newTrip = Trip(
-                date: date,
-                storeName: storeName,
-                budget: Double(budget) ,
-                tax: Int(tax))
-            modelContext.insert(newTrip)
-            save()
-            queryTrips()
         
-//            isButtonActive = false
-           
+        let date = Date()
+        let newTrip = Trip(
+            date: date,
+            storeName: storeName,
+            budget: Double(budget),
+            tax: Int(tax))
+        modelContext.insert(newTrip)
+        save()
+        queryTrips()
     }
     
     func updateTrip(trip: Trip, storeName: String, budget: Double, tax: Int) {
@@ -141,9 +140,10 @@ class ShoppingTripViewModel: ObservableObject {
     }
     
     
-    //validation for add new trip form
+    // Validation for add new trip form
     func isTripValid() -> Bool {
-        if !storeName.isEmpty && (Double(budget) ?? 0) > 0 {
+        let cleanedBudget = budget.replacingOccurrences(of: ".", with: "")
+        if !storeName.isEmpty && (Double(cleanedBudget) ?? 0) > 0 {
             return true
         } else {
             return false
@@ -169,7 +169,6 @@ class ShoppingTripViewModel: ObservableObject {
             quantity: quantity,
             discount: discount,
             totalPrice: totalPrice
-            
         )
         modelContext.insert(newProduct)
         trip.addProduct(newProduct)
@@ -194,7 +193,7 @@ class ShoppingTripViewModel: ObservableObject {
     
     
     
-    // saving any pending changes
+    // Saving any pending changes
     private func save() {
         guard let modelContext = modelContext else {
             self.error = OtherErrors.nilContext
@@ -208,15 +207,23 @@ class ShoppingTripViewModel: ObservableObject {
         }
     }
     
-   
+    
     //mainpageviewmodel:
-    func calculateTotals() {
-        //reset value
+    func calculateTotalsForSelectedMonth() {
+        //reset values
         totalExpense = 0
         totalTax = 0
         totalDiscount = 0
         
-        for trip in trips {
+        //filter trips by the selected month
+        let calendar = Calendar.current
+        selectedMonthTrips = trips.filter { trip in
+            calendar.isDate(trip.date, equalTo: selectedDate, toGranularity: .month) &&
+            calendar.isDate(trip.date, equalTo: selectedDate, toGranularity: .year)
+        }
+        
+        //calculate totals for the filtered trips
+        for trip in selectedMonthTrips {
             for product in trip.products {
                 totalExpense += product.totalPrice
                 totalTax += product.price * Double(trip.tax) / 100

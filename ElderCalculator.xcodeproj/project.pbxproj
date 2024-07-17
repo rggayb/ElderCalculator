@@ -23,8 +23,11 @@
 		462293372C3BA7F80044370A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 462293362C3BA7F80044370A /* Preview Assets.xcassets */; };
 		BF18AA112C466E2B00A3BEA6 /* AddItemSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF18AA102C466E2B00A3BEA6 /* AddItemSound.swift */; };
 		BF18AA132C46721F00A3BEA6 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BF18AA122C46721F00A3BEA6 /* Localizable.xcstrings */; };
-		BF18AA172C46724600A3BEA6 /* ErrorSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF18AA152C46724600A3BEA6 /* ErrorSound.mp3 */; };
 		BF18AA182C46724600A3BEA6 /* ScanSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF18AA162C46724600A3BEA6 /* ScanSound.mp3 */; };
+		BF18AA1C2C47742B00A3BEA6 /* TextFieldWithDoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF18AA1B2C47742B00A3BEA6 /* TextFieldWithDoneButton.swift */; };
+		BF18AA1E2C47AAF300A3BEA6 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF18AA1D2C47AAF300A3BEA6 /* DatePickerView.swift */; };
+		BF18AA212C47ABF600A3BEA6 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF18AA202C47ABF600A3BEA6 /* DateFormatter.swift */; };
+		BF18AA252C47B56C00A3BEA6 /* WarningSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF18AA242C47B56C00A3BEA6 /* WarningSound.mp3 */; };
 		BF4916EB2C3CDA90000F8596 /* SFProDisplay-Bold.OTF in Resources */ = {isa = PBXBuildFile; fileRef = BF4916E22C3CDA90000F8596 /* SFProDisplay-Bold.OTF */; };
 		BF4916EC2C3CDA90000F8596 /* SFProDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF4916E32C3CDA90000F8596 /* SFProDisplay-Heavy.otf */; };
 		BF4916ED2C3CDA90000F8596 /* SFProDisplay-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF4916E42C3CDA90000F8596 /* SFProDisplay-Light.otf */; };
@@ -71,8 +74,11 @@
 		462293362C3BA7F80044370A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BF18AA102C466E2B00A3BEA6 /* AddItemSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemSound.swift; sourceTree = "<group>"; };
 		BF18AA122C46721F00A3BEA6 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		BF18AA152C46724600A3BEA6 /* ErrorSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ErrorSound.mp3; sourceTree = "<group>"; };
 		BF18AA162C46724600A3BEA6 /* ScanSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ScanSound.mp3; sourceTree = "<group>"; };
+		BF18AA1B2C47742B00A3BEA6 /* TextFieldWithDoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithDoneButton.swift; sourceTree = "<group>"; };
+		BF18AA1D2C47AAF300A3BEA6 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		BF18AA202C47ABF600A3BEA6 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		BF18AA242C47B56C00A3BEA6 /* WarningSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WarningSound.mp3; sourceTree = "<group>"; };
 		BF4916E22C3CDA90000F8596 /* SFProDisplay-Bold.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.OTF"; sourceTree = "<group>"; };
 		BF4916E32C3CDA90000F8596 /* SFProDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Heavy.otf"; sourceTree = "<group>"; };
 		BF4916E42C3CDA90000F8596 /* SFProDisplay-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Light.otf"; sourceTree = "<group>"; };
@@ -168,9 +174,8 @@
 				DA78ECE02C3D281F0035232E /* View */,
 				BF4916F32C3CDAA3000F8596 /* Info.plist */,
 				4622932F2C3BA7F60044370A /* ElderCalculatorApp.swift */,
+				BF18AA1F2C47AB9D00A3BEA6 /* Helper & Extension */,
 				462293312C3BA7F60044370A /* ContentView.swift */,
-				BF4916F42C3CDAD1000F8596 /* FontExtension.swift */,
-				BFF3FC452C3FC12B00935B57 /* ColorExtension.swift */,
 				1A40BF232C3F818E00B46E3F /* PersistenceController.swift */,
 				BF4916EA2C3CDA90000F8596 /* Font */,
 				1A660D012C3CDFEC00C9C2D9 /* Model */,
@@ -193,10 +198,21 @@
 		BF18AA142C46722900A3BEA6 /* Audio Files */ = {
 			isa = PBXGroup;
 			children = (
-				BF18AA152C46724600A3BEA6 /* ErrorSound.mp3 */,
 				BF18AA162C46724600A3BEA6 /* ScanSound.mp3 */,
+				BF18AA242C47B56C00A3BEA6 /* WarningSound.mp3 */,
 			);
 			path = "Audio Files";
+			sourceTree = "<group>";
+		};
+		BF18AA1F2C47AB9D00A3BEA6 /* Helper & Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BF18AA102C466E2B00A3BEA6 /* AddItemSound.swift */,
+				BF18AA202C47ABF600A3BEA6 /* DateFormatter.swift */,
+				BFF3FC452C3FC12B00935B57 /* ColorExtension.swift */,
+				BF4916F42C3CDAD1000F8596 /* FontExtension.swift */,
+			);
+			path = "Helper & Extension";
 			sourceTree = "<group>";
 		};
 		BF4916EA2C3CDA90000F8596 /* Font */ = {
@@ -220,7 +236,6 @@
 				DA66FFA92C3E2E87002CBF9F /* ShoppingTripViewModel.swift */,
 				DAA8D1BC2C43E92E00CC5D17 /* CartViewModel.swift */,
 				DAA8D1BE2C43EC3600CC5D17 /* AddProductViewModel.swift */,
-				BF18AA102C466E2B00A3BEA6 /* AddItemSound.swift */,
 				DAA8D1DE2C45923100CC5D17 /* ProductDetailViewModel.swift */,
 			);
 			path = ViewModel;
@@ -239,12 +254,14 @@
 		DA78ECE02C3D281F0035232E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BF18AA1B2C47742B00A3BEA6 /* TextFieldWithDoneButton.swift */,
 				BFF3FC532C40CEB100935B57 /* MainPageView.swift */,
 				BFF3FC912C42E4D800935B57 /* ShoppingCartPageView.swift */,
 				DA78ECE32C3D53DC0035232E /* AddNewTripView.swift */,
 				DA78ECEA2C3D846E0035232E /* AddNewProductView.swift */,
 				DAA8D1DC2C458DEE00CC5D17 /* DetailProductView.swift */,
 				DA5B0B392C46CE4300C6853E /* UpdateTripView.swift */,
+				BF18AA1D2C47AAF300A3BEA6 /* DatePickerView.swift */,
 				DA78ECE52C3D74190035232E /* Components */,
 			);
 			path = View;
@@ -317,12 +334,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF4916EB2C3CDA90000F8596 /* SFProDisplay-Bold.OTF in Resources */,
+				BF18AA252C47B56C00A3BEA6 /* WarningSound.mp3 in Resources */,
 				462293372C3BA7F80044370A /* Preview Assets.xcassets in Resources */,
 				BF18AA132C46721F00A3BEA6 /* Localizable.xcstrings in Resources */,
 				BF4916F12C3CDA90000F8596 /* SFProDisplay-Thin.otf in Resources */,
 				BF4916EF2C3CDA90000F8596 /* SFProDisplay-Regular.OTF in Resources */,
 				BF4916EE2C3CDA90000F8596 /* SFProDisplay-Medium.OTF in Resources */,
-				BF18AA172C46724600A3BEA6 /* ErrorSound.mp3 in Resources */,
 				BF4916F02C3CDA90000F8596 /* SFProDisplay-Semibold.otf in Resources */,
 				BF4916ED2C3CDA90000F8596 /* SFProDisplay-Light.otf in Resources */,
 				BF4916F22C3CDA90000F8596 /* SFProDisplay-Ultralight.otf in Resources */,
@@ -339,11 +356,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF18AA1C2C47742B00A3BEA6 /* TextFieldWithDoneButton.swift in Sources */,
 				BFF3FC482C400C9000935B57 /* ElderCalculatorApp.swift in Sources */,
 				BFF3FC472C400C6F00935B57 /* FontExtension.swift in Sources */,
 				DA78ECBF2C3CF0210035232E /* Trip.swift in Sources */,
 				DA78ECE42C3D53DC0035232E /* AddNewTripView.swift in Sources */,
 				DAA8D1DF2C45923100CC5D17 /* ProductDetailViewModel.swift in Sources */,
+				BF18AA1E2C47AAF300A3BEA6 /* DatePickerView.swift in Sources */,
 				DA78ECC12C3CFFEC0035232E /* Product.swift in Sources */,
 				DA78ECEB2C3D846E0035232E /* AddNewProductView.swift in Sources */,
 				462293322C3BA7F60044370A /* ContentView.swift in Sources */,
@@ -364,6 +383,7 @@
 				1A660D072C3CFD5C00C9C2D9 /* PriceInput.swift in Sources */,
 				1A660D0B2C3CFF3C00C9C2D9 /* TotalSpendings.swift in Sources */,
 				1A8B04A62C3E6ACF000C9AAA /* ItemList.swift in Sources */,
+				BF18AA212C47ABF600A3BEA6 /* DateFormatter.swift in Sources */,
 				1A8B04992C3E62A3000C9AAA /* CategoryInput.swift in Sources */,
 				BFF3FC542C40CEB100935B57 /* MainPageView.swift in Sources */,
 				1A8B049B2C3E62C2000C9AAA /* QuantityInput.swift in Sources */,
@@ -533,7 +553,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ElderCalculator/Preview Content\"";
-				DEVELOPMENT_TEAM = F7WR45KMA2;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ElderCalculator/Info.plist;
