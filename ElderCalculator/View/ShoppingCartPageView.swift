@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShoppingCartPageView: View {
     @State private var isAddNewProductPresented: Bool = false
-    //    @State private var isDetailProductPresented: Bool = false
+    @State private var isEditTripPresented: Bool = false
     
     @Bindable var trip: Trip
     @ObservedObject var viewModel: ShoppingTripViewModel
@@ -33,13 +33,16 @@ struct ShoppingCartPageView: View {
                             Spacer()
                             // Edit Trips
                             Button(action: {
-                                
+                                isEditTripPresented.toggle()
                             }) {
                                 Image(systemName: "pencil.circle.fill")
                                     .font(.system(size: 36))
                                     .foregroundColor(.buttonColor1)
                             }
                             // .sheet
+                            .sheet(isPresented: $isEditTripPresented, content: {
+                                UpdateTripView(trip: trip, viewModel: viewModel)
+                            })
                             
                             // Add trips
                             Button(action: {
@@ -95,7 +98,7 @@ struct ShoppingCartPageView: View {
                                     .padding([.top, .trailing])
                                 }
                                 .foregroundColor(.textColor2)
-                                .background(Image(.cardBackground2).resizable())
+                                .background(cartViewModel.isExceedBudget() ? Image(.cardBackground3) : Image(.cardBackground2).resizable())
                             }
                         
                         HStack(spacing:12){
@@ -148,6 +151,13 @@ struct ShoppingCartPageView: View {
                     }
                     
                     // My cart
+                    if trip.products.isEmpty {
+                        //tampilin image empty card
+                        Image(systemName: "cart")
+                        
+                    } else {
+                        //tampilin list product
+                    }
                         
                     VStack(spacing:12){
                         HStack {
@@ -157,80 +167,62 @@ struct ShoppingCartPageView: View {
                             Spacer()
                         }
                         
-                        if trip.products.isEmpty {
-                            Spacer()
-                            VStack(spacing:24){
-                                Image(.noCart)
-                                    .frame(width: 131, height: 128)
-                                VStack(spacing:8){
-                                    Text("Your cart is empty")
-                                        .font(.system(size: 20, weight: .bold))
-                                    .foregroundColor(.textColor3)
-                                    Text("Tap the \(Image(systemName: "plus.circle.fill")) button to add\na new item to your cart.")
-                                        .font(.system(size: 16, weight: .regular))
-                                        .foregroundColor(.textColor4)
-                                }
-                            }
-                            .multilineTextAlignment(.center)
-                            Spacer()
-                        }else{
-                            List{
-                                ForEach(trip.products) { product in
-                                    VStack {
-                                        HStack(spacing:12){
-                                            RoundedRectangle(cornerRadius: 6)
-                                                .frame(width: 48, height: 48)
-                                                .foregroundColor(.white)
-                                                .overlay{
-                                                    Image(systemName: "basket.fill")
-                                                        .foregroundColor(.iconColor1)
-                                                }
-                                            
-                                            VStack(alignment:.leading){
-                                                Text("\(product.name)")
-                                                    .font(.system(size: 16, weight: .semibold))
-                                                    .foregroundColor(.textColor3)
-                                                Text("\(product.quantity) Qty")
-                                                    .font(.system(size: 12, weight: .regular))
-                                                    .foregroundColor(.textColor4)
+                        List{
+                            ForEach(trip.products) { product in
+                                VStack {
+                                    HStack(spacing:12){
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .frame(width: 48, height: 48)
+                                            .foregroundColor(.white)
+                                            .overlay{
+                                                Image(systemName: "basket.fill")
+                                                    .foregroundColor(.iconColor1)
                                             }
-                                            
-                                            Spacer()
-                                            
-                                            Text("Rp \(product.totalPrice, specifier: "%.0f")")
-                                                .font(.system(size: 20, weight: .semibold))
+                                        
+                                        VStack(alignment:.leading){
+                                            Text("\(product.name)")
+                                                .font(.system(size: 16, weight: .semibold))
                                                 .foregroundColor(.textColor3)
+                                            Text("\(product.quantity) Qty")
+                                                .font(.system(size: 12, weight: .regular))
+                                                .foregroundColor(.textColor4)
                                         }
-                                        .listRowSeparator(.hidden)
-                                        .padding()
-                                        .background(
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .foregroundColor(.containerColor2)
-                                            // klo over budget .colorContainer4
-                                        )
-                                        .frame(height: 64)
+                                        
+                                        Spacer()
+                                        
+                                        Text("Rp \(product.totalPrice, specifier: "%.0f")")
+                                            .font(.system(size: 20, weight: .semibold))
+                                            .foregroundColor(.textColor3)
                                     }
-                                    .onTapGesture {
-                                        selectedProduct = product
-                                    }
-                                    .sheet(item: $selectedProduct) { selectedProduct in
-                                        let productDetailViewModel = ProductDetailViewModel(product: selectedProduct, trip: trip)
-                                        DetailProductView(trip: trip, product: selectedProduct, productDetailViewModel: productDetailViewModel)
-                                            .presentationDetents([.height(UIScreen.main.bounds.width)])
-                                            .presentationDragIndicator(.visible)
-                                    }
+                                    .listRowSeparator(.hidden)
+                                    .padding()
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .foregroundColor(.containerColor2)
+                                        // klo over budget .colorContainer4
+                                    )
+                                    .frame(height: 64)
                                 }
-                                .onDelete(perform: {
-                                    indexes in viewModel.deleteProduct(indexes: indexes, from: trip)
-                                    viewModel.calculateTotals()
-                                })
-                                .navigationTitle("Cart")
+                                .onTapGesture {
+                                    selectedProduct = product
+                                }
+                                .sheet(item: $selectedProduct) { selectedProduct in
+                                    let productDetailViewModel = ProductDetailViewModel(product: selectedProduct, trip: trip)
+                                    DetailProductView(trip: trip, product: selectedProduct, productDetailViewModel: productDetailViewModel)
+                                        .presentationDetents([.height(UIScreen.main.bounds.width)])
+                                        .presentationDragIndicator(.visible)
+                                }
                             }
-                            .frame(width: UIScreen.main.bounds.width)
-                            .listStyle(.plain)
-                            .listRowSeparator(.hidden)
-
+                            .onDelete(perform: {
+                                indexes in viewModel.deleteProduct(indexes: indexes, from: trip)
+                                viewModel.calculateTotals()
+                            })
+                            .navigationTitle("Cart")
                         }
+                        .frame(width: UIScreen.main.bounds.width)
+                        .listStyle(.plain)
+                        .listRowSeparator(.hidden)
+                        
                         Spacer()
                     }
                     
@@ -250,4 +242,3 @@ struct ShoppingCartPageView: View {
         .background(.colorbackground1)
     }
 }
-

@@ -216,29 +216,21 @@ struct AddNewProductView: View {
                         //reset texfield value
                         productViewModel.resetProductForm()
                         
-//                        dismiss()
                         AddItemSound.shared.playSound(named: "ScanSound")
                         AddItemSound.shared.triggerHapticFeedback()
                     } else {
-                        //show alert if product price exceed budget
                         showAlert = true
                     }
                     viewModel.calculateTotals()
                 }) {
                     RoundedRectangle(cornerRadius: 10)
                         .frame(height: 50)
-                    // kalo valid
                         .foregroundColor(productViewModel.isProductValid() ? .iconColor1 : .containerColor1.opacity(4/3))
-                    // blm valid
-//                        .foregroundColor(.containerColor1.opacity(4/3))
                         .overlay{
                             // validasi
                             Text("Save")
                                 .font(.system(size: 20, weight: .bold))
-                            // klo valid
-                                .foregroundColor(.textColor2)
-                            // blm valid
-//                                .foregroundColor(.textColor5)
+                                .foregroundColor(productViewModel.isProductValid() ? .textColor2 : .textColor5)
                                 .padding()
                         }
                 }
@@ -269,7 +261,7 @@ struct AddNewProductView: View {
             .frame(width: UIScreen.main.bounds.width-32)
             .padding(.vertical, 48)
         }
-        .background(.colorBackground2)
         .frame(width: UIScreen.main.bounds.width)
+        .background(.colorBackground2)
     }
 }

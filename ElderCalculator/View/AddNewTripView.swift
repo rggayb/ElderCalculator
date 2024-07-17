@@ -97,18 +97,11 @@ struct AddNewTripView: View {
                 }) {
                     RoundedRectangle(cornerRadius: 10)
                         .frame(height: 50)
-                        // kalo valid
                         .foregroundColor(viewModel.isTripValid() ? .iconColor1 : .containerColor1.opacity(4/3))
-                        // blm valid
-//                        .foregroundColor(.containerColor1.opacity(4/3))
                         .overlay{
-                            // ini bisa di modif kalo udah ke validasi bisa ganti warna (basednya di figma)
                             Text("Start Shopping")
                                 .font(.system(size: 20, weight: .bold))
-                                // klo valid
-                                .foregroundColor(.textColor2)
-                                // blm valid
-//                                .foregroundColor(.textColor5)
+                                .foregroundColor(viewModel.isTripValid() ? .textColor2 : .textColor5)
                                 .padding()
                         }
                 }

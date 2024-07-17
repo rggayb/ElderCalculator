@@ -20,9 +20,9 @@ struct UpdateTripView: View {
                 VStack(spacing: 48){
                     // headline
                     VStack(spacing: 8){
-                        Text("Edit your trip")
+                        Text("Update Store Details")
                             .font(.system(size: 32, weight: .bold))
-                        Text("Re-input the store name \n state your budget and tax.")
+                        Text("Change the store name, revise your budget, and update the tax rate.")
                             .font(.system(size: 20, weight: .regular))
                             .multilineTextAlignment(.center)
                     }
@@ -99,22 +99,15 @@ struct UpdateTripView: View {
                 }) {
                     RoundedRectangle(cornerRadius: 10)
                         .frame(height: 50)
-                        // kalo valid
                         .foregroundColor(viewModel.isTripValid() ? .iconColor1 : .containerColor1.opacity(4/3))
-                        // blm valid
-//                        .foregroundColor(.containerColor1.opacity(4/3))
                         .overlay{
-                            // ini bisa di modif kalo udah ke validasi bisa ganti warna (basednya di figma)
                             Text("Save")
                                 .font(.system(size: 20, weight: .bold))
-                                // klo valid
-                                .foregroundColor(.textColor2)
-                                // blm valid
-//                                .foregroundColor(.textColor5)
+                                .foregroundColor(viewModel.isTripValid() ? .textColor2 : .textColor5)
                                 .padding()
                         }
                 }
-//                .disabled(!viewModel.isTripValid())
+                .disabled(!viewModel.isTripValid())
             }
             .frame(width: UIScreen.main.bounds.width-48)
             .padding(.vertical, 48)
