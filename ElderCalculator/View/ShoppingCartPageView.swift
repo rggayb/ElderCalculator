@@ -40,6 +40,7 @@ struct ShoppingCartPageView: View {
                             }
                             .sheet(isPresented: $isEditTripPresented, content: {
                                 UpdateTripView(trip: trip, viewModel: viewModel)
+                                    .presentationDragIndicator(.visible)
                             })
                             
                             // Add trips
