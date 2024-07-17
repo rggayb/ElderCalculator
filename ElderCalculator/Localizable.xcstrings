@@ -60,6 +60,9 @@
         }
       }
     },
+    "%lf" : {
+
+    },
     "%lld" : {
 
     },
@@ -70,6 +73,9 @@
 
     },
     "0" : {
+
+    },
+    "1" : {
 
     },
     "11" : {
@@ -95,9 +101,6 @@
           }
         }
       }
-    },
-    "Add New Item" : {
-
     },
     "Budget\t\t" : {
       "localizations" : {
@@ -154,6 +157,9 @@
           }
         }
       }
+    },
+    "Edit your trip" : {
+
     },
     "Enter discount" : {
       "localizations" : {
@@ -266,6 +272,9 @@
         }
       }
     },
+    "No Trips Yet?" : {
+
+    },
     "price" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -330,6 +339,9 @@
           }
         }
       }
+    },
+    "Re-input the store name \n state your budget and tax." : {
+
     },
     "Recent Trip" : {
 
@@ -411,6 +423,12 @@
         }
       }
     },
+    "Tap the %@ button to add\na new item to your cart." : {
+
+    },
+    "Tap the 􀁍 button to add\na new trip to your list." : {
+
+    },
     "Tax" : {
       "localizations" : {
         "id" : {
@@ -453,6 +471,9 @@
           }
         }
       }
+    },
+    "Your cart is empty" : {
+
     }
   },
   "version" : "1.0"

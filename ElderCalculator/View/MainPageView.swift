@@ -127,77 +127,72 @@ struct MainPageView: View {
                         }
                         
                         if viewModel.trips.isEmpty {
-                            //image empty cart
-                        } else {
-                            //tampilin list trip
-                        }
-                        
-                        
-                        List {
-                            ForEach(viewModel.trips) { trip in
-                                let cartViewModel = CartViewModel(trip: trip)
-                                NavigationLink(destination:
-                                               ShoppingCartPageView(trip: trip, viewModel: viewModel, cartViewModel: cartViewModel)){
-                                    HStack(spacing:12){
-                                        RoundedRectangle(cornerRadius: 6)
-                                            .frame(width: 48, height: 48)
-                                            .foregroundColor(.white)
-                                            .overlay{
-                                                Image(systemName: "cart.fill")
-                                                    .foregroundColor(.iconColor1)
-                                            }
-                                        
-                                        VStack(alignment:.leading){
-                                            Text(trip.storeName)
-                                                .font(.system(size: 16, weight: .semibold))
-                                                .foregroundColor(.textColor3)
-                                            Text(trip.date,
-                                                 format: Date.FormatStyle(date: .long, time: .none))
-                                                .font(.system(size: 12, weight: .regular))
-                                                .foregroundColor(.textColor4)
-                                        }
-                                        
-                                        Spacer()
-                                        
-                                        Text("Rp \(Int(cartViewModel.totalExpense))")
-                                            .font(.system(size: 20, weight: .semibold))
-                                            .foregroundColor(.textColor3)
-                                    }
+                            Spacer()
+                            VStack(spacing:24){
+                                Image(.noTrip)
+                                    .frame(width: 131, height: 128)
+                                VStack(spacing:8){
+                                    Text("No Trips Yet?")
+                                        .font(.system(size: 20, weight: .bold))
+                                    .foregroundColor(.textColor3)
+                                    Text("Tap the 􀁍 button to add\na new trip to your list.")
+                                        .font(.system(size: 16, weight: .regular))
+                                        .foregroundColor(.textColor4)
                                 }
                             }
-                            .onDelete(perform: {
-                                indexes in viewModel.deleteTrip(at: indexes)
-                                viewModel.calculateTotals()
-                            })
-                            .listRowSeparator(.hidden)
-                            .padding()
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .foregroundColor(.containerColor2)
-                                // klo over budget .containerColor3
-                            )
-                            .frame(height: 64)
+                            .multilineTextAlignment(.center)
+                            Spacer()
+                            
+                        } else {
+                            List {
+                                ForEach(viewModel.trips) { trip in
+                                    let cartViewModel = CartViewModel(trip: trip)
+                                    NavigationLink(destination:
+                                                   ShoppingCartPageView(trip: trip, viewModel: viewModel, cartViewModel: cartViewModel)){
+                                        HStack(spacing:12){
+                                            RoundedRectangle(cornerRadius: 6)
+                                                .frame(width: 48, height: 48)
+                                                .foregroundColor(.white)
+                                                .overlay{
+                                                    Image(systemName: "cart.fill")
+                                                        .foregroundColor(.iconColor1)
+                                                }
+                                            
+                                            VStack(alignment:.leading){
+                                                Text(trip.storeName)
+                                                    .font(.system(size: 16, weight: .semibold))
+                                                    .foregroundColor(.textColor3)
+                                                Text(trip.date,
+                                                     format: Date.FormatStyle(date: .long, time: .none))
+                                                    .font(.system(size: 12, weight: .regular))
+                                                    .foregroundColor(.textColor4)
+                                            }
+                                            
+                                            Spacer()
+                                            
+                                            Text("Rp \(Int(cartViewModel.totalExpense))")
+                                                .font(.system(size: 20, weight: .semibold))
+                                                .foregroundColor(.textColor3)
+                                        }
+                                    }
+                                }
+                                .onDelete(perform: {
+                                    indexes in viewModel.deleteTrip(at: indexes)
+                                    viewModel.calculateTotals()
+                                })
+                                .listRowSeparator(.hidden)
+                                .padding()
+                                .background(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .foregroundColor(.containerColor2)
+                                    // klo over budget .containerColor3
+                                )
+                                .frame(height: 64)
+                            }
+                            .frame(width: UIScreen.main.bounds.width)
+                            .listStyle(.plain)
+
                         }
-                        .frame(width: UIScreen.main.bounds.width)
-                        .listStyle(.plain)
-                        
-                        // kalo ga ada pake if conditional dari trip (nanti aja lah wkwk)
-//                        Spacer()
-//                        VStack(spacing:24){
-//                            Image(.noTrip)
-//                                .frame(width: 131, height: 128)
-//                            VStack(spacing:8){
-//                                Text("No Trips Yet?")
-//                                    .font(.system(size: 20, weight: .bold))
-//                                .foregroundColor(.textColor3)
-//                                Text("Tap the 􀁍 button to add\na new trip to your list.")
-//                                    .font(.system(size: 16, weight: .regular))
-//                                    .foregroundColor(.textColor4)
-//                            }
-//                        }
-//                        .multilineTextAlignment(.center)
-//                        Spacer()
-                        
                         Spacer()
                     }
                     

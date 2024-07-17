@@ -266,8 +266,6 @@ struct AddNewProductView: View {
             } message: {
                 Text(alertMessage)
             }
-
-            
             .frame(width: UIScreen.main.bounds.width-32)
             .padding(.vertical, 48)
         }
