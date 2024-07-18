@@ -582,7 +582,7 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rp Melebihi Anggaran"
+            "value" : "Rp %.0f Melebihi Anggaran"
           }
         }
       }
@@ -592,7 +592,7 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rp %.0f Anggaran tersisa"
+            "value" : "Rp %.0f Anggaran Tersisa"
           }
         }
       }
