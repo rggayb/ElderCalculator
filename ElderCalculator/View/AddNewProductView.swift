@@ -201,9 +201,7 @@ struct AddNewProductView: View {
                                 Text("Quantity")
                                     .font(.system(size: 16, weight: .semibold))
                                 Spacer()
-                                TextField("1", text: $productViewModel.quantity)
-                                    .keyboardType(.numberPad)
-                                    .multilineTextAlignment(.trailing)
+                                TextFieldWithDoneButton(text: $productViewModel.quantity, placeholder: "1", alignment: .right)
                                     .font(.system(size: 16, weight: .regular))
                                 
                             }
