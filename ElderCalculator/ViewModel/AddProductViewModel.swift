@@ -13,24 +13,24 @@ class ProductViewModel: ObservableObject {
     
     @Published var price: String = "" {
         didSet {
-            calculateTotalPrice()
             calculateTotalTax()
+            calculateTotalPrice()
             calculateTotalDiscount()
         }
     }
     
     @Published var quantity: String = "" {
         didSet {
-            calculateTotalPrice()
             calculateTotalTax()
+            calculateTotalPrice()
             calculateTotalDiscount()
         }
     }
     
     @Published var discount: String = "" {
         didSet {
-            calculateTotalPrice()
             calculateTotalTax()
+            calculateTotalPrice()
             calculateTotalDiscount()
         }
     }
