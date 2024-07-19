@@ -112,9 +112,6 @@
     "0" : {
 
     },
-    "1" : {
-
-    },
     "11" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -133,6 +130,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tambah barang"
+          }
+        }
+      }
+    },
+    "Add new item" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tambah barang baru"
           }
         }
       }

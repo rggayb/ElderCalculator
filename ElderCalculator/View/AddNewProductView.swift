@@ -40,14 +40,9 @@ struct AddNewProductView: View {
         ZStack {
             VStack(spacing:32){
                 // Headline
-                //                HStack{
-                // ganti variable nama toko pake binding maybe?
-                Text("\(trip.storeName)")
+                Text("Add new item")
                     .font(.system(size: 32, weight: .bold))
                     .foregroundColor(.textColor1)
-                //                    Spacer()
-                //                }
-                // Shopping trip + container
                 VStack(spacing:16){
                     // Inside Container
                     RoundedRectangle(cornerRadius: 10)
@@ -197,12 +192,48 @@ struct AddNewProductView: View {
                             }
                             .padding(.vertical, 2)
                             Divider()
-                            HStack{
+                            HStack(spacing: 8){
                                 Text("Quantity")
                                     .font(.system(size: 16, weight: .semibold))
-                                Spacer()
-                                TextFieldWithDoneButton(text: $productViewModel.quantity, placeholder: "1", alignment: .right)
+                                
+                                TextFieldWithDoneButton(text: $productViewModel.quantity, placeholder: "1", alignment: .left)
                                     .font(.system(size: 16, weight: .regular))
+                                Spacer()
+                                RoundedRectangle(cornerRadius: 8)
+                                    .frame(width: 96, height: 32)
+                                    .foregroundColor(.containerColor1)
+                                    .overlay{
+                                        ZStack{
+                                            HStack{
+                                                // button tolerance
+                                                // minus
+                                                Button(action: {
+                                                    // logic minus
+                                                    print("minus")
+                                                }) {
+                                                    RoundedRectangle(cornerRadius: 8)
+                                                        .frame(width: 48, height: 32)
+                                                        .opacity(0)
+                                                }
+                                                // plus
+                                                Button(action: {
+                                                    // logic minus
+                                                    print("plus")
+                                                }) {
+                                                    RoundedRectangle(cornerRadius: 8)
+                                                        .frame(width: 48, height: 32)
+                                                        .opacity(0)
+                                                }
+                                            }
+                                            HStack(spacing:16){
+                                                Image(systemName: "minus")
+                                                Divider()
+                                                Image(systemName: "plus")
+                                            }
+                                            .font(.system(size: 16))
+                                            .foregroundColor(.textColor1)
+                                        }
+                                    }
                                 
                             }
                         }
