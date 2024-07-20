@@ -35,7 +35,7 @@ struct DatePickerView: View {
         ZStack {
             VStack {
                 Text("Select Month and Year")
-                
+                    .font(.system(size: 16, weight: .semibold))
                 HStack {
                     Picker("Month", selection: $selectedMonthIndex) {
                         ForEach(0..<months.count, id: \.self) { index in

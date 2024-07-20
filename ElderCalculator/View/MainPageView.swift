@@ -93,15 +93,11 @@ struct MainPageView: View {
                                     VStack {
                                         HStack {
                                             Spacer()
-                                            
-                                            RoundedRectangle(cornerRadius: 6)
-                                                .foregroundColor(.containerColor1)
-                                                .frame(width: UIScreen.main.bounds.width/4, height: 34)
-                                                .overlay{
-                                                    Text(DateFormatter.monthYear.string(from:viewModel.selectedDate))
-                                                        .foregroundStyle(.textColor1)
-                                                        .font(.system(size: 16, weight: .semibold))
-                                                }
+                                            Text(DateFormatter.monthYear.string(from:viewModel.selectedDate))
+                                                .foregroundStyle(.textColor1)
+                                                .font(.system(size: 16, weight: .semibold))
+                                                .padding(8)
+                                                .background(RoundedRectangle(cornerRadius: 6).foregroundColor(.containerColor1))
                                         }
                                         Spacer()
                                         
@@ -134,19 +130,28 @@ struct MainPageView: View {
                         
                         if viewModel.trips.isEmpty {
                             Spacer()
-                            VStack(spacing:24){
-                                Image(.noTrip)
-                                    .frame(width: 131, height: 128)
-                                VStack(spacing:8){
-                                    Text("No Trips Yet?")
-                                        .font(.system(size: 20, weight: .bold))
-                                    .foregroundColor(.textColor3)
-                                    Text("Tap the \(Image(systemName: "plus.circle.fill")) button to add\na new trip to your list.")
-                                        .font(.system(size: 16, weight: .regular))
-                                        .foregroundColor(.textColor4)
+                            Button(action:{
+                                viewModel.resetTripForm()
+                                isAddNewTripPresented.toggle()
+                            }){
+                                VStack(spacing:24){
+                                    Image(.noTrip)
+                                        .opacity(0.5)
+                                    VStack(spacing:8){
+                                        Text("No Trips Yet?")
+                                            .font(.system(size: 20, weight: .bold))
+                                            .foregroundColor(.textColor3)
+                                        Text("Tap the \(Image(systemName: "plus.circle.fill")) button to add\na new trip to your list.")
+                                            .font(.system(size: 16, weight: .regular))
+                                            .foregroundColor(.textColor4)
+                                    }
                                 }
+                                .multilineTextAlignment(.center)
                             }
-                            .multilineTextAlignment(.center)
+                            .sheet(isPresented: $isAddNewTripPresented) {
+                                AddNewTripView(viewModel: viewModel)
+                                    .presentationDragIndicator(.visible)
+                            }
                             Spacer()
                             
                         } else {

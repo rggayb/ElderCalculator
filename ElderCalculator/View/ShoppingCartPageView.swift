@@ -43,7 +43,7 @@ struct ShoppingCartPageView: View {
                                     .presentationDragIndicator(.visible)
                             })
                             
-                            // Add trips
+                            // Add cart
                             Button(action: {
                                 isAddNewProductPresented.toggle()
                             }) {
@@ -60,17 +60,19 @@ struct ShoppingCartPageView: View {
                         
                         // Inside Container
                         RoundedRectangle(cornerRadius: 10)
-                            .frame(height: UIScreen.main.bounds.height/8)
+                            .frame(height: UIScreen.main.bounds.height/6)
                             .overlay{
                                 ZStack {
                                     VStack{
                                         HStack {
-                                            VStack(alignment: .leading){
+                                            VStack(alignment: .leading, spacing: 8){
                                                 Text("Total Expense")
                                                     .font(.system(size: 16, weight: .semibold))
                                                     .foregroundColor(.textColor3)
                                                 Text("Rp \(cartViewModel.totalExpense, specifier: "%.0f")")
                                                     .font(.system(size: 32, weight: .bold))
+                                                    .foregroundColor(cartViewModel.isExceedBudget() ? .textColor8 : .textColor2)
+                                                Divider()
                                                 Text(cartViewModel.isExceedBudget() ? "Rp \(abs(cartViewModel.budgetLeft), specifier: "%.0f") Budget Exceeded" : "Rp \(cartViewModel.budgetLeft, specifier: "%.0f") Budget Left")
                                                     .font(.system(size: 16, weight: .regular))
                                                     .foregroundStyle(.textColor1)
@@ -85,21 +87,17 @@ struct ShoppingCartPageView: View {
                                     VStack {
                                         HStack {
                                             Spacer()
-                                            RoundedRectangle(cornerRadius: 6)
-                                                .foregroundColor(.clear)
-                                                .frame(width: UIScreen.main.bounds.width/4, height: 34)
-                                                .overlay{
-                                                    Text("\(cartViewModel.trip.date, format: Date.FormatStyle(date: .long, time: .none))")
-                                                        .foregroundColor(.textColor3)
-                                                        .font(.system(size: 16, weight: .semibold))
-                                                }
+                                            Text("\(cartViewModel.trip.date, format: Date.FormatStyle(date: .long, time: .none))")
+                                                .foregroundColor(.textColor3)
+                                                .font(.system(size: 16, weight: .semibold))
+                                                .padding(8)
+                                                .background(RoundedRectangle(cornerRadius: 6).foregroundColor(.clear))
                                         }
                                         Spacer()
                                         
                                     }
                                     .padding([.top, .trailing])
                                 }
-                                .foregroundColor(.textColor2)
                                 .background(cartViewModel.isExceedBudget() ? Image(.cardBackground4).resizable() : Image(.cardBackground2).resizable())
                             }
                         
@@ -164,19 +162,27 @@ struct ShoppingCartPageView: View {
                         
                         if trip.products.isEmpty {
                             Spacer()
-                            VStack(spacing:24){
-                                Image(.noCart)
-                                    .frame(width: 131, height: 128)
-                                VStack(spacing:8){
-                                    Text("Your cart is empty")
-                                        .font(.system(size: 20, weight: .bold))
-                                        .foregroundColor(.textColor3)
-                                    Text("Tap the \(Image(systemName: "plus.circle.fill")) button to add\na new item to your cart.")
-                                        .font(.system(size: 16, weight: .regular))
-                                        .foregroundColor(.textColor4)
+                            Button(action:{
+                                isAddNewProductPresented.toggle()
+                            }){
+                                VStack(spacing:24){
+                                    Image(.noCart)
+                                        .opacity(0.5)
+                                    VStack(spacing:8){
+                                        Text("Your cart is empty")
+                                            .font(.system(size: 20, weight: .bold))
+                                            .foregroundColor(.textColor3)
+                                        Text("Tap the \(Image(systemName: "plus.circle.fill")) button to add\na new item to your cart.")
+                                            .font(.system(size: 16, weight: .regular))
+                                            .foregroundColor(.textColor4)
+                                    }
                                 }
+                                .multilineTextAlignment(.center)
                             }
-                            .multilineTextAlignment(.center)
+                            .sheet(isPresented: $isAddNewProductPresented) {
+                                AddNewProductView(trip: trip, viewModel: viewModel, cartViewModel: cartViewModel)
+                                    .presentationDragIndicator(.visible)
+                            }
                             Spacer()
                         } else {
                             List{
@@ -249,9 +255,10 @@ struct ShoppingCartPageView: View {
                         Text("")
                     }
                 }
-                .frame(width: UIScreen.main.bounds.width-32)
+                .toolbar(.hidden)
             }
             .accentColor(.buttonColor2)
+            .frame(width: UIScreen.main.bounds.width-32)
         }
         .frame(width: UIScreen.main.bounds.width)
         .background(.colorbackground1)

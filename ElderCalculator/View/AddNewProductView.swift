@@ -43,16 +43,16 @@ struct AddNewProductView: View {
                 Text("Add new item")
                     .font(.system(size: 32, weight: .bold))
                     .foregroundColor(.textColor1)
-                VStack(spacing:16){
+                VStack{
                     // Inside Container
                     RoundedRectangle(cornerRadius: 10)
-                        .frame(height: UIScreen.main.bounds.height/8)
+                        .frame(height: UIScreen.main.bounds.height/6)
                         .overlay{
                             ZStack {
                                 // detail container
                                 VStack{
                                     HStack {
-                                        VStack(alignment: .leading){
+                                        VStack(alignment: .leading, spacing: 8){
                                             Text("Total price")
                                                 .font(.system(size: 16, weight: .semibold))
                                                 .foregroundColor(.textColor6)
@@ -60,6 +60,7 @@ struct AddNewProductView: View {
                                             Text("Rp \(productViewModel.totalPrice, specifier: "%.0f")")
                                                 .font(.system(size: 32, weight: .bold))
                                                 .foregroundStyle(.textColor2)
+                                            Divider()
                                             // value "bugget left" = "budget left gede" - "total price itu"
                                             Text("Rp \(cartViewModel.budgetLeft, specifier: "%.0f") Budget Left")
                                                 .font(.system(size: 16, weight: .regular))
@@ -74,17 +75,12 @@ struct AddNewProductView: View {
                                 VStack {
                                     HStack {
                                         Spacer()
-                                        RoundedRectangle(cornerRadius: 6)
-                                            .foregroundColor(.clear)
-                                            .frame(width: UIScreen.main.bounds.width/2.6, height: 34)
-                                            .overlay{
-                                                HStack(spacing:8){
-                                                    Text("\(cartViewModel.totalItem) Item in Cart")
-                                                    Image(systemName: "cart.fill.badge.plus")
-                                                }
-                                                .font(.system(size: 16, weight: .semibold))
-                                                .foregroundColor(.textColor6)
-                                            }
+                                        HStack(spacing:8){
+                                            Text("\(cartViewModel.totalItem) Item in Cart")
+                                            Image(systemName: "cart.fill.badge.plus")
+                                        }
+                                        .font(.system(size: 16, weight: .semibold))
+                                        .foregroundColor(.textColor6)
                                     }
                                     Spacer()
                                     
@@ -94,6 +90,9 @@ struct AddNewProductView: View {
                             .foregroundColor(.textColor2)
                             .background(Image(.cardBackground2).resizable())
                         }
+                    
+                    Divider()
+                        .opacity(0)
                     
                     HStack(spacing:12){
                         RoundedRectangle(cornerRadius: 10)
@@ -296,6 +295,7 @@ struct AddNewProductView: View {
                 }
                 .disabled(!productViewModel.isProductValid() || showComplete)
             }
+            .frame(width: UIScreen.main.bounds.width-32)
             .onAppear {
                 productViewModel.taxRate = trip.tax
             }
@@ -331,6 +331,7 @@ struct AddNewProductView: View {
             }
             .frame(width: UIScreen.main.bounds.width-32)
             .padding(.vertical, 48)
+            
             if showComplete{
                 ZStack{
                     Color.black.opacity(0.2).edgesIgnoringSafeArea(.all)

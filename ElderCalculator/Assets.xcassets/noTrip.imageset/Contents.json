@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "noTrip.png",
+      "filename" : "noTrip.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,7 +12,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "noTripDark.png",
+      "filename" : "noTripDark.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct UpdateTripView: View {
     @Environment(\.dismiss) var dismiss
-    
     @Bindable var trip: Trip
     @ObservedObject var viewModel: ShoppingTripViewModel
     
@@ -48,7 +47,7 @@ struct UpdateTripView: View {
                                         HStack(spacing:4){
                                             Text("Rp")
                                                 .foregroundColor(.textColor5)
-                                            TextFieldWithDoneButton(text: $viewModel.budget, placeholder: "\(trip.budget)", alignment: .left)
+                                            TextFieldWithDoneButton(text: $viewModel.budget, placeholder: "\(Int(trip.budget))", alignment: .left)
                                         }
                                     }
                                 }

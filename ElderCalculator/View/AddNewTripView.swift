@@ -46,7 +46,7 @@ struct AddNewTripView: View {
                                             .font(.system(size: 16, weight: .semibold))
                                         HStack(spacing:4){
                                             Text("Rp")
-                                                .foregroundColor(.textColor5)
+                                                .foregroundColor(viewModel.budget.isEmpty ? .textColor5 : .black)
                                             TextFieldWithDoneButton(text: $viewModel.budget, placeholder: "")
                                         }
                                     }

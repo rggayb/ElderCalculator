@@ -115,6 +115,7 @@
 				DA66FFA82C3E2D6C002CBF9F /* ViewModel */,
 				DA78ECE02C3D281F0035232E /* View */,
 				BF4916F32C3CDAA3000F8596 /* Info.plist */,
+				462293332C3BA7F80044370A /* Assets.xcassets */,
 				BF18AA1F2C47AB9D00A3BEA6 /* Helper & Extension */,
 				462293352C3BA7F80044370A /* Preview Content */,
 			);
@@ -141,7 +142,6 @@
 		BF18AA1F2C47AB9D00A3BEA6 /* Helper & Extension */ = {
 			isa = PBXGroup;
 			children = (
-				462293332C3BA7F80044370A /* Assets.xcassets */,
 				BF4916EA2C3CDA90000F8596 /* Font */,
 				BF18AA102C466E2B00A3BEA6 /* AddItemSound.swift */,
 				BF18AA202C47ABF600A3BEA6 /* DateFormatter.swift */,
