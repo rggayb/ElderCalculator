@@ -10,30 +10,20 @@ import SwiftData
 
 struct AddNewProductView: View {
     @Environment(\.dismiss) private var dismiss
+    @State var isSelectProductNamePresented: Bool = false
     
     @State var trip: Trip
     
     @ObservedObject var viewModel: ShoppingTripViewModel
-    @StateObject var productViewModel = ProductViewModel()
     @ObservedObject var cartViewModel: CartViewModel
+    @StateObject var productViewModel = ProductViewModel()
     
-    let categories: [String] = [
-        NSLocalizedString("Choose item", comment: "picker"),
-        NSLocalizedString("Fruit", comment: "picker"),
-        NSLocalizedString("Vegetable", comment: "picker"),
-        NSLocalizedString("Dairy", comment: "picker"),
-        NSLocalizedString("Meat", comment: "picker"),
-        NSLocalizedString("Noodles", comment: "picker"),
-        NSLocalizedString("Seafood", comment: "picker"),
-        NSLocalizedString("Soap", comment: "picker"),
-        NSLocalizedString("Shampoo", comment: "picker"),
-        NSLocalizedString("Soft Drink", comment: "picker")
-    ]
+    @State var selectedProduct: ProductInfo? = nil
     
     @State var showAlert: Bool = false
     var alertMessage: String = "Adding this product will exceed your budget. Do you want to proceed?"
-    
     @State var showComplete: Bool = false
+    
     
     var body: some View {
         // full background
@@ -151,16 +141,19 @@ struct AddNewProductView: View {
                             Text("Product Name")
                                 .font(.system(size: 16, weight: .semibold))
                             Spacer()
-                            Picker("Select Product", selection: $productViewModel.name) {
-                                ForEach(categories, id: \.self) { category in
-                                    Text(category).tag(category)
-                                }
-                            }
-                            .pickerStyle(MenuPickerStyle())
+                            
+                            Text(selectedProduct?.name ?? NSLocalizedString("Choose item", comment: "productName"))
                             
                         }
                         .padding()
                     }
+                    .onTapGesture {
+                        isSelectProductNamePresented.toggle()
+                    }
+                    .sheet(isPresented: $isSelectProductNamePresented) {
+                        SelectProductView(selectedProduct: $selectedProduct)
+                    }
+                
                 RoundedRectangle(cornerRadius: 10)
                     .frame(width: UIScreen.main.bounds.width-32, height: 132)
                     .foregroundColor(.containerColor3)
@@ -208,6 +201,7 @@ struct AddNewProductView: View {
                                                 // minus
                                                 Button(action: {
                                                     // logic minus
+                                                    productViewModel.subtractQuantity()
                                                     print("minus")
                                                 }) {
                                                     RoundedRectangle(cornerRadius: 8)
@@ -217,6 +211,7 @@ struct AddNewProductView: View {
                                                 // plus
                                                 Button(action: {
                                                     // logic minus
+                                                    productViewModel.addQuantity()
                                                     print("plus")
                                                 }) {
                                                     RoundedRectangle(cornerRadius: 8)
@@ -250,12 +245,13 @@ struct AddNewProductView: View {
                         
                         //add product
                         viewModel.addNewProduct(
-                            name: productViewModel.name,
+                            name: selectedProduct?.name ?? productViewModel.name,
                             price: Double(productViewModel.price) ?? 0,
                             quantity: Int(productViewModel.quantity) ?? 1,
                             discount: Int(productViewModel.discount) ?? 0,
                             totalPrice: productViewModel.totalPrice,
-                            trip: trip
+                            trip: trip, 
+                            imageName: selectedProduct?.imageName ?? "defaultProduct"
                         )
                         
                         // change date to now
@@ -308,12 +304,13 @@ struct AddNewProductView: View {
                     
                     //add product
                     viewModel.addNewProduct(
-                        name: productViewModel.name,
+                        name: selectedProduct?.name ?? productViewModel.name,
                         price: Double(productViewModel.price) ?? 0,
                         quantity: Int(productViewModel.quantity) ?? 1,
                         discount: Int(productViewModel.discount) ?? 0,
                         totalPrice: productViewModel.totalPrice,
-                        trip: trip
+                        trip: trip, 
+                        imageName: selectedProduct?.imageName ?? "defaultProduct"
                     )
                     
                     // change date to now

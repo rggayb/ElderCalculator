@@ -8,7 +8,7 @@
 import Foundation
 
 class ProductViewModel: ObservableObject {
-    @Published var name: String = NSLocalizedString("Choose item", comment: "picker")
+    @Published var name: String = NSLocalizedString("Choose item", comment: "productName")
 
     
     @Published var price: String = "" {
@@ -19,7 +19,7 @@ class ProductViewModel: ObservableObject {
         }
     }
     
-    @Published var quantity: String = "" {
+    @Published var quantity: String = "1" {
         didSet {
             calculateTotalTax()
             calculateTotalPrice()
@@ -40,6 +40,7 @@ class ProductViewModel: ObservableObject {
     @Published var totalDiscount: Double = 0
     
     var taxRate: Int = 0
+    var qty: Int = 1
     
     private func calculateTotalPrice() {
         let priceValue = Double(price) ?? 0
@@ -48,13 +49,22 @@ class ProductViewModel: ObservableObject {
         let discountMultiplier = 1 - (discountValue / 100)
         
         totalPrice = (priceValue * quantityValue * discountMultiplier) + totalTax
+        
+        //to handle 100% discount (free)
+        if discountMultiplier == 0 {
+            totalPrice = 0
+        }
     }
     
     private func calculateTotalTax() {
         let priceValue = Double(price) ?? 0
         let quantityValue = Double(quantity) ?? 1
         let taxMultiplier = Double(taxRate) / 100
-        totalTax = priceValue * quantityValue * taxMultiplier
+        let discountValue = Double(discount) ?? 0
+        let discountMultiplier = 1 - (discountValue / 100)
+        
+        totalTax = priceValue * quantityValue * discountMultiplier * taxMultiplier
+        
     }
     
     private func calculateTotalDiscount() {
@@ -62,6 +72,11 @@ class ProductViewModel: ObservableObject {
         let quantityValue = Double(quantity) ?? 1
         let discountValue = (Double(discount) ?? 0) / 100
         totalDiscount = priceValue * quantityValue * discountValue
+        
+        //to handle 100% discount (free)
+        if discountValue == 1 {
+            totalDiscount = totalDiscount + totalTax
+        }
     }
     
     func isNotExceedBudget(trip: Trip) -> Bool {
@@ -92,8 +107,27 @@ class ProductViewModel: ObservableObject {
     }
     
     func checkSelectedCategory() {
-        if name == NSLocalizedString("Choose item", comment: "picker") {
-            name = NSLocalizedString("Product", comment: "picker")
+        if name == NSLocalizedString("Choose item", comment: "productName") {
+            name = NSLocalizedString("Product", comment: "productName")
         }
     }
+    
+    
+    func addQuantity() {
+        qty += 1
+        quantity = String(qty)
+        
+    }
+    
+    func subtractQuantity() {
+        qty -= 1
+        
+        if qty <= 0 {
+            qty = 1
+        }
+        
+        quantity = String(qty)
+    }
+    
+    
 }

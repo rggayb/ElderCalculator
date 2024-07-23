@@ -164,6 +164,127 @@
         }
       }
     },
+    "Apple" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apel"
+          }
+        }
+      }
+    },
+    "Avocado" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alpukat"
+          }
+        }
+      }
+    },
+    "Banana" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pisang"
+          }
+        }
+      }
+    },
+    "Basil" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kemangi"
+          }
+        }
+      }
+    },
+    "Battery" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baterai"
+          }
+        }
+      }
+    },
+    "Beef" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daging Sapi"
+          }
+        }
+      }
+    },
+    "Beer" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir"
+          }
+        }
+      }
+    },
+    "Beverage" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minuman"
+          }
+        }
+      }
+    },
+    "Blueberry" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bluberi"
+          }
+        }
+      }
+    },
+    "Bread" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Roti"
+          }
+        }
+      }
+    },
+    "Broccoli" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brokoli"
+          }
+        }
+      }
+    },
     "Budget\t\t" : {
       "localizations" : {
         "id" : {
@@ -184,12 +305,56 @@
         }
       }
     },
+    "Butter" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mentega"
+          }
+        }
+      }
+    },
+    "Cabbage" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kubis"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Batal"
+          }
+        }
+      }
+    },
+    "Candy" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permen"
+          }
+        }
+      }
+    },
+    "Carrot" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wortel"
           }
         }
       }
@@ -225,13 +390,79 @@
         }
       }
     },
+    "Cheese" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keju"
+          }
+        }
+      }
+    },
+    "Chicken" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayam"
+          }
+        }
+      }
+    },
+    "Chocolate" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coklat"
+          }
+        }
+      }
+    },
     "Choose item" : {
-      "comment" : "picker",
+      "comment" : "productName",
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pilih"
+          }
+        }
+      }
+    },
+    "Coconut" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kelapa"
+          }
+        }
+      }
+    },
+    "Coffee" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopi"
+          }
+        }
+      }
+    },
+    "Coke" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minuman Soda"
           }
         }
       }
@@ -246,13 +477,80 @@
         }
       }
     },
+    "Cookie" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kue Kering"
+          }
+        }
+      }
+    },
+    "Corn" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jagung"
+          }
+        }
+      }
+    },
+    "Crab" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kepiting"
+          }
+        }
+      }
+    },
+    "Crackers" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biskuit"
+          }
+        }
+      }
+    },
+    "Cucumber" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timun"
+          }
+        }
+      }
+    },
     "Dairy" : {
       "comment" : "picker",
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Produk susu"
+          }
+        }
+      }
+    },
+    "Diaper" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Popok"
           }
         }
       }
@@ -285,6 +583,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Diskon (%):"
+          }
+        }
+      }
+    },
+    "Donut" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donat"
+          }
+        }
+      }
+    },
+    "Dumpling" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dimsum"
+          }
+        }
+      }
+    },
+    "Egg" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telur"
           }
         }
       }
@@ -322,13 +653,36 @@
         }
       }
     },
+    "Fish" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ikan"
+          }
+        }
+      }
+    },
     "Fruit" : {
       "comment" : "picker",
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Buah"
+          }
+        }
+      }
+    },
+    "Garlic" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bawang Putih"
           }
         }
       }
@@ -339,6 +693,72 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Siap-siap belanja"
+          }
+        }
+      }
+    },
+    "Ginger" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jahe"
+          }
+        }
+      }
+    },
+    "Grape" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anggur"
+          }
+        }
+      }
+    },
+    "Hamburger" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Burger"
+          }
+        }
+      }
+    },
+    "Honey" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Madu"
+          }
+        }
+      }
+    },
+    "Hot Dog" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hot Dog"
+          }
+        }
+      }
+    },
+    "Ice Cream" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es Krim"
           }
         }
       }
@@ -375,6 +795,28 @@
         }
       }
     },
+    "Jam" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selai"
+          }
+        }
+      }
+    },
+    "Juice" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jus"
+          }
+        }
+      }
+    },
     "Key" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -389,8 +831,20 @@
     "Key 1" : {
       "extractionState" : "manual"
     },
+    "Kiwi" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kiwi"
+          }
+        }
+      }
+    },
     "Meat" : {
-      "comment" : "picker",
+      "comment" : "productName",
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -453,6 +907,7 @@
     },
     "Noodles" : {
       "comment" : "picker",
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -505,7 +960,7 @@
       }
     },
     "Product" : {
-      "comment" : "picker",
+      "comment" : "productName",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -639,11 +1094,22 @@
     },
     "Seafood" : {
       "comment" : "picker",
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seafood"
+          }
+        }
+      }
+    },
+    "Search product" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cari produk"
           }
         }
       }
@@ -681,6 +1147,7 @@
     },
     "Shampoo" : {
       "comment" : "picker",
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -700,8 +1167,20 @@
         }
       }
     },
+    "Shrimp" : {
+      "comment" : "productName",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Udang"
+          }
+        }
+      }
+    },
     "Soap" : {
       "comment" : "picker",
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -713,6 +1192,7 @@
     },
     "Soft Drink" : {
       "comment" : "picker",
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -856,6 +1336,7 @@
     },
     "Vegetable" : {
       "comment" : "picker",
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {

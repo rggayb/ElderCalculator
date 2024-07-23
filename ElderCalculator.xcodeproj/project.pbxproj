@@ -31,6 +31,8 @@
 		BFF3FC922C42E4D800935B57 /* ShoppingCartPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF3FC912C42E4D800935B57 /* ShoppingCartPageView.swift */; };
 		DA5B0B3A2C46CE4300C6853E /* UpdateTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5B0B392C46CE4300C6853E /* UpdateTripView.swift */; };
 		DA66FFAA2C3E2E87002CBF9F /* ShoppingTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66FFA92C3E2E87002CBF9F /* ShoppingTripViewModel.swift */; };
+		DA74C3582C4E79A600A104BA /* SelectProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA74C3572C4E79A600A104BA /* SelectProductView.swift */; };
+		DA74C35C2C4E9B2C00A104BA /* SelectProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA74C35B2C4E9B2C00A104BA /* SelectProductViewModel.swift */; };
 		DA78ECBF2C3CF0210035232E /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA78ECBE2C3CF0210035232E /* Trip.swift */; };
 		DA78ECC12C3CFFEC0035232E /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA78ECC02C3CFFEC0035232E /* Product.swift */; };
 		DA78ECE42C3D53DC0035232E /* AddNewTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA78ECE32C3D53DC0035232E /* AddNewTripView.swift */; };
@@ -68,6 +70,8 @@
 		BFF3FC912C42E4D800935B57 /* ShoppingCartPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartPageView.swift; sourceTree = "<group>"; };
 		DA5B0B392C46CE4300C6853E /* UpdateTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTripView.swift; sourceTree = "<group>"; };
 		DA66FFA92C3E2E87002CBF9F /* ShoppingTripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTripViewModel.swift; sourceTree = "<group>"; };
+		DA74C3572C4E79A600A104BA /* SelectProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProductView.swift; sourceTree = "<group>"; };
+		DA74C35B2C4E9B2C00A104BA /* SelectProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProductViewModel.swift; sourceTree = "<group>"; };
 		DA78ECBE2C3CF0210035232E /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		DA78ECC02C3CFFEC0035232E /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		DA78ECE32C3D53DC0035232E /* AddNewTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTripView.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				DAA8D1BC2C43E92E00CC5D17 /* CartViewModel.swift */,
 				DAA8D1BE2C43EC3600CC5D17 /* AddProductViewModel.swift */,
 				DAA8D1DE2C45923100CC5D17 /* ProductDetailViewModel.swift */,
+				DA74C35B2C4E9B2C00A104BA /* SelectProductViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 				BFF3FC912C42E4D800935B57 /* ShoppingCartPageView.swift */,
 				DA78ECE32C3D53DC0035232E /* AddNewTripView.swift */,
 				DA78ECEA2C3D846E0035232E /* AddNewProductView.swift */,
+				DA74C3572C4E79A600A104BA /* SelectProductView.swift */,
 				DAA8D1DC2C458DEE00CC5D17 /* DetailProductView.swift */,
 				DA5B0B392C46CE4300C6853E /* UpdateTripView.swift */,
 				BF18AA1D2C47AAF300A3BEA6 /* DatePickerView.swift */,
@@ -291,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF18AA1C2C47742B00A3BEA6 /* TextFieldWithDoneButton.swift in Sources */,
+				DA74C35C2C4E9B2C00A104BA /* SelectProductViewModel.swift in Sources */,
 				BFF3FC482C400C9000935B57 /* ElderCalculatorApp.swift in Sources */,
 				BFF3FC472C400C6F00935B57 /* FontExtension.swift in Sources */,
 				DA78ECBF2C3CF0210035232E /* Trip.swift in Sources */,
@@ -309,6 +316,7 @@
 				BFF3FC542C40CEB100935B57 /* MainPageView.swift in Sources */,
 				DAA8D1DD2C458DEE00CC5D17 /* DetailProductView.swift in Sources */,
 				BFF3FC462C3FC12B00935B57 /* ColorExtension.swift in Sources */,
+				DA74C3582C4E79A600A104BA /* SelectProductView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,7 +481,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ElderCalculator/Preview Content\"";
-				DEVELOPMENT_TEAM = M45X2698V4;
+				DEVELOPMENT_TEAM = 9UQ7N78T5D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ElderCalculator/Info.plist;

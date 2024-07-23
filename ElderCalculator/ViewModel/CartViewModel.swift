@@ -27,7 +27,10 @@ class CartViewModel: ObservableObject {
     @Published var totalItem: Int = 0
     
     func calculateTotalExpense() {
-        totalExpense =  trip.products.reduce(0) { $0 + $1.totalPrice }
+        
+        for product in trip.products {
+            totalExpense += product.totalPrice
+        }
     }
     
     func calculateBudgetLeft() {
@@ -36,12 +39,20 @@ class CartViewModel: ObservableObject {
     
     func calculateTotalTripTax() {
         let taxMultiplier: Double = Double(trip.tax) / 100
-        totalTripTax = trip.products.reduce(0) { $0 + ($1.price * Double($1.quantity)) } * taxMultiplier
+
+        for product in trip.products {
+            let discountMultiplier = 1 - (Double(product.discount) / 100)
+            totalTripTax += product.price * Double(product.quantity) * discountMultiplier * taxMultiplier
+        }
     }
     
     func calculateTotalTripDiscount() {
-        totalTripDiscount = trip.products.reduce(0) { $0 +
-            ((($1.price * Double($1.discount) / 100) * Double($1.quantity))) }
+        
+        for product in trip.products {
+            let discountMultiplier: Double = Double(product.discount) / 100
+            
+            totalTripDiscount += product.price * Double(product.quantity) * discountMultiplier
+        }
     }
     
     func isExceedBudget() -> Bool {

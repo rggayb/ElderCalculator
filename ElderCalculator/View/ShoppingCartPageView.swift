@@ -12,6 +12,7 @@ struct ShoppingCartPageView: View {
     @State private var isEditTripPresented: Bool = false
     
     @Bindable var trip: Trip
+    
     @ObservedObject var viewModel: ShoppingTripViewModel
     @ObservedObject var cartViewModel: CartViewModel
     
@@ -193,12 +194,14 @@ struct ShoppingCartPageView: View {
                                                 .frame(width: 48, height: 48)
                                                 .foregroundColor(.white)
                                                 .overlay{
-                                                    Image(systemName: "basket.fill")
+                                                    Image(product.imageName)
+                                                        .resizable()
+                                                        .frame(width: 30, height: 30, alignment: .center)
                                                         .foregroundColor(.iconColor1)
                                                 }
                                             
                                             VStack(alignment:.leading){
-                                                Text("\(product.name)")
+                                                Text("\(NSLocalizedString(product.name, comment: "productName"))")
                                                     .font(.system(size: 16, weight: .semibold))
                                                     .foregroundColor(.textColor3)
                                                 Text("\(product.quantity) Qty")

@@ -25,12 +25,6 @@ class Trip: Identifiable {
         self.products = []
     }
     
-//    var grandTotal: Double {
-//        let totalProductCost = products.reduce(0.0) { $0 + $1.totalPrice }
-//        let totalCostWithTax = totalProductCost + (totalProductCost * Double(tax) / 100)
-//        return totalCostWithTax.isNaN ? 0 : totalCostWithTax
-//    }
-    
     func addProduct(_ product: Product?) {
         products.append(product!)
     }

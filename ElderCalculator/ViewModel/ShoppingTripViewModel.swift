@@ -22,26 +22,28 @@ class ShoppingTripViewModel: ObservableObject {
         }
     }
     
-    @Published var error: Error? = nil
     
+    // shopping trip card
     @Published var totalExpense: Double = 0.0
     @Published var totalTax: Double = 0.0
     @Published var totalDiscount: Double = 0.0
     
+    @Published var selectedDate: Date = Date()
+    @Published var selectedMonthTrips: [Trip] = []
     
+    // add new trip view model
     @Published var storeName: String = ""
     @Published var budget: String = "" {
         didSet {
             cleanBudget = budget.replacingOccurrences(of: ".", with: "")
         }
     }
-
     private var cleanBudget: String = ""
-
+    
     @Published var tax: String = ""
     
-    @Published var selectedDate: Date = Date()
-    @Published var selectedMonthTrips: [Trip] = []
+    // swift data
+    @Published var error: Error? = nil
     
     enum OtherErrors: Error {
         case nilContext
@@ -172,7 +174,7 @@ class ShoppingTripViewModel: ObservableObject {
     }
     
     
-    func addNewProduct(name: String, price: Double, quantity: Int, discount: Int, totalPrice: Double, trip: Trip) {
+    func addNewProduct(name: String, price: Double, quantity: Int, discount: Int, totalPrice: Double, trip: Trip, imageName: String) {
         guard let modelContext = modelContext else {
             self.error = OtherErrors.nilContext
             return
@@ -183,7 +185,8 @@ class ShoppingTripViewModel: ObservableObject {
             price: price,
             quantity: quantity,
             discount: discount,
-            totalPrice: totalPrice
+            totalPrice: totalPrice, 
+            imageName: imageName
         )
         modelContext.insert(newProduct)
         trip.addProduct(newProduct)
@@ -240,9 +243,13 @@ class ShoppingTripViewModel: ObservableObject {
         //calculate totals for the filtered trips
         for trip in selectedMonthTrips {
             for product in trip.products {
+                let discountMultiplier: Double = 1 - (Double(product.discount) / 100)
+                let taxMultiplier = Double(trip.tax) / 100
+                
                 totalExpense += product.totalPrice
-                totalTax += product.price * Double(trip.tax) / 100
+                totalTax += product.price * Double(product.quantity) * discountMultiplier * taxMultiplier
                 totalDiscount += (product.price * Double(product.discount) / 100) * Double(product.quantity)
+                
             }
         }
     }
