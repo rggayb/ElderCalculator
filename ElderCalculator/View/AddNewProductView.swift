@@ -202,7 +202,6 @@ struct AddNewProductView: View {
                                                 Button(action: {
                                                     // logic minus
                                                     productViewModel.subtractQuantity()
-                                                    print("minus")
                                                 }) {
                                                     RoundedRectangle(cornerRadius: 8)
                                                         .frame(width: 48, height: 32)
@@ -212,7 +211,6 @@ struct AddNewProductView: View {
                                                 Button(action: {
                                                     // logic minus
                                                     productViewModel.addQuantity()
-                                                    print("plus")
                                                 }) {
                                                     RoundedRectangle(cornerRadius: 8)
                                                         .frame(width: 48, height: 32)

@@ -9,29 +9,22 @@ import Foundation
 
 class ProductViewModel: ObservableObject {
     @Published var name: String = NSLocalizedString("Choose item", comment: "productName")
-
     
     @Published var price: String = "" {
         didSet {
-            calculateTotalTax()
-            calculateTotalPrice()
-            calculateTotalDiscount()
+            calculateTotals()
         }
     }
     
     @Published var quantity: String = "1" {
         didSet {
-            calculateTotalTax()
-            calculateTotalPrice()
-            calculateTotalDiscount()
+            calculateTotals()
         }
     }
     
     @Published var discount: String = "" {
         didSet {
-            calculateTotalTax()
-            calculateTotalPrice()
-            calculateTotalDiscount()
+            calculateTotals()
         }
     }
     
@@ -42,6 +35,13 @@ class ProductViewModel: ObservableObject {
     var taxRate: Int = 0
     var qty: Int = 1
     
+    // calculate all total
+    private func calculateTotals() {
+        calculateTotalTax()
+        calculateTotalDiscount()
+        calculateTotalPrice()
+    }
+
     private func calculateTotalPrice() {
         let priceValue = Double(price) ?? 0
         let quantityValue = Double(quantity) ?? 1
@@ -50,7 +50,7 @@ class ProductViewModel: ObservableObject {
         
         totalPrice = (priceValue * quantityValue * discountMultiplier) + totalTax
         
-        //to handle 100% discount (free)
+        // Handle 100% discount (free)
         if discountMultiplier == 0 {
             totalPrice = 0
         }
@@ -64,7 +64,6 @@ class ProductViewModel: ObservableObject {
         let discountMultiplier = 1 - (discountValue / 100)
         
         totalTax = priceValue * quantityValue * discountMultiplier * taxMultiplier
-        
     }
     
     private func calculateTotalDiscount() {
@@ -73,36 +72,33 @@ class ProductViewModel: ObservableObject {
         let discountValue = (Double(discount) ?? 0) / 100
         totalDiscount = priceValue * quantityValue * discountValue
         
-        //to handle 100% discount (free)
+        // Handle 100% discount (free)
         if discountValue == 1 {
-            totalDiscount = totalDiscount + totalTax
+            totalDiscount += totalTax
         }
     }
     
     func isNotExceedBudget(trip: Trip) -> Bool {
-            let priceValue = Double(price) ?? 0
-            let quantityValue = Double(quantity) ?? 1
-            let discountValue = Double(discount) ?? 0
-            let discountMultiplier = 1 - (discountValue / 100)
-            
-            let newProductTotalPrice = (priceValue * quantityValue * discountMultiplier)
-            let newTotalExpense = trip.products.reduce(0) { $0 + $1.totalPrice } + newProductTotalPrice
-            
-            return newTotalExpense <= trip.budget
-        }
+        let priceValue = Double(price) ?? 0
+        let quantityValue = Double(quantity) ?? 1
+        let discountValue = Double(discount) ?? 0
+        let discountMultiplier = 1 - (discountValue / 100)
+        
+        let newProductTotalPrice = priceValue * quantityValue * discountMultiplier
+        let newTotalExpense = trip.products.reduce(0) { $0 + $1.totalPrice } + newProductTotalPrice
+        
+        return newTotalExpense <= trip.budget
+    }
     
-    //validation for add new trip form
+    // validation for add new trip form
     func isProductValid() -> Bool {
-        if !price.isEmpty {
-            return true
-        }
-        return false
+        return !price.isEmpty
     }
     
     func resetProductForm() {
-        name = ""
+        name = NSLocalizedString("Choose item", comment: "productName")
         price = ""
-        quantity = ""
+        quantity = "1"
         discount = ""
     }
     
@@ -112,22 +108,19 @@ class ProductViewModel: ObservableObject {
         }
     }
     
-    
     func addQuantity() {
-        qty += 1
-        quantity = String(qty)
-        
-    }
-    
-    func subtractQuantity() {
-        qty -= 1
-        
-        if qty <= 0 {
-            qty = 1
+            qty += 1
+            quantity = String(qty)
+            
         }
         
-        quantity = String(qty)
-    }
-    
-    
+        func subtractQuantity() {
+            qty -= 1
+            
+            if qty <= 0 {
+                qty = 1
+            }
+            
+            quantity = String(qty)
+        }
 }

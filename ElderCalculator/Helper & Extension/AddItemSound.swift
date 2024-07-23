@@ -31,6 +31,6 @@ class AddItemSound {
     func triggerHapticFeedback() {
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
-        print("Light haptic feedback occurred")
+//        print("Light haptic feedback occurred")
     }
 }
