@@ -173,10 +173,11 @@ struct ShoppingCartPageView: View {
                                         Text("Your cart is empty")
                                             .font(.system(size: 20, weight: .bold))
                                             .foregroundColor(.textColor3)
-                                        Text("Tap the \(Image(systemName: "plus.circle.fill")) button to add\na new item to your cart.")
+                                        Text("Tap the \(Image(systemName: "plus.circle.fill")) button to add a new item to your cart.")
                                             .font(.system(size: 16, weight: .regular))
                                             .foregroundColor(.textColor4)
                                     }
+                                    .frame(width: UIScreen.main.bounds.width/2)
                                 }
                                 .multilineTextAlignment(.center)
                             }

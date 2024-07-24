@@ -33,25 +33,38 @@ struct AddNewTripView: View {
                             .frame(height: 88)
                             .foregroundColor(.containerColor3)
                             .overlay{
-                                VStack{
-                                    HStack{
-                                        Text("Store\t\t")
-                                            .font(.system(size: 16, weight: .semibold))
-                                        TextField("Name", text: $viewModel.storeName)
-                                            .disableAutocorrection(true)
-                                    }
-                                    Divider()
-                                    HStack{
-                                        Text("Budget\t\t")
-                                            .font(.system(size: 16, weight: .semibold))
-                                        HStack(spacing:4){
-                                            Text("Rp")
-                                                .foregroundColor(viewModel.budget.isEmpty ? .textColor5 : .black)
-                                            TextFieldWithDoneButton(text: $viewModel.budget, placeholder: "")
+                                VStack {
+                                    Grid {
+                                        // First row
+                                        GridRow {
+                                            HStack{
+                                                Text("Store")
+                                                    .font(.system(size: 16, weight: .semibold))
+                                                Spacer()
+                                            }
+                                            
+                                            TextField("Name", text: $viewModel.storeName)
+                                                .disableAutocorrection(true)
+                                            Spacer()
+                                        }
+                                        Divider() // Divider between rows
+
+                                        // Second row
+                                        GridRow {
+                                            HStack {
+                                                Text("Budget")
+                                                    .font(.system(size: 16, weight: .semibold))
+                                                Spacer()
+                                            }
+                                            HStack(spacing: 4) {
+                                                Text("Rp")
+                                                    .foregroundColor(viewModel.budget.isEmpty ? .textColor5 : .black)
+                                                TextFieldWithDoneButton(text: $viewModel.budget, placeholder: "")
+                                            }
                                         }
                                     }
+                                    .padding()
                                 }
-                                .padding()
                             }
                         
                         // specify tax

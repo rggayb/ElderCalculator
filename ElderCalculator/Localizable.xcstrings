@@ -285,7 +285,11 @@
         }
       }
     },
+    "Budget" : {
+
+    },
     "Budget\t\t" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -1034,10 +1038,24 @@
       }
     },
     "Rp" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rp"
+          }
+        }
+      }
     },
     "Rp %.0f" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rp %.0f"
+          }
+        }
+      }
     },
     "Rp %.0f Budget Exceeded" : {
       "localizations" : {
@@ -1060,7 +1078,14 @@
       }
     },
     "Rp %lld" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rp %lld"
+          }
+        }
+      }
     },
     "Save" : {
       "localizations" : {
@@ -1222,7 +1247,11 @@
         }
       }
     },
+    "Store" : {
+
+    },
     "Store\t\t" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -1233,6 +1262,7 @@
       }
     },
     "Tap the %@ button to add\na new item to your cart." : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -1243,11 +1273,32 @@
       }
     },
     "Tap the %@ button to add\na new trip to your list." : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ketuk tombol %@ untuk menambahkan perjalanan baru ke daftarmu."
+          }
+        }
+      }
+    },
+    "Tap the %@ button to add a new item to your cart." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the %@ button to add a new item to your cart."
+          }
+        }
+      }
+    },
+    "Tap the %@ button to add a new trip to your list." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the %@ button to add a new trip to your list."
           }
         }
       }

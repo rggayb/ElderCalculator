@@ -141,10 +141,11 @@ struct MainPageView: View {
                                         Text("No Trips Yet?")
                                             .font(.system(size: 20, weight: .bold))
                                             .foregroundColor(.textColor3)
-                                        Text("Tap the \(Image(systemName: "plus.circle.fill")) button to add\na new trip to your list.")
+                                        Text("Tap the \(Image(systemName: "plus.circle.fill")) button to add a new trip to your list.")
                                             .font(.system(size: 16, weight: .regular))
                                             .foregroundColor(.textColor4)
                                     }
+                                    .frame(width: UIScreen.main.bounds.width/2)
                                 }
                                 .multilineTextAlignment(.center)
                             }
