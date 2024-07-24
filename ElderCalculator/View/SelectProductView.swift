@@ -15,38 +15,40 @@ struct SelectProductView: View {
     
     var body: some View {
         NavigationView {
-            
-            VStack {
+            VStack(spacing:0){
                 //textfield
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                    TextField("Search product", text: $selectProductViewModel.searchText)
-                        
-                }
-                .padding(10)
-                .background(Color(.systemGray6))
-                .cornerRadius(5)
-                .padding(.horizontal)
+                RoundedRectangle(cornerRadius: 10)
+                    .frame(width: UIScreen.main.bounds.width-32, height: 36)
+                    .foregroundColor(.containerColor1)
+                    .overlay{
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                            TextField("Search product", text: $selectProductViewModel.searchText)
+                                .disableAutocorrection(true)
+                            
+                        }
+                        .padding(8)
+                        .foregroundColor(.textColor4)
+                    }
                 
                 //list product name & image
                 List {
                     ForEach (selectProductViewModel.filteredProducts.sorted(by: > )) { product in
-                        HStack  {
+                        HStack(spacing:16){
                             Image(product.imageName)
                                 .resizable()
-                                .frame(width: 40, height: 40)
+                                .frame(width: 24, height: 24)
                             Text(product.name)
-                                .font(.title2)
-                                .fontWeight(.semibold)
-                                .scaledToFit()
-                                .minimumScaleFactor(0.6)
-                                .padding()
+                                .font(.system(size: 16, weight: .semibold))
+                                .padding(8)
+                            Spacer()
                         }
+                        .contentShape(RoundedRectangle(cornerRadius: 10))
                         .onTapGesture {
                             selectedProduct = product
                             dismiss()
                         }
-                        
+                        .listRowBackground(Color(.containerColor3))
                     }
                     
                     
@@ -58,11 +60,8 @@ struct SelectProductView: View {
                                 .resizable()
                                 .frame(width: 40, height: 40)
                             Text(selectProductViewModel.searchText)
-                                .font(.title2)
-                                .fontWeight(.semibold)
-                                .scaledToFit()
-                                .minimumScaleFactor(0.6)
-                                .padding()
+                                .font(.system(size: 16, weight: .semibold))
+                                .padding(12)
                         }
                         .onTapGesture {
                             let newProduct = ProductInfo(name: selectProductViewModel.searchText, imageName: "defaultProduct")
@@ -73,9 +72,13 @@ struct SelectProductView: View {
                     }
                     
                 }
+                .background(.colorBackground2)
+                .scrollContentBackground(.hidden)
             }
             .navigationTitle("Select Product")
+            .background(.colorBackground2)
         }
+        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
 }
 

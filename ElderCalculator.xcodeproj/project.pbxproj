@@ -24,6 +24,7 @@
 		BF4916F02C3CDA90000F8596 /* SFProDisplay-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF4916E72C3CDA90000F8596 /* SFProDisplay-Semibold.otf */; };
 		BF4916F12C3CDA90000F8596 /* SFProDisplay-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF4916E82C3CDA90000F8596 /* SFProDisplay-Thin.otf */; };
 		BF4916F22C3CDA90000F8596 /* SFProDisplay-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF4916E92C3CDA90000F8596 /* SFProDisplay-Ultralight.otf */; };
+		BF876D262C50E0E100CEEF76 /* NumberFormatterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF876D252C50E0E000CEEF76 /* NumberFormatterHelper.swift */; };
 		BFF3FC462C3FC12B00935B57 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF3FC452C3FC12B00935B57 /* ColorExtension.swift */; };
 		BFF3FC472C400C6F00935B57 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4916F42C3CDAD1000F8596 /* FontExtension.swift */; };
 		BFF3FC482C400C9000935B57 /* ElderCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4622932F2C3BA7F60044370A /* ElderCalculatorApp.swift */; };
@@ -65,6 +66,7 @@
 		BF4916E92C3CDA90000F8596 /* SFProDisplay-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Ultralight.otf"; sourceTree = "<group>"; };
 		BF4916F32C3CDAA3000F8596 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF4916F42C3CDAD1000F8596 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		BF876D252C50E0E000CEEF76 /* NumberFormatterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterHelper.swift; sourceTree = "<group>"; };
 		BFF3FC452C3FC12B00935B57 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		BFF3FC532C40CEB100935B57 /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
 		BFF3FC912C42E4D800935B57 /* ShoppingCartPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartPageView.swift; sourceTree = "<group>"; };
@@ -146,11 +148,12 @@
 		BF18AA1F2C47AB9D00A3BEA6 /* Helper & Extension */ = {
 			isa = PBXGroup;
 			children = (
-				BF4916EA2C3CDA90000F8596 /* Font */,
-				BF18AA102C466E2B00A3BEA6 /* AddItemSound.swift */,
+				BF876D252C50E0E000CEEF76 /* NumberFormatterHelper.swift */,
 				BF18AA202C47ABF600A3BEA6 /* DateFormatter.swift */,
+				BF18AA102C466E2B00A3BEA6 /* AddItemSound.swift */,
 				BFF3FC452C3FC12B00935B57 /* ColorExtension.swift */,
 				BF4916F42C3CDAD1000F8596 /* FontExtension.swift */,
+				BF4916EA2C3CDA90000F8596 /* Font */,
 			);
 			path = "Helper & Extension";
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				DAA8D1DD2C458DEE00CC5D17 /* DetailProductView.swift in Sources */,
 				BFF3FC462C3FC12B00935B57 /* ColorExtension.swift in Sources */,
 				DA74C3582C4E79A600A104BA /* SelectProductView.swift in Sources */,
+				BF876D262C50E0E100CEEF76 /* NumberFormatterHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

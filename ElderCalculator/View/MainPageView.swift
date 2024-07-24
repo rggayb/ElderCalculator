@@ -52,7 +52,6 @@ struct MainPageView: View {
                                             VStack(alignment: .leading, spacing: 8){
                                                 Text("Total Expense")
                                                     .font(.system(size: 20, weight: .semibold))
-                                                // value total expense bulan itu (mesti diganti variable)
                                                 Text("Rp \(viewModel.totalExpense, specifier: "%.0f")")
                                                     .font(.system(size: 40, weight: .bold))
                                             }
@@ -200,7 +199,6 @@ struct MainPageView: View {
                                 .background(
                                     RoundedRectangle(cornerRadius: 10)
                                         .foregroundColor(.containerColor2)
-                                    // klo over budget .containerColor3
                                 )
                                 .frame(height: 64)
                             }

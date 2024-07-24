@@ -142,7 +142,23 @@ struct AddNewProductView: View {
                                 .font(.system(size: 16, weight: .semibold))
                             Spacer()
                             
-                            Text(selectedProduct?.name ?? NSLocalizedString("Choose item", comment: "productName"))
+                            HStack(spacing: 8){
+                                if let imageName = selectedProduct?.imageName, !imageName.isEmpty {
+                                    Image(imageName)
+                                        .resizable()
+                                        .frame(width: 24, height: 24)
+                                }
+                                if let selectedProductName = selectedProduct?.name {
+                                    Text(selectedProductName)
+                                        .foregroundColor(.textColor9)
+                                }else{
+                                    Text(NSLocalizedString("Choose item", comment: "productName"))
+                                        .foregroundColor(.textColor5)
+                                }
+                                Image(systemName: "chevron.right")
+                            }
+                            .foregroundColor(selectedProduct == nil ? .textColor5 : .textColor9)
+                                
                             
                         }
                         .padding()
@@ -163,9 +179,7 @@ struct AddNewProductView: View {
                                 Text("Price (Rp)")
                                     .font(.system(size: 16, weight: .semibold))
                                 Spacer()
-                                TextField("0", text: $productViewModel.price)
-                                    .keyboardType(.numberPad)
-                                    .multilineTextAlignment(.trailing)
+                                TextFieldWithDoneButton(text: $productViewModel.price, placeholder: "0", alignment: .right)
                                     .font(.system(size: 16, weight: .regular))
                             }
                             Divider()
@@ -185,10 +199,10 @@ struct AddNewProductView: View {
                             .padding(.vertical, 2)
                             Divider()
                             HStack(spacing: 8){
-                                Text("Quantity")
+                                Text("Quantity:")
                                     .font(.system(size: 16, weight: .semibold))
                                 
-                                TextFieldWithDoneButton(text: $productViewModel.quantity, placeholder: "1", alignment: .left)
+                                Text("\(productViewModel.quantity)")
                                     .font(.system(size: 16, weight: .regular))
                                 Spacer()
                                 RoundedRectangle(cornerRadius: 8)

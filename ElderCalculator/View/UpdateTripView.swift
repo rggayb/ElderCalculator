@@ -58,8 +58,8 @@ struct UpdateTripView: View {
                                             }
                                             HStack(spacing: 4) {
                                                 Text("Rp")
-                                                    .foregroundColor(.textColor5)
-                                                TextFieldWithDoneButton(text: $viewModel.budget, placeholder: "\(Int(trip.budget))", alignment: .left)
+                                                    .foregroundColor(viewModel.budget.isEmpty ? .textColor5 : .textColor9)
+                                                TextFieldWithDoneButton(text: $viewModel.budget, placeholder: "\(Int(trip.budget))", alignment: .left, shouldFormatNumber: true)
                                             }
                                         }
                                     }
@@ -84,9 +84,7 @@ struct UpdateTripView: View {
                                             Text("Tax")
                                                 .font(.system(size: 16, weight: .semibold))
                                             HStack {
-                                                TextField("\(trip.tax)", text: $viewModel.tax)
-                                                    .keyboardType(.numberPad)
-                                                    .multilineTextAlignment(.trailing)
+                                                TextFieldWithDoneButton(text: $viewModel.tax, placeholder: "\(trip.tax)", alignment: .right)
                                                 Text("% VAT")
                                             }
                                         }

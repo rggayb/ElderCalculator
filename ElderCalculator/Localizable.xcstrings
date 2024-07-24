@@ -25,10 +25,24 @@
       }
     },
     "%.0f" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%.0f"
+          }
+        }
+      }
     },
     "%@" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
     },
     "%@: %.2f x %lld" : {
       "extractionState" : "stale",
@@ -108,9 +122,6 @@
           }
         }
       }
-    },
-    "0" : {
-
     },
     "11" : {
       "extractionState" : "stale",
@@ -286,7 +297,14 @@
       }
     },
     "Budget" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anggaran"
+          }
+        }
+      }
     },
     "Budget\t\t" : {
       "extractionState" : "stale",
@@ -779,6 +797,17 @@
       }
     },
     "Input the store name and\nstate your budget." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masukkan nama toko dan tentukan budget"
+          }
+        }
+      }
+    },
+    "Input the store name and state your budget." : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -1017,7 +1046,6 @@
       }
     },
     "Quantity:" : {
-      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -1248,7 +1276,14 @@
       }
     },
     "Store" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toko"
+          }
+        }
+      }
     },
     "Store\t\t" : {
       "extractionState" : "stale",

@@ -5,13 +5,14 @@
 //  Created by Vincent Saranang on 17/07/24.
 //
 
-import Foundation
 import SwiftUI
 
 struct TextFieldWithDoneButton: UIViewRepresentable {
     @Binding var text: String
     var placeholder: String
     var alignment: NSTextAlignment = .left
+    var keyboardType: UIKeyboardType = .decimalPad
+    var shouldFormatNumber: Bool = false
 
     class Coordinator: NSObject, UITextFieldDelegate {
         var parent: TextFieldWithDoneButton
@@ -22,7 +23,7 @@ struct TextFieldWithDoneButton: UIViewRepresentable {
 
         func textFieldDidChangeSelection(_ textField: UITextField) {
             let newText = textField.text ?? ""
-            let formattedText = formatNumber(newText)
+            let formattedText = parent.shouldFormatNumber ? NumberFormatterHelper.formatNumber(newText) : newText
             if formattedText != newText {
                 textField.text = formattedText
             }
@@ -31,14 +32,6 @@ struct TextFieldWithDoneButton: UIViewRepresentable {
 
         @objc func doneButtonTapped() {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-        }
-
-        private func formatNumber(_ number: String) -> String {
-            let cleanNumber = number.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-            guard let numberValue = Int(cleanNumber) else { return number }
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            return formatter.string(from: NSNumber(value: numberValue)) ?? number
         }
     }
 
@@ -51,7 +44,7 @@ struct TextFieldWithDoneButton: UIViewRepresentable {
         textField.delegate = context.coordinator
         textField.placeholder = placeholder
         textField.textAlignment = alignment
-        textField.keyboardType = .numberPad
+        textField.keyboardType = keyboardType
         
         let toolbar = UIToolbar()
         toolbar.sizeToFit()

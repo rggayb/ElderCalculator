@@ -21,9 +21,12 @@ struct AddNewTripView: View {
                     VStack(spacing: 8){
                         Text("Get ready to shop")
                             .font(.system(size: 32, weight: .bold))
-                        Text("Input the store name and\nstate your budget.")
-                            .font(.system(size: 20, weight: .regular))
-                            .multilineTextAlignment(.center)
+                        VStack {
+                            Text("Input the store name and state your budget.")
+                                .font(.system(size: 20, weight: .regular))
+                                .multilineTextAlignment(.center)
+                        }
+                        .frame(width: UIScreen.main.bounds.width*3/5)
                     }
                     
                     // all below headline
@@ -45,10 +48,10 @@ struct AddNewTripView: View {
                                             
                                             TextField("Name", text: $viewModel.storeName)
                                                 .disableAutocorrection(true)
-                                            Spacer()
+                                                .padding(.leading, -UIScreen.main.bounds.width/6)
                                         }
                                         Divider() // Divider between rows
-
+                                        
                                         // Second row
                                         GridRow {
                                             HStack {
@@ -58,9 +61,10 @@ struct AddNewTripView: View {
                                             }
                                             HStack(spacing: 4) {
                                                 Text("Rp")
-                                                    .foregroundColor(viewModel.budget.isEmpty ? .textColor5 : .black)
-                                                TextFieldWithDoneButton(text: $viewModel.budget, placeholder: "")
+                                                    .foregroundColor(viewModel.budget.isEmpty ? .textColor5 : .textColor9)
+                                                TextFieldWithDoneButton(text: $viewModel.budget, placeholder: "", shouldFormatNumber: true)
                                             }
+                                            .padding(.leading, -UIScreen.main.bounds.width/6)
                                         }
                                     }
                                     .padding()

@@ -260,9 +260,9 @@ struct ShoppingCartPageView: View {
                     }
                 }
                 .toolbar(.hidden)
+                .frame(width: UIScreen.main.bounds.width-32)
             }
             .accentColor(.buttonColor2)
-            .frame(width: UIScreen.main.bounds.width-32)
         }
         .frame(width: UIScreen.main.bounds.width)
         .background(.colorbackground1)
