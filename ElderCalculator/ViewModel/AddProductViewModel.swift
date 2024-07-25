@@ -84,7 +84,7 @@ class ProductViewModel: ObservableObject {
         let discountValue = Double(discount) ?? 0
         let discountMultiplier = 1 - (discountValue / 100)
         
-        let newProductTotalPrice = priceValue * quantityValue * discountMultiplier
+        let newProductTotalPrice = (priceValue * quantityValue * discountMultiplier) + totalTax
         let newTotalExpense = trip.products.reduce(0) { $0 + $1.totalPrice } + newProductTotalPrice
         
         return newTotalExpense <= trip.budget
