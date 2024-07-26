@@ -52,7 +52,7 @@ struct MainPageView: View {
                                             VStack(alignment: .leading, spacing: 8){
                                                 Text("Total Expense")
                                                     .font(.system(size: 20, weight: .semibold))
-                                                Text("Rp \(viewModel.totalExpense, specifier: "%.0f")")
+                                                Text("\(CurrencyFormatter.formatCurrency(value: viewModel.monthlyTotalExpense ))")
                                                     .font(.system(size: 40, weight: .bold))
                                             }
                                             .foregroundStyle(.textColor1)
@@ -69,7 +69,7 @@ struct MainPageView: View {
                                                     Text("Tax")
                                                         .font(.system(size: 16, weight: .semibold))
                                                 }
-                                                Text("Rp \(Int(viewModel.totalTax))")
+                                                Text(" \(CurrencyFormatter.formatCurrency(value: viewModel.monthlyTotalTax))")
                                                     .font(.system(size: 20, weight: .semibold))
                                             }
                                             Spacer()
@@ -80,7 +80,7 @@ struct MainPageView: View {
                                                     Text("Saved")
                                                         .font(.system(size: 16, weight: .semibold))
                                                 }
-                                                Text("Rp \(Int(viewModel.totalDiscount))")
+                                                Text(" \(CurrencyFormatter.formatCurrency(value: viewModel.monthlyTotalDiscount))")
                                                     .font(.system(size: 20, weight: .semibold))
                                             }
                                         }
@@ -181,7 +181,7 @@ struct MainPageView: View {
                                             
                                             Spacer()
                                             
-                                            Text("Rp \(Int(cartViewModel.totalExpense))")
+                                            Text("\(CurrencyFormatter.formatCurrency(value: cartViewModel.totalExpense))")
                                                 .font(.system(size: 20, weight: .semibold))
                                                 .foregroundColor(.textColor3)
                                         }

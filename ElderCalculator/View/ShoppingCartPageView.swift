@@ -70,11 +70,11 @@ struct ShoppingCartPageView: View {
                                                 Text("Total Expense")
                                                     .font(.system(size: 16, weight: .semibold))
                                                     .foregroundColor(.textColor3)
-                                                Text("Rp \(cartViewModel.totalExpense, specifier: "%.0f")")
+                                                Text("\(CurrencyFormatter.formatCurrency(value: cartViewModel.totalExpense))")
                                                     .font(.system(size: 32, weight: .bold))
                                                     .foregroundColor(cartViewModel.isExceedBudget() ? .textColor8 : .textColor2)
                                                 Divider()
-                                                Text(cartViewModel.isExceedBudget() ? "Rp \(abs(cartViewModel.budgetLeft), specifier: "%.0f") Budget Exceeded" : "Rp \(cartViewModel.budgetLeft, specifier: "%.0f") Budget Left")
+                                                Text(cartViewModel.isExceedBudget() ? " \(CurrencyFormatter.formatCurrency(value: cartViewModel.budgetLeft)) Budget Exceeded" : " \(CurrencyFormatter.formatCurrency(value: cartViewModel.budgetLeft)) Budget Left")
                                                     .font(.system(size: 16, weight: .regular))
                                                     .foregroundStyle(.textColor1)
                                                     
@@ -115,7 +115,7 @@ struct ShoppingCartPageView: View {
                                             Spacer()
                                         }
                                         .foregroundColor(.textColor4)
-                                        Text("Rp \(cartViewModel.totalTripTax, specifier: "%.0f")")
+                                        Text("\(CurrencyFormatter.formatCurrency(value: cartViewModel.totalTripTax))")
                                             .foregroundStyle(.textColor1)
                                             .font(.system(size: 20, weight: .semibold))
                                         Text("\(trip.tax)% VAT")
@@ -138,7 +138,7 @@ struct ShoppingCartPageView: View {
                                             Spacer()
                                         }
                                         .foregroundColor(.textColor4)
-                                        Text("Rp \(cartViewModel.totalTripDiscount, specifier: "%.0f")")
+                                        Text("\(CurrencyFormatter.formatCurrency(value: cartViewModel.totalTripDiscount))")
                                             .foregroundStyle(.textColor1)
                                             .font(.system(size: 20, weight: .semibold))
                                         Text("")
@@ -212,7 +212,9 @@ struct ShoppingCartPageView: View {
                                             
                                             Spacer()
                                             
-                                            Text("Rp \(product.totalPrice, specifier: "%.0f")")
+                                            let productDetail = ProductDetailViewModel(product: product, trip: trip)
+                                            
+                                            Text("\(CurrencyFormatter.formatCurrency(value: productDetail.totalPrice))")
                                                 .font(.system(size: 20, weight: .semibold))
                                                 .foregroundColor(.textColor3)
                                         }

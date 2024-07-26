@@ -57,7 +57,7 @@ struct UpdateTripView: View {
                                                 Spacer()
                                             }
                                             HStack(spacing: 4) {
-                                                Text("Rp")
+                                                Text("\(CurrencyFormatter.getCurrencySymbol())")
                                                     .foregroundColor(viewModel.budget.isEmpty ? .textColor5 : .textColor9)
                                                 TextFieldWithDoneButton(text: $viewModel.budget, placeholder: "\(Int(trip.budget))", alignment: .left, shouldFormatNumber: true)
                                             }

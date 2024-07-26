@@ -24,9 +24,9 @@ class ShoppingTripViewModel: ObservableObject {
     
     
     // shopping trip card
-    @Published var totalExpense: Double = 0.0
-    @Published var totalTax: Double = 0.0
-    @Published var totalDiscount: Double = 0.0
+    @Published var monthlyTotalExpense: Double = 0.0
+    @Published var monthlyTotalTax: Double = 0.0
+    @Published var monthlyTotalDiscount: Double = 0.0
     
     @Published var selectedDate: Date = Date()
     @Published var selectedMonthTrips: [Trip] = []
@@ -35,7 +35,17 @@ class ShoppingTripViewModel: ObservableObject {
     @Published var storeName: String = ""
     @Published var budget: String = "" {
         didSet {
-            cleanBudget = budget.replacingOccurrences(of: ".", with: "")
+            let locale = Locale.current
+            let currencySymbol = locale.currencySymbol ?? "$"
+            
+            if currencySymbol == "$" {
+                cleanBudget = budget.replacingOccurrences(of: ",", with: "")
+            } else {
+                cleanBudget = budget.replacingOccurrences(of: ".", with: "")
+//                cleanBudget = cleanBudget.replacingOccurrences(of: ",", with: "")
+            }
+            //            cleanBudget = budget.replacingOccurrences(of: ".", with: "")
+//            cleanBudget = budget.replacingOccurrences(of: ",", with: "")
         }
     }
     private var cleanBudget: String = ""
@@ -132,7 +142,7 @@ class ShoppingTripViewModel: ObservableObject {
         save()
         queryTrips()
     }
-
+    
     func updateTrip(trip: Trip, storeName: String, budget: Double, tax: Int) {
         let cleanedBudget = cleanBudget.isEmpty ? budget : Double(cleanBudget) ?? budget
         trip.storeName = storeName
@@ -142,7 +152,7 @@ class ShoppingTripViewModel: ObservableObject {
         save()
         queryTrips()
     }
-
+    
     
     func deleteTrip(at offsets: IndexSet) {
         guard let modelContext = modelContext else {
@@ -185,7 +195,7 @@ class ShoppingTripViewModel: ObservableObject {
             price: price,
             quantity: quantity,
             discount: discount,
-            totalPrice: totalPrice, 
+            totalPrice: totalPrice,
             imageName: imageName
         )
         modelContext.insert(newProduct)
@@ -229,9 +239,9 @@ class ShoppingTripViewModel: ObservableObject {
     //mainpageviewmodel:
     func calculateTotalsForSelectedMonth() {
         //reset values
-        totalExpense = 0
-        totalTax = 0
-        totalDiscount = 0
+        monthlyTotalExpense = 0
+        monthlyTotalTax = 0
+        monthlyTotalDiscount = 0
         
         //filter trips by the selected month
         let calendar = Calendar.current
@@ -240,15 +250,28 @@ class ShoppingTripViewModel: ObservableObject {
             calendar.isDate(trip.date, equalTo: selectedDate, toGranularity: .year)
         }
         
+        
         //calculate totals for the filtered trips
         for trip in selectedMonthTrips {
             for product in trip.products {
-                let discountMultiplier: Double = 1 - (Double(product.discount) / 100)
+                let priceValue = Double(product.price)
+                let quantityValue = Double(product.quantity)
+                let discountValue = Double(product.discount)
+                let discountMultiplier = 1 - (discountValue / 100)
                 let taxMultiplier = Double(trip.tax) / 100
                 
-                totalExpense += product.totalPrice
-                totalTax += product.price * Double(product.quantity) * discountMultiplier * taxMultiplier
-                totalDiscount += (product.price * Double(product.discount) / 100) * Double(product.quantity)
+                let totalTax = priceValue * quantityValue * discountMultiplier * taxMultiplier
+                let totalDiscount = priceValue * quantityValue * discountValue / 100
+                var totalPrice = (priceValue * quantityValue * discountMultiplier) + totalTax
+                
+                // Handle 100% discount (free)
+                if discountMultiplier == 0 {
+                    totalPrice = 0
+                }
+                
+                self.monthlyTotalExpense += totalPrice
+                self.monthlyTotalTax += totalTax
+                self.monthlyTotalDiscount += totalDiscount
                 
             }
         }

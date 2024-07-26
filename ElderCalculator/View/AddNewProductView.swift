@@ -47,12 +47,12 @@ struct AddNewProductView: View {
                                                 .font(.system(size: 16, weight: .semibold))
                                                 .foregroundColor(.textColor6)
                                             // value total expense bulan itu
-                                            Text("Rp \(productViewModel.totalPrice, specifier: "%.0f")")
+                                            Text("\(CurrencyFormatter.formatCurrency(value: productViewModel.totalPrice))")
                                                 .font(.system(size: 32, weight: .bold))
                                                 .foregroundStyle(.textColor2)
                                             Divider()
                                             // value "bugget left" = "budget left gede" - "total price itu"
-                                            Text("Rp \(cartViewModel.budgetLeft, specifier: "%.0f") Budget Left")
+                                            Text("\(CurrencyFormatter.formatCurrency(value: cartViewModel.budgetLeft)) Budget Left")
                                                 .font(.system(size: 16, weight: .regular))
                                                 .foregroundStyle(.textColor3)
                                         }
@@ -97,7 +97,7 @@ struct AddNewProductView: View {
                                         Spacer()
                                     }
                                     .foregroundColor(.textColor6)
-                                    Text("\(productViewModel.totalTax, specifier: "%.0f")")
+                                    Text("\(CurrencyFormatter.formatCurrency(value: productViewModel.totalTax))")
                                         .font(.system(size: 20, weight: .semibold))
                                         .foregroundStyle(.textColor3)
                                     // butuh operan persen taxnya
@@ -121,7 +121,7 @@ struct AddNewProductView: View {
                                         Spacer()
                                     }
                                     .foregroundColor(.textColor6)
-                                    Text("Rp \(productViewModel.totalDiscount, specifier: "%.0f")")
+                                    Text("\(CurrencyFormatter.formatCurrency(value: productViewModel.totalDiscount))")
                                         .font(.system(size: 20, weight: .semibold))
                                         .foregroundStyle(.textColor3)
                                     Spacer()
@@ -176,10 +176,10 @@ struct AddNewProductView: View {
                     .overlay{
                         VStack{
                             HStack{
-                                Text("Price (Rp)")
+                                Text("Price (\(CurrencyFormatter.getCurrencySymbol()))")
                                     .font(.system(size: 16, weight: .semibold))
                                 Spacer()
-                                TextFieldWithDoneButton(text: $productViewModel.price, placeholder: "0", alignment: .right)
+                                TextFieldWithDoneButton(text: $productViewModel.price, placeholder: "0", alignment: .right, shouldFormatNumber: true)
                                     .font(.system(size: 16, weight: .regular))
                             }
                             Divider()
@@ -258,11 +258,11 @@ struct AddNewProductView: View {
                         //add product
                         viewModel.addNewProduct(
                             name: selectedProduct?.name ?? productViewModel.name,
-                            price: Double(productViewModel.price) ?? 0,
+                            price: Double(productViewModel.cleanedPrice) ?? 0,
                             quantity: Int(productViewModel.quantity) ?? 1,
                             discount: Int(productViewModel.discount) ?? 0,
                             totalPrice: productViewModel.totalPrice,
-                            trip: trip, 
+                            trip: trip,
                             imageName: selectedProduct?.imageName ?? "defaultProduct"
                         )
                         
@@ -317,11 +317,11 @@ struct AddNewProductView: View {
                     //add product
                     viewModel.addNewProduct(
                         name: selectedProduct?.name ?? productViewModel.name,
-                        price: Double(productViewModel.price) ?? 0,
+                        price: Double(productViewModel.cleanedPrice) ?? 0,
                         quantity: Int(productViewModel.quantity) ?? 1,
                         discount: Int(productViewModel.discount) ?? 0,
                         totalPrice: productViewModel.totalPrice,
-                        trip: trip, 
+                        trip: trip,
                         imageName: selectedProduct?.imageName ?? "defaultProduct"
                     )
                     

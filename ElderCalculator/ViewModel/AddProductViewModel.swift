@@ -10,8 +10,18 @@ import Foundation
 class ProductViewModel: ObservableObject {
     @Published var name: String = NSLocalizedString("Choose item", comment: "productName")
     
-    @Published var price: String = "" {
+    @Published var price: String = ""
+    {
         didSet {
+            
+            let locale = Locale.current
+                        let currencySymbol = locale.currencySymbol ?? "$"
+                        
+                        if currencySymbol == "$" {
+                            cleanedPrice = price.replacingOccurrences(of: ",", with: "")
+                        } else {
+                            cleanedPrice = price.replacingOccurrences(of: ".", with: "")
+                        }
             calculateTotals()
         }
     }
@@ -35,6 +45,8 @@ class ProductViewModel: ObservableObject {
     var taxRate: Int = 0
     var qty: Int = 1
     
+    var cleanedPrice: String = ""
+    
     // calculate all total
     private func calculateTotals() {
         calculateTotalTax()
@@ -43,7 +55,7 @@ class ProductViewModel: ObservableObject {
     }
 
     private func calculateTotalPrice() {
-        let priceValue = Double(price) ?? 0
+        let priceValue = Double(cleanedPrice) ?? 0
         let quantityValue = Double(quantity) ?? 1
         let discountValue = Double(discount) ?? 0
         let discountMultiplier = 1 - (discountValue / 100)
@@ -57,7 +69,7 @@ class ProductViewModel: ObservableObject {
     }
     
     private func calculateTotalTax() {
-        let priceValue = Double(price) ?? 0
+        let priceValue = Double(cleanedPrice) ?? 0
         let quantityValue = Double(quantity) ?? 1
         let taxMultiplier = Double(taxRate) / 100
         let discountValue = Double(discount) ?? 0
@@ -67,7 +79,7 @@ class ProductViewModel: ObservableObject {
     }
     
     private func calculateTotalDiscount() {
-        let priceValue = Double(price) ?? 0
+        let priceValue = Double(cleanedPrice) ?? 0
         let quantityValue = Double(quantity) ?? 1
         let discountValue = (Double(discount) ?? 0) / 100
         totalDiscount = priceValue * quantityValue * discountValue
@@ -79,12 +91,12 @@ class ProductViewModel: ObservableObject {
     }
     
     func isNotExceedBudget(trip: Trip) -> Bool {
-        let priceValue = Double(price) ?? 0
+        let priceValue = Double(cleanedPrice) ?? 0
         let quantityValue = Double(quantity) ?? 1
         let discountValue = Double(discount) ?? 0
         let discountMultiplier = 1 - (discountValue / 100)
         
-        let newProductTotalPrice = (priceValue * quantityValue * discountMultiplier) + totalTax
+        let newProductTotalPrice = priceValue * quantityValue * discountMultiplier
         let newTotalExpense = trip.products.reduce(0) { $0 + $1.totalPrice } + newProductTotalPrice
         
         return newTotalExpense <= trip.budget

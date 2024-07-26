@@ -24,27 +24,31 @@ class ProductDetailViewModel: ObservableObject {
     @Published var totalDiscount: Double = 0
     
     private func calculateTotalPrice() {
-        let priceValue = Double(product.price) 
-        let quantityValue = Double(product.quantity) 
-        let discountValue = Double(product.discount) 
-        let discountMultiplier = 1 - (discountValue / 100)
+        let price = Double(product.price)
+        let quantity = Double(product.quantity)
+        let discountMultiplier = 1 - (Double(product.discount) / 100)
         
-        totalPrice = (priceValue * quantityValue * discountMultiplier) + totalTax
+        totalPrice = (price * quantity * discountMultiplier) + totalTax
     }
     
     private func calculateTotalTax() {
-        let priceValue = Double(product.price) 
-        let quantityValue = Double(product.quantity) 
-        let taxMultiplier = Double(trip.tax) / 100
+        let price = Double(product.price)
+        let quantity = Double(product.quantity)
+        let tax = Double(trip.tax) / 100
         let discountMultiplier = 1 - Double(product.discount) / 100
         
-        totalTax = priceValue * quantityValue * discountMultiplier * taxMultiplier
+        totalTax = price * quantity * discountMultiplier * tax
     }
     
     private func calculateTotalDiscount() {
-        let priceValue = Double(product.price)
-        let quantityValue = Double(product.quantity)
-        let discountMultiplier = Double(product.discount) / 100
-        totalDiscount = priceValue * quantityValue * discountMultiplier
+        let price = Double(product.price)
+        let quantity = Double(product.quantity)
+        let discount = Double(product.discount) / 100
+        totalDiscount = price * quantity * discount
+        
+        // Handle 100% discount (free)
+        if discount == 1 {
+            totalDiscount += totalTax
+        }
     }
 }

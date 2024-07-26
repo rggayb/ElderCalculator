@@ -22,7 +22,7 @@ struct DetailProductView: View {
                         Spacer()
                     }
                     HStack{
-                        Text("\(productDetailViewModel.totalPrice, specifier: "%.0f")")
+                        Text("\(CurrencyFormatter.formatCurrency(value: productDetailViewModel.totalPrice))")
                             .font(.system(size: 32, weight: .bold))
                         Spacer()
                     }
@@ -53,7 +53,7 @@ struct DetailProductView: View {
                             Text("Price")
                                 .font(.system(size: 16, weight: .semibold))
                             Spacer()
-                            Text("\(product.price, specifier: "%.0f")")
+                            Text("\(CurrencyFormatter.formatCurrency(value: product.price))")
                                 .font(.system(size: 16, weight: .regular))
                         }
                         Divider()
@@ -79,7 +79,7 @@ struct DetailProductView: View {
                                 Text("Tax (\(trip.tax)% VAT)")
                                     .foregroundColor(.textColor4)
                                     .font(.system(size: 16, weight: .semibold))
-                                Text("Rp \(productDetailViewModel.totalTax, specifier: "%.0f")")
+                                Text("\(CurrencyFormatter.formatCurrency(value: productDetailViewModel.totalTax))")
                                     .foregroundColor(.textColor3)
                                     .font(.system(size: 20, weight: .semibold))
                             }
@@ -94,10 +94,10 @@ struct DetailProductView: View {
                     .overlay{
                         HStack{
                             VStack(alignment:.leading){
-                                Text("Saved (\(product.discount)% VAT)")
+                                Text("Saved (\(product.discount)% Off)")
                                     .foregroundColor(.textColor4)
                                     .font(.system(size: 16, weight: .semibold))
-                                Text("Rp \(productDetailViewModel.totalDiscount, specifier: "%.0f")")
+                                Text("\(CurrencyFormatter.formatCurrency(value: productDetailViewModel.totalDiscount))")
                                     .foregroundColor(.textColor3)
                                     .font(.system(size: 20, weight: .semibold))
                             }

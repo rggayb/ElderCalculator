@@ -42,6 +42,7 @@
 		DAA8D1BF2C43EC3600CC5D17 /* AddProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA8D1BE2C43EC3600CC5D17 /* AddProductViewModel.swift */; };
 		DAA8D1DD2C458DEE00CC5D17 /* DetailProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA8D1DC2C458DEE00CC5D17 /* DetailProductView.swift */; };
 		DAA8D1DF2C45923100CC5D17 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA8D1DE2C45923100CC5D17 /* ProductDetailViewModel.swift */; };
+		DAAAE93E2C53ABBE0057879B /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAAE93D2C53ABBE0057879B /* CurrencyFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		DAA8D1BE2C43EC3600CC5D17 /* AddProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewModel.swift; sourceTree = "<group>"; };
 		DAA8D1DC2C458DEE00CC5D17 /* DetailProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductView.swift; sourceTree = "<group>"; };
 		DAA8D1DE2C45923100CC5D17 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
+		DAAAE93D2C53ABBE0057879B /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 		BF18AA1F2C47AB9D00A3BEA6 /* Helper & Extension */ = {
 			isa = PBXGroup;
 			children = (
+				DAAAE93D2C53ABBE0057879B /* CurrencyFormatter.swift */,
 				BF876D252C50E0E000CEEF76 /* NumberFormatterHelper.swift */,
 				BF18AA202C47ABF600A3BEA6 /* DateFormatter.swift */,
 				BF18AA102C466E2B00A3BEA6 /* AddItemSound.swift */,
@@ -312,6 +315,7 @@
 				BF18AA112C466E2B00A3BEA6 /* AddItemSound.swift in Sources */,
 				DA66FFAA2C3E2E87002CBF9F /* ShoppingTripViewModel.swift in Sources */,
 				DAA8D1BD2C43E92E00CC5D17 /* CartViewModel.swift in Sources */,
+				DAAAE93E2C53ABBE0057879B /* CurrencyFormatter.swift in Sources */,
 				DA5B0B3A2C46CE4300C6853E /* UpdateTripView.swift in Sources */,
 				DAA8D1BF2C43EC3600CC5D17 /* AddProductViewModel.swift in Sources */,
 				BFF3FC922C42E4D800935B57 /* ShoppingCartPageView.swift in Sources */,

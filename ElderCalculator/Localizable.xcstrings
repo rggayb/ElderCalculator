@@ -4,6 +4,15 @@
     "" : {
 
     },
+    " %@" : {
+
+    },
+    " %@ Budget Exceeded" : {
+
+    },
+    " %@ Budget Left" : {
+
+    },
     "% Off" : {
       "localizations" : {
         "id" : {
@@ -25,6 +34,7 @@
       }
     },
     "%.0f" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -43,6 +53,9 @@
           }
         }
       }
+    },
+    "%@ Budget Left" : {
+
     },
     "%@: %.2f x %lld" : {
       "extractionState" : "stale",
@@ -971,7 +984,11 @@
         }
       }
     },
+    "Price (%@)" : {
+
+    },
     "Price (Rp)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -1066,6 +1083,7 @@
       }
     },
     "Rp" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -1076,6 +1094,7 @@
       }
     },
     "Rp %.0f" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -1086,6 +1105,7 @@
       }
     },
     "Rp %.0f Budget Exceeded" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -1096,6 +1116,7 @@
       }
     },
     "Rp %.0f Budget Left" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -1106,6 +1127,7 @@
       }
     },
     "Rp %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -1135,7 +1157,11 @@
         }
       }
     },
+    "Saved (%lld%% Off)" : {
+
+    },
     "Saved (%lld%% VAT)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
