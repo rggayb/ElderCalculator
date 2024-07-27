@@ -91,13 +91,33 @@ class ProductViewModel: ObservableObject {
     }
     
     func isNotExceedBudget(trip: Trip) -> Bool {
-        let priceValue = Double(cleanedPrice) ?? 0
-        let quantityValue = Double(quantity) ?? 1
-        let discountValue = Double(discount) ?? 0
-        let discountMultiplier = 1 - (discountValue / 100)
+        let inputPriceValue = Double(cleanedPrice) ?? 0
+        let inputQuantityValue = Double(quantity) ?? 1
+        let inputProductdiscountValue = Double(discount) ?? 0
+        let inputDiscountMultiplier = 1 - (inputProductdiscountValue / 100)
+        let inputTotalPrice = inputPriceValue * inputQuantityValue * inputDiscountMultiplier
         
-        let newProductTotalPrice = priceValue * quantityValue * discountMultiplier
-        let newTotalExpense = trip.products.reduce(0) { $0 + $1.totalPrice } + newProductTotalPrice
+        var newTotalExpense: Double = 0
+        
+        for product in trip.products {
+            let priceValue = Double(product.price)
+            let quantityValue = Double(product.quantity)
+            let discountValue = Double(product.discount)
+            let discountMultiplier = 1 - (discountValue / 100)
+            let taxMultiplier = Double(trip.tax) / 100
+            let totalTax = priceValue * quantityValue * discountMultiplier * taxMultiplier
+            
+            var totalPrice = (priceValue * quantityValue * discountMultiplier) + totalTax
+            
+            // Handle 100% discount (free)
+            if discountMultiplier == 0 {
+                totalPrice = 0
+            }
+            
+            newTotalExpense += totalPrice
+        }
+        
+       newTotalExpense += inputTotalPrice
         
         return newTotalExpense <= trip.budget
     }

@@ -15,16 +15,14 @@ class Product: Identifiable {
     var price: Double
     var quantity: Int
     var discount: Int
-    var totalPrice: Double = 0.0
     var imageName: String
     
     
-    init(name: String, price: Double, quantity: Int, discount: Int, totalPrice: Double, imageName: String) {
+    init(name: String, price: Double, quantity: Int, discount: Int, imageName: String) {
         self.name = name
         self.price = price
         self.quantity = quantity
         self.discount = discount
-        self.totalPrice = totalPrice
         self.imageName = imageName
     }
     

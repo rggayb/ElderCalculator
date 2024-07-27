@@ -184,7 +184,7 @@ class ShoppingTripViewModel: ObservableObject {
     }
     
     
-    func addNewProduct(name: String, price: Double, quantity: Int, discount: Int, totalPrice: Double, trip: Trip, imageName: String) {
+    func addNewProduct(name: String, price: Double, quantity: Int, discount: Int, trip: Trip, imageName: String) {
         guard let modelContext = modelContext else {
             self.error = OtherErrors.nilContext
             return
@@ -195,7 +195,6 @@ class ShoppingTripViewModel: ObservableObject {
             price: price,
             quantity: quantity,
             discount: discount,
-            totalPrice: totalPrice,
             imageName: imageName
         )
         modelContext.insert(newProduct)

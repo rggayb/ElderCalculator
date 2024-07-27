@@ -261,7 +261,6 @@ struct AddNewProductView: View {
                             price: Double(productViewModel.cleanedPrice) ?? 0,
                             quantity: Int(productViewModel.quantity) ?? 1,
                             discount: Int(productViewModel.discount) ?? 0,
-                            totalPrice: productViewModel.totalPrice,
                             trip: trip,
                             imageName: selectedProduct?.imageName ?? "defaultProduct"
                         )
@@ -320,7 +319,6 @@ struct AddNewProductView: View {
                         price: Double(productViewModel.cleanedPrice) ?? 0,
                         quantity: Int(productViewModel.quantity) ?? 1,
                         discount: Int(productViewModel.discount) ?? 0,
-                        totalPrice: productViewModel.totalPrice,
                         trip: trip,
                         imageName: selectedProduct?.imageName ?? "defaultProduct"
                     )
