@@ -49,10 +49,10 @@ struct AddNewProductView: View {
                                             // value total expense bulan itu
                                             Text("\(CurrencyFormatter.formatCurrency(value: productViewModel.totalPrice))")
                                                 .font(.system(size: 32, weight: .bold))
-                                                .foregroundStyle(.textColor2)
+                                                .foregroundColor(cartViewModel.isExceedBudget() ? .textColor8 : .textColor2)
                                             Divider()
                                             // value "bugget left" = "budget left gede" - "total price itu"
-                                            Text("\(CurrencyFormatter.formatCurrency(value: cartViewModel.budgetLeft)) Budget Left")
+                                            Text(cartViewModel.isExceedBudget() ? "\(CurrencyFormatter.formatCurrency(value: (abs(cartViewModel.budgetLeft)))) Budget Exceeded" : " \(CurrencyFormatter.formatCurrency(value: cartViewModel.budgetLeft)) Budget Left")
                                                 .font(.system(size: 16, weight: .regular))
                                                 .foregroundStyle(.textColor3)
                                         }

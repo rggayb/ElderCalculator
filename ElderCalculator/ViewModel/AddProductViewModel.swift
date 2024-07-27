@@ -95,7 +95,7 @@ class ProductViewModel: ObservableObject {
         let inputQuantityValue = Double(quantity) ?? 1
         let inputProductdiscountValue = Double(discount) ?? 0
         let inputDiscountMultiplier = 1 - (inputProductdiscountValue / 100)
-        let inputTotalPrice = inputPriceValue * inputQuantityValue * inputDiscountMultiplier
+        let inputTotalPrice = (inputPriceValue * inputQuantityValue * inputDiscountMultiplier) + totalTax
         
         var newTotalExpense: Double = 0
         

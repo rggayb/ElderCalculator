@@ -77,7 +77,7 @@ struct ShoppingCartPageView: View {
                                                     .font(.system(size: 32, weight: .bold))
                                                     .foregroundColor(cartViewModel.isExceedBudget() ? .textColor8 : .textColor2)
                                                 Divider()
-                                                Text(cartViewModel.isExceedBudget() ? " \(CurrencyFormatter.formatCurrency(value: cartViewModel.budgetLeft)) Budget Exceeded" : " \(CurrencyFormatter.formatCurrency(value: cartViewModel.budgetLeft)) Budget Left")
+                                                Text(cartViewModel.isExceedBudget() ? "\(CurrencyFormatter.formatCurrency(value: (abs(cartViewModel.budgetLeft)))) Budget Exceeded" : " \(CurrencyFormatter.formatCurrency(value: cartViewModel.budgetLeft)) Budget Left")
                                                     .font(.system(size: 16, weight: .regular))
                                                     .foregroundStyle(.textColor1)
                                                     

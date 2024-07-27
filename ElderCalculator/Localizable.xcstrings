@@ -5,13 +5,24 @@
 
     },
     " %@" : {
-
-    },
-    " %@ Budget Exceeded" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " %@"
+          }
+        }
+      }
     },
     " %@ Budget Left" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " %@ Anggaran tersisa"
+          }
+        }
+      }
     },
     "% Off" : {
       "localizations" : {
@@ -54,8 +65,15 @@
         }
       }
     },
-    "%@ Budget Left" : {
-
+    "%@ Budget Exceeded" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Melebihi Anggaran"
+          }
+        }
+      }
     },
     "%@: %.2f x %lld" : {
       "extractionState" : "stale",
@@ -985,7 +1003,14 @@
       }
     },
     "Price (%@)" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harga (%@)"
+          }
+        }
+      }
     },
     "Price (Rp)" : {
       "extractionState" : "stale",
@@ -1158,7 +1183,14 @@
       }
     },
     "Saved (%lld%% Off)" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hemat (%lld%% PPN)"
+          }
+        }
+      }
     },
     "Saved (%lld%% VAT)" : {
       "extractionState" : "stale",
