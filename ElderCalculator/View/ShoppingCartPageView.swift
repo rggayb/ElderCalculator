@@ -34,7 +34,7 @@ struct ShoppingCartPageView: View {
                             // Edit Trips
                             Button(action: {
                                 viewModel.storeName = trip.storeName
-                                viewModel.budget = NumberFormatterHelper.formatNumber(String(trip.budget))
+                                viewModel.budget = NumberFormatterHelper.formatNumber(String(Int(trip.budget)))
                                 viewModel.tax = String(trip.tax)
                                 isEditTripPresented.toggle()
                             }) {
