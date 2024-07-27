@@ -33,6 +33,9 @@ struct ShoppingCartPageView: View {
                             Spacer()
                             // Edit Trips
                             Button(action: {
+                                viewModel.storeName = trip.storeName
+                                viewModel.budget = String(trip.budget)
+                                viewModel.tax = String(trip.tax)
                                 isEditTripPresented.toggle()
                             }) {
                                 Image(systemName: "pencil.circle.fill")
