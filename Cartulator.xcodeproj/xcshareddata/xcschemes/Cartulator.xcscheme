@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4622932B2C3BA7F60044370A"
-               BuildableName = "ElderCalculator.app"
-               BlueprintName = "ElderCalculator"
-               ReferencedContainer = "container:ElderCalculator.xcodeproj">
+               BuildableName = "Cartulator.app"
+               BlueprintName = "Cartulator"
+               ReferencedContainer = "container:Cartulator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4622932B2C3BA7F60044370A"
-            BuildableName = "ElderCalculator.app"
-            BlueprintName = "ElderCalculator"
-            ReferencedContainer = "container:ElderCalculator.xcodeproj">
+            BuildableName = "Cartulator.app"
+            BlueprintName = "Cartulator"
+            ReferencedContainer = "container:Cartulator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4622932B2C3BA7F60044370A"
-            BuildableName = "ElderCalculator.app"
-            BlueprintName = "ElderCalculator"
-            ReferencedContainer = "container:ElderCalculator.xcodeproj">
+            BuildableName = "Cartulator.app"
+            BlueprintName = "Cartulator"
+            ReferencedContainer = "container:Cartulator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
